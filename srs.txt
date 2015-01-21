@@ -1,0 +1,640 @@
+
+
+
+
+
+Software Requirements Specifications
+For The
+Real Purchase Price Application
+June 21st 2014
+
+Prepared for:
+Lauren Rahimi
+
+Prepared by:
+GEMZ Software Design
+Eamun Rahimi
+Mike Criswell
+Zach Zaleski
+Gabriel Torres
+
+
+
+
+
+
+
+
+Approvals:
+Title
+Printed Name
+Signature
+Date
+Project Manager
+Zachary Zaleski
+
+
+
+
+Project Leader
+Eamun Rahimi
+
+
+
+
+Project Engineer
+Gabriel Torres
+
+
+
+
+Project Engineer
+Michael Criswell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Revision Changes:
+
+Revision
+Date
+Description
+Author
+1.0
+6/21/14
+Initial Draft
+GEMZ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of Contents
+
+1. 	Introduction………………………………………………………………………………..6
+1.1   	Purpose…………………………………………………………………………………….6
+1.2   	Scope………………………………………………………………………………………6
+1.3   	Definitions and Acronyms…………………………………………………...……………6
+1.4   	Reference………………………………………………………………………………….7
+1.5   	Overview……………………………………………………………….………………….7
+2.  	Overall description………………………………………………….……………………..8
+2.1   	Product perspective………………………………………………………………………..8
+2.1.1    System interface…………………………………………………………………………...8
+2.1.2    User interface……………………………………………………………………………...8  
+2.1.3    Hardware Interfaces……………………………………………………………………...11 
+2.1.4    Software Interfaces………………………………………………………………………11 
+2.1.5    Communications Interface……………………………………………………………….12
+2.1.6    Memory Constraints……………………………………………………………………...12 
+2.1.7    Operation…………………………………………………………………………………12 
+2.1.8    Site Adaptations Requirements…………………………………………………………..12
+2.2   	Product Functions………...……………………………………………………………...12
+2.3   	User Characteristics……………...………………………………………………………13
+2.4   	Constraints……………………………………………………………………………….13
+2.5	Assumptions and Dependencies…………………………………………………………13
+2.6       Apportioning of Requirement……………………………………………………………13 
+3. 	Specific Requirements…………………………………………………………………...14
+3.1   	External Interface Requirement………………………………………………………….14 
+3.1.1    User Interfaces…………………………………………………………………………...14 
+3.1.2    Hardware Interfaces……………………………………………………………………...17 
+3.1.3    Software Interfaces………………………………………………………………………18 
+3.1.4    Communications Interfaces……………………………………………………………...18 
+3.2       Functional Requirements………………………………………………………………...18
+3.2.1    Profile Module…………………………………………………………………………...18 
+3.2.2    Vehicle Select Module…………………………………………………………………...19 
+3.2.3    Calculation Library………………………………………………………………………21 
+3.2.4    Fuel Module……………………………………………………………………………...22 
+3.2.5    Insurance Module………………………………………………………………………...23 
+3.2.6    Maintenance Module…………………………………………………………………….24 
+3.2.7    Total Cost of Ownership Module………………………………………………………..25 
+3.2.8    Display System…………………………………………………………………………..26 
+3.3       Performance Requirement……………………………………………………………….27 
+3.4       Design Constraints……………………………………………………………………….27 
+3.5       Software System Attributes……………………………………………………………...28 
+3.5.1    Reliability………………………………………………………………………………..28 
+3.5.2    Maintainability…………………………………………………………………………..28
+3.5.3    Testability………………………………………………………………………………..28
+3.5.4    Portability………………………………………………………………………………..28
+3.5.5    Usability…………………………………………………………………………………28 
+3.5.6    Security…………………………………………………………………………………..29
+3.5.7	Efficiency………………………………………………………………………………...29
+3.5.8	Availability……………………………………………………………………………….29  
+3.6       Database Requirements…………………………………………………………………..30 
+
+
+List of Figures 
+
+Figure 2-1 Profile Selection……………………………………………………………………….8
+Figure 2-2 Profile Setup………………………………………………………………………….10
+Figure 2-3 Vehicle Select………………………………………………………………………...11
+Figure 3-1 Profile Select…………………………………………………………………………14
+Figure 3-2 Create Profile………………………………………………………………………...15
+Figure 3-3 Vehicle Select………………………………………………………………………...16
+Figure 3-4 Calculation Screen…………………………………………………………………...17
+Figure 3-5 Profile Module Data Flow…………………………………………………………...18
+Figure 3-6 Vehicle Select Module Data Flow…………………………………………………...19
+Figure 3-7 Calculation Library Data Flow……………………………………………………….21
+Figure 3-8 Fuel Module Data Flow………………………………………………………………22
+Figure 3-9 Insurance Module Data Flow………………………………………………………...23
+Figure 3-10 Maintenance Module Data Flow…………………………………………………...24
+Figure 3-11 Total Cost of Ownership Module Data Flow………………………………………25
+Figure 3-12 Display Module Data Flow………………………………………………………...26
+
+
+
+
+1. Introduction
+
+1.1 Purpose
+The purpose of this Software Requirements Specifications document is to describe and outline the major requirements for the Real Purchase Price application.  The intended audience for this document is the customer, Mrs. Rahimi, the GEMS Software Design team, and any other specified stakeholders of the finished application.  This document discusses the technical specifications that must be adhered to in order to meet the customer’s requirements.
+
+1.2 Scope
+The Real Purchase Price application is designed to help the future automobile consumer analyze the total cost of ownership of a selected vehicle, and using a profile function easily compare several possibilities.  The RPP application will allow the user to create a profile to store their pertinent information, such as geographical location, estimated miles driven, and age used to calculate total cost of ownership.  The storage of the profile information will be outsourced to an existing Cloud storage system. This stored information then allows the user to compare multiple vehicles without having to enter redundant information.  The other costs that determine the total cost of ownership are insurance, interest on a loan, scheduled maintenance, and fuel costs.  Fuel mileage from each vehicle will be obtained from the United States Environmental Protection Agency (EPA).  The RPP will calculate this information allowing the user to fully understand what this investment will cost.
+
+The RPP application will not provide any opinions or biased information or preference to any specific vehicle.  This application gathers information and calculates the total cost of ownership. The RPP application will not provide social media connections and will not calculate the cost of a loan. It will also not get fuel information based on zip. The RPP will not have a compare function until the enhanced version is release. 
+
+1.3 Definitions and Acronyms
+
+1.3.1 Definitions
+Android - Operating system developed by Google for use in cellular and tablet devices.
+GitHub - GitHub is a web-based hosting service for software development projects that use the Git revision control system.
+
+
+
+1.3.2 Acronyms
+AVD - Android Virtual Device
+CM - Configuration Manager
+EPA - Environmental Protection Agency
+GEMZ - Gabriel Eamun Michael Zachary
+GUI - Graphical User Interface
+IDE - Integrated Development Environment
+RPP - Real Purchase Price
+OCD - Operational Concept Document
+SDD - Software Design Document
+SPMP - Software Project Management Plan
+SRS - Software Requirements Specifications 
+SQA - Software Quality Assurance
+SRS - Software Requirements Specification
+TCO - Total Cost of Ownership
+V&V - Verification and Validation
+
+1.4 References
+Roger S. Pressman (2010).  Software Engineering:  A Practitioner’s Approach 7th Edition
+GEMZ Software Design (2014).  Operational Concept Document
+GEMZ Software Design (2014).  Software Project Management Plan
+
+1.5  Overview
+This SRS provides an overall description of the product including functionality, user interaction, constraints, and specific description of the system’s operations. The SRS is organized in the following sections: 
+
+Section 2.0 provides a perspective as to the design concept, product functions, system users, constraints affecting requirements, assumptions and dependencies, and requirement subset. 
+Section 2.1 provides how the RPP application will interact with the user and how the will obtain some information 
+Section 2.2 describes the function of the RPP application
+Section 2.3 provides information on the target audience for this application 
+Section 2.4 provides constraints on the project that may affect the project due date 
+Section 2.5 provides assumptions and dependencies related to the RPP application
+Section 2.6 provides information describing future developments the RPP app will provide 
+Section 3.0 provides an overview of the specific requirements needed for the RPP application 
+Section 3.1 provides a description and design view for each of the RPP application interfaces 
+Section 3.2 provides the RPP application functions and how they will operate within the system 
+Section 3.3 provides requirements needed for the RPP application to perform its duties 
+Section 3.4 identifies design constraints pertaining to the RPP application 
+Section 3.5 defines software attributes which apply to the RPP application
+Section 3.6 provides the requirements for the database and how it interacts with application 
+
+2.0  Overall Description
+This SRS is designed to address and describe the purpose and functions of the GEMZ Software Design RPP application, including user characteristics, constraints, assumptions, or dependencies discovered during design and development.
+
+2.1 Product Perspective
+The RPP application will contain an interface to serve the customer by storing a user profile and performing a calculation to determine the real purchase price of a vehicle. The application will contain user interactive screens to accomplish the following tasks: select a profile, create a profile, select a vehicle, display total cost of ownership.
+
+2.1.1 System Interfaces 
+	
+2.1.2 User Interfaces 
+The user interface will be primarily touch and keyboard input through a graphical user interface (GUI). User interfaces will require input by the user that shall be used to store personal profile information, vehicle selection, and perform calculations.
+
+
+2.1.2.1 Profile Selection
+The user interface shall contain a profile selection screen that allows the user to select an existing profile if one exists. If an existing profile does not exist the user will be directed to create one. Figure 2-1 demonstrates the profile selection interface.
+
+
+Figure 2-1: Profile Selection
+
+
+
+
+
+2.1.2.2 Profile Creation
+The Profile Creation user interface shall require the user to enter a name, age, zip code, and miles driven per year. The created profile shall be stored within local storage. Figure 2-2 demonstrates the profile setup interface. 
+
+
+Figure 2-2: Profile Setup
+
+
+
+
+2.1.2.3 Vehicle Selection
+The user interface shall contain a vehicle selection screen that allows the user to select a vehicle by year, make, and model. Once the vehicle selection has been made, the screen shall display the MSRP, average maintenance cost, average fuel cost, and an insurance estimate. Figure 2-3 demonstrates how the user shall interact with the vehicle select module.
+
+Figure 2-3: Vehicle Select
+
+
+2.1.2.4 Display Screen
+The display screen will show the MSRP, insurance cost,  maintenance cost, fuel cost, and total cost of ownership.
+. 
+2.1.3 Hardware Interfaces
+The hardware interface consists of the end user’s device and the cloud based system. 
+
+2.1.4 Software Interfaces 
+The software interface consists of the end user’s operating system, the application itself, the mobile service, and the mobile service’s host.
+
+
+
+2.1.5 Communications Interfaces 
+The communications interface will be used to store and retrieve user entered information in a cloud based database. 
+
+2.1.6 Memory Constraints 
+There is no memory constraints for this project. 
+
+2.1.7 Operation
+There are two roles for the RPP application, the system administrator and the user.  The system administrator will maintain the deployment of any new updates to the software and will maintain the database of information.  The user will be using the software itself.  The user shall not have the capability to modify the vehicle information that is stored in the database. There is no need for security for this application prototype. 
+
+2.1.8 Site Adaptations Requirements 
+The Android operating system can vary from device to device.  The application must operate for 80% of all Android devices.  The application must also be adaptable to future releases of Android operating systems.
+
+2.2  Product Functions
+The RPP application includes many specific functions and each will be explained in greater detail in following sections of this document.  The first major function of this application is the capability of creating and maintaining user specific profile to store age, geographic location, average yearly miles driven, and calculations of recently searched vehicles.
+
+The next function that the application provides is collecting data that the application uses to perform total cost of ownership calculations.  This data is MSRP of the selected vehicle, insurance estimation based on user profile information and car class, average fuel cost based on location information provided in the user profile and average yearly miles driven, average fuel usage based on manufacturer’s specifications and average yearly miles driven
+
+The final function that the application provides is taking all the gathered information and calculating the estimated cost of fuel usage and estimated cost of scheduled maintenance.  After calculating this individual information, the application totals all of them and provides a total cost of ownership for the selected vehicle.
+
+2.3  User Characteristics
+GEMZ Software Design RPP application is designed for the average consumer to research and prepare themselves for the important decision of selecting the proper vehicle to purchase.  System administrators will also use the application to give their feedback in relative to customer complaints, services, and surveys. The maintenance team will use the application to ensure that it is always running correctly and to update information.
+
+2.4  Constraints
+The constraints identified for the creation of the RPP application are as follows: 
+Budget
+Time and schedule 
+Software training 
+
+2.5 Assumptions and Dependencies
+The assumptions and dependencies in this documents are subjected to the following: 
+Assumptions 
+The product will be completed on time and with the exact specification of the customer 
+Total cost of the vehicles that are being used will be accurate 
+The user of the product will have a mobile device and access to the Internet. 
+The customer will be satisfy with the end product 
+User will have knowledge of creating a profile and knowledge of downloading apps
+Dependencies 
+Budget and the time that is allowed to create the product 
+Resources to gather information is accurate
+The user will have a mobile device
+Software being use to create the app 
+
+2.6 Apportioning of requirements 
+The enhance version of the app will include a resale estimate and a depreciation estimate giving the user the ability to think about what to do with the vehicle once they are done with it. Given more time and resources the enhance version will also give current gas prices with zip code location and will the app also factor in loans for a more accurate total cost. The app will be able to connect to social media via Facebook and Twitter. 
+
+
+3.0 Specific Requirements 
+This section of the SRS contains all the software requirements detailed to a level where the software designers can design the system and testers can ensure the system meets all the specified requirements. Each requirement includes a brief description the inputs into the system and response from the system or functions performed by the system based on the input.
+3.1 External Interface Requirements
+
+3.1.1 User Interfaces
+The user interface is modulated to have a profile selection and creation interface, and a vehicle interface.  The calculation screen brings all of the modules together to show the end user the final result of their selections.
+
+3.1.1.1 Profile Screen
+The Profile Screen shall have a drop down box to select a profile that was previously made and a button to create a new profile.  The drop down box will be centered to emphasize the focus and the button to create a profile shall be center aligned and lowered than the drop down box for secondary focus. Figure 3-1 shows how the profiles will be displayed on the screen.
+
+Figure 3-1: Profile Select
+
+3.1.1.2 Profile Creation Screen
+If the user had selected Create a Profile from the previous screen and tapped Select, then the Profile Creation Screen shall appear.  The profile creation screen will list the following from top to bottom order:
+Name Textbox - A textbox for the user to input the profile name
+Age Textbox - A textbox for the user to input their age
+Zip Code Textbox - A textbox for the user to input their zip code
+Average Yearly Miles Driven Number Textbox - A textbox that shall only accept numbers for the user to input their average yearly miles driven
+Create Profile Button - A button the user presses upon form completion to move on.
+Figure 3-2 shows how the profile creation screen shall be displayed.
+
+
+Figure 3-2: Profile Create
+
+
+3.1.1.3 Vehicle Selection Screen
+The Vehicle Selection Screen shall have the following selectors:
+A year selector
+A make of vehicle selector
+A model of vehicle selector
+A trim of vehicle selector
+Figure 3-3 shows how the vehicle screen shall be displayed.
+
+
+Figure 3-3: Vehicle Select
+
+
+3.1.1.4 Final Calculation Screen
+The Final Calculation Screen will display information regarding the profile, the vehicle, the insurance calculation, the fuel calculation, the maintenance calculation, and the final total cost of ownership of the vehicle for specific periods.  There shall be text boxes displayed in a vertical layout of the name, the vehicle make/model/trim, the cost of insurance, the fuel cost per year, the fuel usage per year, the maintenance cost over a 1/3/5 year period, and the final total cost of ownership. Figure 3-4 shows how the calculation screen shall be displayed.
+
+Figure 3-4: Calculation Screen
+
+
+
+3.1.2 Hardware interfaces
+The end user hardware required is a mobile device consisting of at least:
+Single Core Processor exceeding 1.4ghz
+512MB of RAM
+20MB of available storage
+
+
+3.1.3 Software Interfaces
+The application’s software will be interfacing with the operating system of the end user’s device and the mobile service.  The mobile service will be interfacing with the DBMS to pull data.
+
+3.1.4 Communications Interfaces
+End users must have an active internet connection through their wireless provider or through WiFi.
+
+3.2 Functional requirements
+
+3.2.1 Profile Module
+The Profile Module, displayed in figure 3-5, is the first module be to seen by the user.  The module controls the profiles of the user, both in creation and storage of profiles.  These profiles shall be stored locally and will be used in other modules. If the user doesn’t have a profile one can be created. 
+
+
+Figure 3-5: Profile Module Data Flow
+
+
+3.2.1.1 Profile Module Function - Profile Selection Screen
+The Profile Module shall bring up a screen with a list of available profiles to choose from and the ability to create a new profile. The user shall choose a profile or choose to create a new profile.
+
+
+
+3.2.1.2 Profile Module Function - Profile Creation Screen
+The Profile Module shall display a creation screen to the user when the user elects to create a new profile from the previous function.  The screen shall provide areas for the user to input the following information:
+Name for Profile
+Age
+Geographic location
+Contact information
+Miles driven annually
+
+3.2.1.3 Profile Module Function - Profile Storage
+The Profile Module shall store the profile the user created in Functional requirement 1.2 into the system.  The profile shall be available after the user exits the application.
+
+3.2.1.4 Profile Module Function - Advance to Vehicle Select
+The Profile Module shall be able to advance the application to the Vehicle Select Module upon completion of profile storage as performed in function 3.2.1.2.
+
+3.2.2 Vehicle Select Module
+The second module the user will encounter is the vehicle selection module.  It is displayed in figure 3-6. The vehicle module shall prompt the user to select the vehicle by its year, make, model, and trim.  The application shall store the selection and pull the pertinent data regarding that particular vehicle for use in other modules. 
+
+Figure 3-6:  Vehicle Select Data Module Data Flow
+
+
+3.2.2.1 Vehicle Select Module Function - Vehicle Selection
+The Vehicle Select Module shall prompt the user to enter the year of the vehicle they wish to select.  After the year has been selected, the module shall prompt the user to enter the make of the vehicle.  After the make of the vehicle has been selected, the module shall prompt the user to enter the model of the vehicle.  After the model of the vehicle has been selected, the module shall prompt the user to enter the trim of the vehicle.
+
+3.2.2.2 Vehicle Select Module Function - Storage of selection
+The Vehicle Select Module shall store the selected vehicle information locally in the device.
+
+3.2.2.3 Vehicle Select Module - Vehicle Data Retrieval
+The Vehicle Select module shall load the following data into the system after the selection of vehicle has been made:
+MSRP of the selected vehicle
+Insurance factors regarding the vehicle
+Average fuel usage based on manufacturer’s specifications
+Average maintenance cost
+
+3.2.2.4 Vehicle Select Module - Display of Vehicle Information
+The Vehicle Select module shall allow the following data to be displayed back to the user for display purposes:
+MSRP of the selected vehicle
+Year, Make, Model, and Trim of vehicle
+
+3.2.2.5 Vehicle Select Module - Advance to Display Screen
+The Vehicle Select Module shall allow the user to advance to display their results after the user has selected their vehicle from function 3.2.2.1.
+
+
+
+3.2.3 Calculation Library
+The Calculation Library will house the Fuel, Insurance, Maintenance, and TCO (Total Cost of Ownership) Modules.  The library shall be able to load the profile and vehicle data to make available for the other modules and shall provide information back to the display system. Figure 3-7 displays the data flow for this module.
+
+Figure 3-7:  Calculation Library Data Flow 
+
+3.2.3.1 Calculation Library - Profile Loading
+The Calculation Library shall be able to load the profile information the user has chosen and allow its modules to use that data.
+
+3.2.3.2 Calculation Library - Vehicle Loading
+The Calculation Library shall be able to load the vehicle information the user has chosen and allow its modules to use that data.
+
+3.2.3.3 Calculation Library - Housing of Modules
+The Calculation Library shall house and use the Insurance, Fuel, Maintenance, and Total Cost of Ownership modules.  The calculations that are requested by other outside modules or systems shall be processed by the Calculation Library and use its housed modules to determine the output.
+3.2.3.4 Calculation Library - Display Functional Calling
+The Calculation Library shall be able to provide the display the values the display requests for any data the modules in the library can process.
+
+3.2.4  Fuel Module
+The Fuel Module, displayed in Figure 3-8, does not require any user input and is a helper module in order to process data.  The Fuel Module uses data regarding the miles driven by the user and the miles per gallon of the car to calculate the annual fuel cost.
+
+Figure 3-8:  Fuel Module Data Flow
+
+3.2.4.1 Fuel Module Function - Pulling Data from Profile & Vehicle
+The Fuel Module shall inherit data from the Vehicle Select Module and the Profile Module through the Calculation Library and calculate the average fuel cost per year.
+
+3.2.4.2 Fuel Module Function - Average cost of Fuel 
+The average cost of fuel module shall request and obtain the information from the national average website. 
+
+3.2.4.3 Fuel Module Function - Calculating Data
+The fuel module shall take the data from the Profile module and the Vehicle module and calculate the total cost of fuel. 
+
+3.2.4.4 Fuel Module Function - Provide Data
+The fuel module shall return the calculated data to the calculation library 
+3.2.5  Insurance Module
+The Insurance Module does not require any user input and is a helper module in order to process data.  The Insurance Module collects data from the Calculation Library and calculates an insurance estimation. The data flow for this module is displayed in figure 3-9
+
+
+Figure 3-9:  Insurance Module Data Flow
+ 
+
+3.2.5.1 Insurance Module Function - Pulling data personel from Profile
+The Insurance Module shall inherit data from the and the Profile Module through the Calculation Library in order to calculate the insurance estimation.
+
+3.2.5.2 Insurance Module Function - Pulling data from Vehicle
+The Insurance Module shall inherit data from the Vehicle Select Module through the Calculation Library in order to calculate the insurance estimation.
+
+3.2.5.3 Insurance Module Function - Calculating Data
+The Insurance Module shall take the data pulled using functions 3.2.5.1 and 3.2.5.2 in order to calculate the annual insurance cost.
+
+3.2.5.4 Insurance Module Function - Displaying Data
+The insurance module will provide the calculated annual insurance cost to the calculation library.
+
+3.2.6  Maintenance Module
+The Maintenance Module does not require any user input and is a helper module in order to process data as seen in the data flow in figure 3-10.  The Maintenance module uses data regarding the miles driven by the user and the maintenance factor of the car to calculate the annual maintenance cost.
+
+Figure 3-10: Maintenance Module Data Flow
+
+3.2.6.1 Maintenance Module Function - Collect Profile & Vehicle Data
+The Maintenance Module shall request the miles driven data from the Profile Module through the Calculation Library  in order to calculate maintenance costs.  Additionally, the Maintenance Module shall request data from the Vehicle Module through the Calculation Library regarding the maintenance factor in order to calculate maintenance costs.
+
+3.2.6.2 Maintenance Module Function - Calculate Maintenance
+The Maintenance Module shall take the Profile and Vehicle data requested in the function 3.2.5.1 and 3.2.5.2 and calculate the cost of mainteance.  The cost shall be determined by the number of expected miles driven by the user which is pulled by the profile data and multiplied by the maintenance factor of the car which is pulled from the vehicle data.
+
+3.2.6.3 Maintenance Module Function - Provide Maintenance Cost
+The Maintenance Module shall pass back to the Calculation Library the annual maintenance cost based on the calculations done by the 3.2.5.2 function.
+
+
+3.2.7 Total Cost of Ownership Module
+The Total Cost of Ownership Module, seen in figure 3-11, shall be able to gather the necessary data in order to calculate and provide the Total Cost of Ownership of a particular vehicle using a particular profile.
+
+
+Figure 3-11: Total Cost of Ownership Module Data Flow
+
+
+3.2.7.1 Total Cost of Ownership Module - Collect Data from Profile, Vehicle, and Calculation Library Modules
+The Total Cost of Ownership Module shall request the MSRP from the vehicle profile through the Calculation Library and request the fuel cost, insurance cost, and maintenance cost using the Calculation Library.
+
+3.2.7.2 Total Cost of Ownership Module - Calculate Total Cost of Ownership
+The Total Cost of Ownership Module shall be able to calculate the total cost of ownership after obtaining the necessary data from function 3.2.7.1.
+
+3.2.7.3 Total Cost of Ownership Module - Provide Total Cost of Ownership
+The Total Cost of Ownership Module shall be able to provide the total cost of ownership calculated from function 3.2.7.3
+
+
+
+3.2.8 Display System
+The Display System shall provide the final display back to the user so they may see their results after inputting data.  The data flow for this module is displayed in figure 3-12.
+
+3-12 Display Module Data Flow
+
+3.2.8.1 Display System Function - Obtain Data from the Profile Module
+The Display System shall be able to work with the Profile Module to obtain the name of the profile for display back to the user
+
+3.2.8.2 Display System Function - Obtain Data from the Vehicle Module
+The Display System shall be able to work with the Vehicle Module to obtain the MSRP, year, make, model, and trim of the vehicle for display back to the user.
+
+3.2.8.3 Display System Function - Obtain Fuel Cost
+The Display System shall be able to work with the Calculation Library to display the annual fuel cost.
+
+3.2.8.4 Display System Function - Obtain Insurance Cost
+The Display System shall be able to work with the Calculation Library to obtain the annual insurance cost.
+
+3.2.8.5 Display System Function - Obtain Maintenance Cost
+The Display System shall be able to work with the Calculation Library to obtain the annual maintenance costs.
+
+
+3.2.8.6 Display System Function - Obtain Total Cost of Ownership
+The Display System shall be able to work with the Calculation Library to obtain the total cost of maintenance.
+
+3.2.8.7 Display System Function - Display Information to User
+The Display System shall be able to display all information gathered from functions 3.2.7.1-3.2.7.6 and present the data back to the user.
+
+3.2.8.8 Display System Function - Callback to Vehicle Module
+The Display System shall allow a user to return back to the Vehicle Module screen to choose a different vehicle.
+
+3.2.8.9 Display System Function - Callback to Profile Module
+The Display System shall allow a user to return back to the Profile Module to choose a different profile.
+
+ 3.3 Performance Requirements
+The application must load to the profile screen within 1.5 seconds upon selecting the app from the operating system’s screen.  With the user having a 1MBps internet connection, the app shall be able to load the vehicle data into the system within 2 seconds.The App must be able to calculate all information within 1.5 seconds to present to the display system.
+
+3.4 Design Constraints
+The RPP Application shall be able to run on Android based devices both phone and tablet targeted for Android version 2.2 codenamed Froyo or higher.
+
+
+ 3.5 Software System Attributes
+
+ 3.5.1 Reliability
+The reliability of the Real Purchase Price (RPP) application shall be define in terms of bugs and always functioning without crashing. System reliability shall be tested based on the procedures defined in the requirements.  
+
+ 3.5.2 Maintainability
+Real Purchase Price (RPP) application shall be maintainable through administration of the application code and mobile service code.  The system will be maintainable from administration to locate and fix any error that may occur.  Any update can be sent to the Google Play Store to push out to users.
+
+3.5.3 Testability
+The system will be testable to the following maximum effort required to ensure the
+intended functions.
+List of testability requirements:
+All text fields intended for input shall be editable
+All text fields not intended for input shall be read-only in operation.
+All buttons shall perform their proper function without deviation with a certain expected outcome.
+The profile of a user shall be able to be saved and then retained upon restart of device
+Any update to a particular vehicle in data shall be immediately changed when the user selects the vehicle.
+
+3.5.4 Portability
+The system will be portable to the following maximum effort required to transfer from one hardware or software environment to another.
+ List of portability requirements:
+The profile of a user shall not be able to be transferred
+The vehicle data shall be available to any device running the application
+
+3.5.5 Usability
+The system will enable the user and software developers easy access to the application.  The application will be straightforward and easy to use.  The goal is to have quick and easy functions so everyone can use the application with ease. 
+
+3.5.6  Security
+The integrity of the application will be obtained by ensuring that the system performs all processes and calculations correctly.  In order to maintain integrity the development team will anticipate all possible scenarios that the application could fail.  The development team will also institute code to support a rollback feature should the application fail to return it to a previous state.  The security of the application and its data will be heavily reliant on the mobile service.  Although there is no risk of the user’s personal information being compromised, the application will need a secure DBMS to maintain integrity.
+Here are some integrity and security requirements:
+Vehicle data hosted in the cloud shall be read-only and not modifiable to any user except those deemed as administrators.
+Vehicle data is considered disposable and not subject to notification of the users in case of a breach.
+Profile data shall be stored locally on the phone and shall not be made available back to the mobile service.
+
+3.5.7 Efficiency
+The efficiency of the application will be maintained by ensuring that a minimal amount of resources on the users mobile device and on the mobile service are used. GEMZ software design will efficiently test to ensure that minimal amount of set of combinations of code is being used to produce the maximum amount of output. 
+
+3.5.8 Availability
+This should specify the factors required to guarantee a defined availability level for the entire 
+system such as checkpoint, recovery, and restart.
+
+
+3.6 Database Requirements
+The database shall be hosted in a cloud based DBMS system.  The DBMS shall be connected to the mobile service and provide one-way read-only transactions back to the mobile service.  The following information shall be kept in the database:
+Vehicle Information
+Year
+Make
+Model
+Trim
+MSRP
+Miles Per Gallon (MPG)
+Insurance Class
+Maintenance Factor
+
+The maximum storage limit of the database shall be 150 Gigabytes.  
+
+
