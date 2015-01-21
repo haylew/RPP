@@ -1,0 +1,685 @@
+
+
+
+
+
+
+
+
+
+Software Project Management Plan
+For The
+Real Purchase Price Application
+June 16th 2014
+Prepared for:
+Lauren Rahimi
+Prepared by:
+GEMZ Software Design
+Eamun Rahimi
+Mike Criswell
+Zach Zaleski
+Gabriel Torres
+
+
+
+
+
+
+Approvals:
+Title
+Printed Name
+Signature
+Date
+Project Manager
+Zachary Zaleski
+
+
+
+
+Project Leader
+Eamun Rahimi
+
+
+
+
+Project Engineer
+Gabriel Torres
+
+
+
+
+Project Engineer
+Michael Criswell
+
+
+
+
+
+
+
+
+
+
+
+
+
+Revision Changes:
+
+Revision
+Date
+Description
+Author
+1.0
+
+
+Initial Draft
+GEMZ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of Contents
+
+1.  	Introduction……………………………………………………………….……………….5
+1.1   	Project Overview………………………………………………………………….……….5
+1.2   	Project Deliverables……………………………………………………………………….6
+1.3   	Evolution of the SPMP……………………………………………………………………6
+1.4   	Reference Materials……………………………………………………………………….7
+1.5   	Definitions and Acronyms………………………………………………………………...7
+2.  	Project Organization………………………………………………………………………8
+2.1   	Process Model……………………………………………………………………………..8
+2.2   	Organizational Structure…………………………………………………………………..8
+2.3   	Organizational Boundaries and Interfaces……………………………………………….10
+2.4   	Project Responsibilities…………………………………………………………………..11
+3.  	Managerial Process………………………………………………………………………12
+3.1   	Management Objectives and Priorities…………………………………………………..12
+3.2   	Assumptions, Dependencies, and Constraints…………………………………………...12
+3.3   	Risk Management………………………………………………………………………..13
+3.4   	Monitoring and Controlling Mechanics………………………………………………….15
+3.5   	Staffing Plan……………………………………………………………………………...15
+4.  	Technical Process………………………………………………………………………...17
+4.1   	Methods, Tools, and Techniques………………………………………………………...17
+4.2   	Software Documentation………………………………………………………………...18
+4.3   	Project Support Functions……………………………………………………………….20
+5.	Work Packages, Schedule, and Budget………………………………………………….22
+5.1   	Work Packages…………………………………………………………………………..22
+5.2   	Dependencies…………………………………………………………………………….24
+5.3   	Resource Requirements………………………………………………………………….25
+5.4   	Budget and Resource Allocation………………………………………………………...25
+5.5       Schedule………………………………………………………………………………….26
+
+
+List of Figures
+Figure 2.1: Incremental Model…………………………………………………………………….8
+Figure 2.2: Organizational Structure……...……………………………………………………….9
+Figure 5.1: Schedule……………………………………………………………………………..27
+
+
+List of Tables 
+
+Table 2-1: Project Responsibilities………………………………………………………...…… 11
+Table 3-1: Risk Table……………………………………………………...……………………..14 
+Table 3-2: Staffing Plan……………………………………………………...…………………..16  1. Introduction
+The proposed Software Project Management Plan (SPMP) detailed in this document explains GEMZ Software Design’s plan to create a total cost of car ownership application for their customer, Lauren Rahimi. It will describe the purpose of the project and the objectives that are to be accomplished, the assumptions and constraints, the project’s deliverables, and a summary of the project schedule.
+
+1.1 Project Overview
+
+1.1.1 Project Objectives
+The project objectives are:
+Complete the project within the project’s due date
+Receive application approval from Google
+Provide all deliverables within the stated due date
+
+1.1.2 Product of the Project
+The RPP software product will consist of the RPP application in the Google Play Store and a deployed mobile service for the application hosted in the cloud.
+
+1.1.3 Major Work Activities
+The major work activities of the team consists of documentation, design, development, testing,
+and deployment of the application.  The documentation will be ongoing throughout the entire project.  The design will begin after the creation of the SPMP and lead to the development of the application.  Testing will begin at the same time as development and will close out the development stage.  Finally, deployment to the Google Play store will close out all the major work activities.
+
+
+1.1.4 Major Milestones
+The major milestones the team has planned for the project is as follows:
+Computation completion for the total cost of ownership
+Completion of the User Interface (UI) of the project
+Completion of the prototype mobile service
+Completion of the Software Development Plan (SDP)
+Successful Software Requirements Review (SRR)
+Successful Preliminary Design Review (PDR)
+Successful Critical Design Review (CDR)
+Completion of the Testing Requirements Review (TRR)
+
+1.2 Project Deliverables
+The following items are deliverables to be given to the customer:
+Project Documentation
+Operational Concept Document
+Software Project Management Plan
+Software Requirements Specifications
+Software Design Description
+Test Plan and Test Procedure
+Software User Documentation
+Prototype Application
+Source code for RPP
+
+The project has a hard deadline of delivery by August 25th, 2014.  The team must have the application submitted for approval in the store at least 1 week prior to the hard deadline.
+
+1.3 Evolution of the SPMP
+The SPMP is under version control and is subject to change. Scheduled updates will be made on a weekly basis and on an unscheduled basis as necessary. Any modification to the SPMP will require approval by the customer and a new version will be printed.
+
+
+1.4 Reference Materials
+Roger S. Pressman (2010).  Software Engineering:  A Practitioner’s Approach 7th Edition
+Johnson, Bruce (2013).  Windows Azure Mobile Services
+GEMZ Software Design (2014).  Operational Concept Document 
+
+1.5 Definitions and Acronyms
+
+1.5.1 Definitions
+Android - Operating system developed by Google for use in cellular and tablet devices.
+GitHub - GitHub is a web-based hosting service for software development projects that use the Git revision control system.
+
+1.5.2 Acronyms
+AVD - Android Virtual Device
+CM - Configuration Manager
+GEMZ - Gabriel Eamun Michael Zachary
+IDE - Integrated Development Environment
+OCD - Operational Concept Document
+PM - Project Manager
+RPP - Real Purchase Price
+SDD - Software Design Document
+SPMP - Software Project Management Plan
+SQA - Software Quality Assurance
+SRS - Software Requirements Specification
+V&V - Verification and Validation
+
+
+2. Project Organization
+
+2.1 Process Model
+For this project an incremental model will be used. The reason for this is to generate small working pieces of the application in a short time frame. This will make the testing, debugging, scope change, and risk management easier to handle. Furthermore the customer will have smaller portions of the product to inspect and approve.
+
+Figure 2.1 outlines the characteristics of the incremental model.
+
+Figure 2.1 Incremental Model
+
+
+2.2 Organizational Structure
+GEMZ Software Design is organized by assigning project members to a team. Each team member will be assigned specific roles that will be tailored to match the specific skills of the member. Although the member will have an assigned role they will not be limited to that role. Team members will work collectively to complete the project in the allotted time. The team members will also have the opportunity to overlap roles in order to learn new skills.
+
+
+2.2.1 Project Manager
+The Project Manager will be responsible for planning, executing, and determining the project budget and timeline. Creating project teams, reporting to the customer, and ensuring quality control throughout the duration of the project are central to this position.
+
+2.2.2 Project Leader
+The Project Leader will be responsible for assembling the development team, choosing the process model, determining the necessary languages and resources, and managing the repository. Managing a successful development schedule, ensuring software development meets best practices standards, and present a working prototype will be central to this position. 
+
+2.2.3 Project Engineer
+The Project Engineer will be responsible for developing software in a team environment, following plans and specifications, utilizing the repository to keep track of all changes to the source code and the related files, and reporting to the Project Leader. Creating workable programs, providing documentation, and following the SDD are central to this position.
+
+
+Figure 2.2 Organizational Structure
+
+
+
+2.3 Organizational Boundaries and Interfaces
+The organizational boundaries section describes the interfaces between GEMZ Software Design and the parent organization, customer organization, subcontracted organization, and any other party involved in the release of the final product. 
+
+2.3.1 Parent Organization
+The parent organization as described in this document will be directly linked to the customer organization. The customer will represent the parent organization and will have all decision making responsibilities.
+
+2.3.2 Customer Organization
+The customer and anyone elected to represent the customer will interact with the parent organization and GEMZ Software Design through the project manager or any person elected by the project manager to represent the team.
+
+2.3.3 Subcontracted Organization
+At this point in the RPP application project, a subcontracted organization is not necessary. If the need for a subcontracted organization should arise, an agreement shall be made between the customer organization and the project manager. The subcontracted organization shall then work directly under GEMZ Software Design and any changes will be approved by the project manager.
+
+2.3.4 Configuration Management
+The configuration management will consist of members of GEMZ Software Design’s development team. The configuration manager will work directly with the team and report to the project manager. 
+
+2.3.5 Quality Assurance
+The quality assurance department will have a quality assurance manager. The quality assurance manager will oversee all software projects and ensure quality standards are met. The quality assurance manager will report directly to the project manager as needed should any issues arise. 
+
+2.4 Project Responsibilities
+Table 1-1 below shows the responsibilities of each individual for this project. The table is broken up into three sections identifying the role, the individual associated with the role, and the description of that role. 
+
+
+Role
+Individual
+Description
+Project Manager
+Zachary Zaleski
+1.Perform overall Supervision of the project
+2.Validate configuration management practices
+3.Delegate responsibilities
+4. Arbitrate problems as they occur
+5. A member of the Software Design Team  
+Project Leader
+Eamun Rahimi
+1. Perform the responsibilities of the PM when the PM is not available
+2. Maintain project plan
+3. A member of the Software Design Team 
+Technical Writer
+Zachary Zaleski
+Eamun Rahimi
+Gabriel Torres
+Michael Criswell
+1. Oversee and perform document maintenance
+2. Take notes during meetings
+
+
+Quality Assurance
+Zachary Zaleski
+1. Create test cases
+2. Maintain list of reported bugs or issues
+3. Run software tests
+Software Engineer
+Eamun Rahimi
+Michael Criswell
+1. Code application
+2. Create reusable functions
+3. Document code
+Table 2-1: Project Responsibilities 
+
+
+
+3. Managerial Process
+
+3.1 Management Objectives and Priorities
+Management Objectives include developing an application software that will exceed the expectation of the customer and to produce a software application prototype that will meet the exact specification of the customer. Management will meet and exceed all schedule due dates because the customer time is important element to consider. 
+
+3.2 Assumptions, Dependencies, and Constraints
+
+3.2.1 Assumptions
+Gemz software design assumed the following: 
+The Product will be completed on time and with the exact specification of the customer 
+The Product will be completed on budget
+Total cost owner of the vehicles that are being used will be accurate 
+The user of the product will have a mobile device and access to the Internet. 
+The customer will be satisfy with the end product 
+User will have knowledge of creating a profile and knowledge of downloading applications
+
+3.2.2 Dependencies
+The Project is dependant on the following: 
+Budget and the time that is allowed to create the product 
+Resources to gather information is accurate 
+software to create the application 
+Internet access for research 
+Mobile device  
+
+3.2.3 Constraints 
+The Constraints for the project are: 
+Budget
+Time and schedule 
+Software training 
+
+3.3 Risk Management
+There are several circumstances and scenarios that can take place in this project which will need to monitor. Risk management will help the team avoid and look out for risk that can delay the project from being done on time. The Idea of risk management to Identify the primary impactful risk and monitor those risk. Some areas of development in project that involve potential risk are Device storing handling, cloud service shut downs, customer device not compatible and time constraints. The Team will identify, analyze, and prioritize the risk from highest to lowest. 
+
+3.3.1 Risk Analysis
+
+3.3.1.1 Business Impact
+Since each member of the project work outside of this project and have limit time, scheduling work time is important and essential when it come to completing the project on time. This can be a risk to management and to the customer who expect their product to be ready. 
+
+3.3.1.2 Device Storing handling and experience 
+Not being able to finish the project due to the effort of inexperience with learning device storage and with the limit time the team has to learn and implement can be a risk of getting the product done on time. 
+
+3.3.2 Probability, Impact, and Priority 
+All team members are responsible for monitoring all risk factors for this project. Any issues which represent a risk to the completion of this project are to be reported to the project manager and will the risk will be dealt with in a timely matter. Table 3-1 shows some of the risk and its priority on completing this project. 
+
+
+
+Risk #
+Risk
+Probability
+Scale 1-5 
+1= Low, 5= High 
+Impact
+Priority
+1
+Device Storage handling 
+2
+High 
+High
+2
+Store rejects App 
+ 4
+Medium 
+High 
+3
+Project not complete on time 
+1
+Medium 
+Medium 
+4
+Cloud services shut down 
+1
+Low
+Low
+5
+Vendor Software update causes incapability 
+1
+Low 
+Low
+6
+Customers Device not compatible  
+2
+Medium 
+Low 
+7
+Data corruption on the cloud 
+1
+Low 
+Low 
+Table 3-1 :Risk Table 
+
+3.3.3 Risk tracking/ Monitoring 
+
+3.3.3.1 Risk #1: Device Storage Handling 
+
+Aversion - Not being able to finish the project due to the effort of inexperience with learning device storage and with the limit time the team has to learn and implement can be a risk of getting the product done on time. None of the members on the team have work with or on creating applications,therefore this risk is our highest priority to ensure the project gets successfully completed on time. 
+
+Monitoring - The lead project manager will schedule more time on this process  and will notify any risk issues to the project manager. The lead project manager will take schedule time to train and set up additional training to other member in order to allow others in helping with the risk. 
+
+Contingency - The team will allow extra time at the end of the project to complete it. if this by any chance the amount of time is not enough, the team will look for other storage capabilities. 
+
+3.3.3.2 Risk #2: Store reject application 
+Aversion -Due to inexperience and time constraints the development team risk running into the application getting reject at the application store because of requirements not being met. This risk is on our highest priority and will need time to learn, schedule time, and monitor this risk for the project to be completed on time. 
+
+Monitoring - The Project manager will make sure to submit the application to the application store on time and give the rest of the development team enough time to complete the product. The PM will also check if the application meets all the requirement to ensure the application does not get rejected 
+
+Contingency- The team have other ideas to get the product out on time if the store was to reject the application. Web based application are available for downloading and setting up the service we are providing for the product to function for the customer. 
+
+3.4 Monitoring and Controlling Mechanisms
+The project monitoring will be done in all group team meetings and the project manager will give the approval before continuing on the project. The biggest part of the project that needs to be monitor is the coding and testing phases of the project. The project manager will follow all procedures as followed in the Software Requirement Specification(SRS). 
+
+3.5 Staffing Plan
+The staffing for the prototype version of this project will only be limited to 4 personal. The staff will remain the same until the end of production of this product. Once the prototype version is approved by the customer then additional staff will be needed to complete the full version of this product. Additional staff will need to have skills in maintaining and updated application along with  updating research information on new vehicles. Training will not needed for the prototype version of this project. Table 3-2 below shows the staffing plan for this project. 
+
+
+
+Project Team Role
+Project Responsibility
+Skills Required
+Number of Staff Required
+Estimated Start Date
+Duration Required
+Project Manager
+Lead Team, Report weekly Status
+Project Management
+1
+6/1/14
+3 months
+ 
+Core Team
+Review documents, Assure excellent quality,
+Writing, Coding ,
+English
+4
+6/1/14
+3 months
+Documentation Manager
+Documentation control and review
+Research, Writing and excellent oral/communication skills
+1
+6/1/14
+2 months
+Lead Software Engineer
+Software design, Development and configuration
+Research and programming skills
+1
+7/2/14
+2 months
+Review Team
+Evaluate documents and assure correctness
+Project Management experience, excellent writing skills
+4
+8/2/14
+1 month
+Table 3-2: Staffing Plan 
+
+
+4. Technical Process
+
+4.1 Methods, Tools, and Techniques
+For analyzing the methods, tools, and techniques used for the deliverables, this section
+shall be split into two subsections, one for the front end Android application, the other for the back end mobile services to connect to the cloud based system.  The reason for this split is that the systems although they are used together in the system they are developed using separate techniques, integrated development environments (IDEs), and tests.  However, both the application and the mobile service do share the same software repository and both will be using object oriented programming languages.
+
+4.1.1 Development Systems
+For the Android application front end, the required operating system is Windows, OSX, or Linux.  An Android Virtual Device (AVD) can run on any of these systems.  While hardware virtualization is not required, it is recommend in order to boot and run the AVD quickly.  For the mobile services backend, Windows is the required operating system.
+
+4.1.2 Integrated Development Environments (IDEs)
+The Android application will use an IDE that is focused on Android development, including integration with the AVD to increase speed of debugging and compiling.  The mobile services will be developed on a separate IDE that focuses on cloud based design and debugging.
+
+4.1.3 Testing
+Testing will have two primary stages, stand-alone testing and combined testing.  The stand-alone testing for the Android application will have unit tests and use a mock service to pass back expected output.  This will ensure that the application is performing as intended.  The stand-alone testing for the mobile services will have a mock client to pass in expected input, thus ensuring that the mobile services is performing as intended.  The combined testing will have the Android application communicating to the mobile services and the team will verify the entire suite is working as intended.
+
+
+
+4.1.4 Software Repository
+The team has selected Git to be the software repository for code warehousing and historical analysis.  Git software can be obtained from many different vendors and is available for Linux, OSX, and Windows.  Private git repositories can be hosted within the company or sourced from a vendor for a fee.
+
+4.2 Software Documentation
+Documents to be provided: 
+Operational Concept Document
+Project Management Plan 
+Software Requirements Specification 
+Software Design Description Top Level Design 
+Software Design Description Detailed Design 
+Test manual 
+User’s manual 
+Weekly status report 
+
+
+
+4.2.1 Document Requirements 
+Operational Concept Document (OCD)
+Customer review 
+Customer approval
+
+Software Project Management Plan (SPMP)
+Customer review 
+Customer approval 
+Approved OCD 
+
+Software Requirements Specification (SRS)
+Customer review 
+Customer approval 
+Approved SPMP
+Preliminary Software Design Description (PSDD) Top Level Design 
+Customer review
+Customer approval 
+approved SRS 
+Software Design Description (SDD)
+Customer review 
+customer approval 
+Approved PSDD Top Level Design 
+
+Test Manual 
+
+User’s Manual 
+
+Weekly Reports 
+Accomplishments 
+Plan for the week ahead 
+Issues 
+
+
+4.3 Project Support Functions
+
+4.3.1 Configuration Management
+
+4.3.1.1 Responsibilities 
+ The Configuration Manager (CM) will implement the policies, procedures, techniques, and tools that are required to manage, evaluate proposed changes, track the status of changes, and to maintain an inventory of system and support documents as the system is updated.
+
+4.3.1.2 Resource Requirements
+There will be no additional resources for the CM to accomplish this task. Any changes and procedures will be review upon approval of all team members. 
+
+4.3.1.3 Schedules 
+The CM will start once the project has begun and will continue to implement all duties requirements until the product is release to the customer. 
+
+4.3.1.4 Budget 
+No additional budget is required for this function since this project will be completely funded by the client. 
+
+4.3.2 Software Quality Assurance 
+
+4.3.2.1 Responsibilities 
+Software Quality Assurance (SQA) will ensure that developed software meets and complies with defined quality specification. Those specifications include Software design, coding, source code control, code review, software configuration management, testing, release management and product integration.  Each member of the team is essential to maintaining excellent quality throughout the project. 
+
+4.3.2.2 Resource Requirements 
+All the SQA functions will be handled by this team and will not require any additional resources. Once testing has begun, each programmer will review others’ code and test it to make sure the software meets perfect quality. 
+
+
+
+4.3.2.3 Schedules 
+Software Quality Assurance (SQA) will begin once the development of the application has begun and will end on the last week of the project due date. 
+
+4.3.2.4 Budget
+No additional budget is required for this function since the prototype of this project is completely funded by the client. 
+
+4.3.3 Verification and Validation 
+
+4.3.3.1 Responsibilities 
+The process for Verification and Validation(V&V) is to check that the software system meets specification and that it fulfills the agreed-upon specifications. This process overlaps with the SQA as both have to make sure the product is performing accordingly with the specification. 
+
+4.3.3.2 Resource Requierements 
+There will be no need for additional resources for the Verification and Validation(V&V) process in this project. The services and resources will be provided by the team and will make reviews will be done before given to the customer.  
+
+4.3.3.3 Schedule
+The Verification and Validation(V&V) process will begin and end at the same time as SQA function. 
+
+4.3.3.4 Budget
+No additional budget is required for this function since the prototype of this project is completely funded by the client. 
+
+
+5. Work Packages, Schedule, and Budget
+
+5.1 Work Packages
+GEMZ Software Design has analyzed the the requirements for this class and the assigned project, and identified the major tasks associated with the Real Purchase Price application project. 
+
+Each document has four associated tasks:
+Development
+Review
+Update
+Delivery
+
+The schedule details the time requirements for each of the work packages and its associated tasks.
+
+5.1.1  Operational Concept Document
+The purpose of the Operational Concept Document (OCD) is to describe to the stakeholders on how the system will function in the presentation. The functions of the system are included in the operational concept as well as the interactions of the system users. The stakeholders include the customer, the users, the project manager, and the developers.  The OCD will provide clear and concise documentation to the stakeholders, especially for reference and guidance for all members, to ensure that the correct system is being developed and the system is being developed correctly.
+
+
+
+5.1.2 Software Project Management Plan
+The Software Project Management Plan (SPMP) explains GEMZ Software Design’s plan to create a total cost of car ownership application for their customer. It describes the purpose of the project and the objectives that are to be accomplished, the assumptions and constraints, the project’s deliverables, and a summary of the project schedule.
+
+5.1.3 Software Requirements Specifications 
+The Software Requirements Specifications (SRS) document describes and outlines the major requirements for the Real Purchase Price application. This document discusses the technical specifications that must be adhered to in order to meet the customer’s requirements.
+
+5.1.4  Preliminary Software Design Document
+The Preliminary Software Design Document (PSDD) provides information on the overall general design of the RPP application.  This document outlines the architecture of the application and an explanation of the design strategy
+
+5.1.5  Software Design Description
+The Software Design Description (SDD) document provides a detailed description and explanation of the design chosen by GEMZ Software Design for the RPP application.  
+
+5.1.6  Software Test Plan
+The Software Test Plan (STP) document describes the testing plans and procedures for verifying the proper functionality of the RPP application and ensuring it meets the quality standards established by GEMZ Software Design and the other stakeholders involved in the project.
+
+5.1.7  Software User Manual
+The Software User Manual (SUM) provides detailed instructions on how to use the RPP application. 
+
+
+5.1.8 Real Purchase Price Application Prototype
+The prototype RPP application is divided into the following 5 modules:
+Profile
+Vehicle Select
+Fuel
+Insurance
+Maintenance
+
+The prototype application provides an editable user profile. A limited selection of vehicles are available to calculate. Calculations will include total cost of the vehicle, total fuel cost by geographical areas, total insurance cost, and total scheduled maintenance cost. There is a feature prompting the user how long they plan to own the vehicle more accurately estimating the Real Purchase Price. Finally the application provides the ability to store recent searches for comparison purposes.
+
+Each module of the prototype has the following sub-tasks:
+Design
+Development
+Review
+Test
+Update
+
+5.2 Dependencies
+This section lists the order in which the deliverables must be completed in order to produce a successful end product.  First the OCD and the SPMP must be completed detailing the overview of the project as a whole. 
+
+The next document to be completed is the SRS, this document must be completed prior to the PSSD and SDD because it details the specific requirements of the project.  With these documents complete the Prototype can begin being designed and coded.
+
+The prototype consists of 5 modules, the development of the Insurance, Fuel, and Maintenance modules are dependent on the completion of the Profile and Vehicle Selection modules.
+
+With the working prototype built the STP and SUM can be developed.
+
+
+
+5.3 Resource Requirements
+The following is a list of all the required resources needed for the development of the RPP application. 
+
+5.3.1 Personnel Requirements
+GEMZ Software Design is limited to a team of four members that must fulfill multiple roles in order to complete the RPP application. 
+
+5.3.2 Software Requirements
+Each member of GEMZ development shall be required to have access to the following software unless otherwise stated.
+Operating System
+Mobile Operating System
+Office Suite 
+Integrated Development Environment
+Mobile Device Emulator
+Scheduling Software
+Subversion Manager
+Database Manager
+
+5.3.3 Hardware Requirements
+All software engineers on the GEMZ development will be required to provide their own computer capable of running the software listed in section 5.3.2. If a team member cannot obtain their own personal computer they will be required to use computers at the National University Library free of charge to complete their required work. Furthermore, additional hardware such as a mobile device may be necessary for testing purposes and to display the final prototype.
+	
+5.4 Budget and Resource Allocation
+The RPP application will be developed by GEMZ Software Design free of charge therefore a budget won’t be necessary. All resources necessary for the developing of the RPP application will be obtained through open source suppliers and the customer will not incur any cost for the completion of the project. 
+
+
+5.5 Schedule
+
+Figure 5.1 illustrates the schedule for each of the work packages associated with the Real Purchase Price application.
+
+
+
+Figure 5-1: Schedule
