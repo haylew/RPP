@@ -1,0 +1,910 @@
+
+
+
+
+
+
+
+Software Test Plan and Test Procedures
+For The
+Real Purchase Price Application
+August 13th 2014
+
+Prepared for:
+Lauren Rahimi
+
+Prepared by:
+GEMZ Software Design
+Eamun Rahimi
+Mike Criswell
+Zach Zaleski
+Gabriel Torres
+
+
+
+
+
+
+Approvals:
+Title
+Printed Name
+Signature
+Date
+Project Manager
+Zachary Zaleski
+
+
+
+
+Project Leader
+Eamun Rahimi
+
+
+
+
+Project Engineer
+Gabriel Torres
+
+
+
+
+Project Engineer
+Michael Criswell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Revision Changes:
+
+Revision
+Date
+Description
+Author
+1.0
+8/13/14
+Initial Draft
+GEMZ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of Contents
+
+1. 	Introduction……………………………………………………………………………......6
+1.1 	Identification……………………………………………………………………………....6
+1.2 	Objectives………………………………………………………………………………….6
+1.3	Background………………………………………………………….…………………….6
+1.4 	Scope………………………………………………………………………………………6
+1.5 	Reference Documents……………………………………………………………………..7
+1.5.1 	Specifications……………………………………………………………………………...7
+1.5.2 	Standards…………………………………………………………………………………..7
+1.5.3 	Drawings…………………………………………………………….…………………….7
+1.5.4 	Other Publications…………………………………………………..……………………..7
+1.6 	Test Plan Overview………………………………………………………………………..8
+1.7 	Acronyms………………………………………………………………………………….9
+2. 	Test Objectives…………………………………………………………………………….9
+2.1 	General Philosophy………………………………………………………………………..9
+2.2 	Qualification Requirements……………………………………………………………...10
+3. 	Build Integration…………………………………………………………………………10
+4. 	Test Cases………………………………………………………………………………..11
+4.1 	SRS Cross Reference Table……………………………………….……………………..11
+4.2 	Test Case Identification………………………………………………………………….12
+4.3 	Features to be Tested……………………………………………………………………..17
+4.3.1 	Overall Features …………………………………………………………………………18
+4.3.2 	System Administrator……………………………………………………………………18
+4.4 	Features not to be tested………………………………………………………………….18
+4.5 	Approach…………………………………………………………………………………18
+4.6 	Item pass-fail criteria………………………………………………….………………….19
+5. 	Test Requirements……………………………………………………………………….19
+5.1 	Suspension criteria and resumption requirements……………………………………….19
+5.2 	Test deliverables…………………………………………………………………………19
+5.3 	Testing Tasks…...………………………………………………………………………..20
+6. 	Environmental needs…………………………………………………………………….20
+6.1 	Hardware………………………………………………………………………………...20
+6.2 	Software………………………………………………………………………………….20
+6.3 	Security…………………………………………………………………………………..20
+6.4 	Others…………………………………………………………………………………….21
+
+7. 	Responsibilities…………………………………………………………………………..21
+7.1 	Development Team…………………………………………………..…………………..21
+7.2 	Test Team………………………………………………………………………………...21
+7.3 	Quality Support Staff…………………………………………………………………….22
+7.4 	Operations Staff………………………………………………………………………….22
+7.5 	User representatives……………………………………………………………………...22
+8. 	Staffing and Training Needs……………………………………………………………..22
+9. 	Schedule………………………………………………………………………………….23
+10. 	Risks and Contingencies………………………………………………………………... 24
+
+
+Table of Tables 
+
+Table 2-1: Qualification Tests……………………………………………………………………10
+Table 4-1: SRS Cross Reference………………………………………………………………....11
+Table 4-2: Test Case Identification………………………………………………….…………...12
+Table 4-3: Features to be Tested…………………………………………………..……………..17
+Table 7-1: Development Team Responsibilities…………………………………….....………...21
+Table 7-2: Test Team Responsibilities………………………………………………...………...21
+Table 9-1: Schedule………………………………………………………………...…………....23
+Table 10-1: Risks and Contingencies……..………………………………......….……………...24
+
+ 
+
+1. Introduction
+
+1.1 Identification
+The Software Test Plan (STP) document prepared by GEMZ Software Design consists of testing specifications established to support the development of the Real Purchase Price (RPP) application.  This section of the STP summarizes the background of the RPP application, its scope, and objectives of testing.  The STP applies to the RPP Computer Software Component Item (CSCI) and all of the Computer Software Components (CSC) of the RPP development project.
+
+1.2 Objectives
+The RPP STP shall support the following objectives:
+● To detail the required activities in preparing for and conducting the specified tests that  is stated in the subsequent sections.
+● To communicate to all responsible parties the tasks that they are to perform and the
+            schedule that is to be followed in performing the tasks.
+● To describe the sources of information that was used to prepare the RPP Test Plan.
+● To describe the test devices and environment that are needed to conduct the system  test. 
+
+1.3 Background
+The Real Purchase Price application is designed to help the future automobile consumer analyze the total cost of ownership of a selected vehicle.  The RPP application will allow the user to create a profile to store their pertinent information, such as geographical location, estimated miles driven, and age used to calculate total cost of ownership.  The storage of the profile information will be outsourced to an existing Cloud storage system. This stored information then allows the user to compare multiple vehicles without having to enter redundant information.  The other costs that determine the total cost of ownership are insurance, interest on a loan, scheduled maintenance, and fuel costs.  Fuel mileage from each vehicle will be obtained from the United States Environmental Protection Agency (EPA).  
+
+1.4 Scope
+The Test that are going to be performed on the Real Purchase Price (RPP) application shall verify the functionality be meet by the SRS and SDD standards. This document functions as a guide for designing the test cases and test documentation for the Real Purchase Price (RPP) application. The tests are to ensure all requirements are 100% fulfilled. The development team will validate the correctness of each system module with respect to the SRS. 
+
+1.5 Reference Documents
+
+1.5.1 Specifications
+GEMZ Software Design (2014).  Operational Concept Document
+GEMZ Software Design (2014).  Software Project Management Plan
+GEMZ Software Design (2014).  Software Requirements Specifications
+GEMZ Software Design (2014).  Software Design Description
+
+1.5.2 Standards
+There is no standards to go by. 
+
+1.5.3 Drawings
+No drawings are needed for this document.
+
+1.5.4 Other Publications
+Roger S. Pressman (2010).  Software Engineering:  A Practitioner’s Approach 7th Edition
+
+
+1.6 Test Plan Overview
+The remainder of this STP document describes the overall test objectives, the test cases themselves, and supporting information.  This document also describes the overview of the test plan requirements, environmental needs, responsibilities, staffing and training needs, the testing
+schedule, and a list of the risks and contingencies involved in the test plan.  The intended audience for this STP consists of: 
+The RPP Testing Manager 
+The RPP Development Team 
+Project Management 
+The customer 
+The organization of the RPP STP is as follows: 
+Section 2.0 Test Objectives describes the testing philosophy and qualification requirements for the RPP app 
+Section 3.0 Build Integration is not included in this document as this is the first build of the RPP app 
+Section 4.0 Test Cases describes the traceability of the test cases to the SRS, details the test cases, the features to be tested, the features not to be tested, and the approach to testing and pass/fail criteria 
+Section 5.0 Test Requirements specifies suspend criteria and resume requirements, deliverable test documents, and test tasking 
+Section 6.0 Environmental Needs specifies the necessary and desired properties of the test environment 
+Section 7.0 Responsibilities identifies the groups responsible for the various aspects of the testing program 
+Section 8.0 Staffing and Training Needs specifies the test staffing needs by skill level and 
+            training options for providing the necessary skills 
+Section 9.0 Schedule specifies the test milestones and item transmittal events
+Section 10.0 Risks and Contingencies identifies the high-risk assumptions of the test plan and the mitigation techniques to be implemented
+
+
+1.7 Acronyms
+AVD - Android Virtual Device
+ADM- Administration
+ADT- Android Development Tools  
+CM - Configuration Manager
+CTM- Contribution to Maintenance
+CSM- Customer
+CSC- Computer Software Components 
+CSCI-Computer Software Component Item 
+EPA - Environmental Protection Agency
+GEMZ - Gabriel Eamun Michael Zachary
+GPRS- General Packet Radio Service
+GUI - Graphical User Interface
+IDE - Integrated Development Environment
+INI- Initiator
+QA- Quality Assurance 
+RPP - Real Purchase Price
+OBS- Observers
+OCD - Operational Concept Document
+OTH- Others 
+SDD - Software Design Document
+SPMP - Software Project Management Plan
+SRS - Software Requirements Specifications 
+SQA - Software Quality Assurance
+SQL -Structured Query Language
+SRS - Software Requirements Specification
+STP- Software Test Plan 
+SYS- System 
+TCO - Total Cost of Ownership
+
+2. Test Objectives
+
+2.1 General Philosophy
+The general philosophy of the Real Purchase Price (RPP) application is one functional software testing to Identify, evaluate, and minimize errors and bugs. The object in conducting the test is to closely follow the guidelines of the SRS and SDD. The project and testing criteria will be against the budget and time constraints in order to complete this software project on time. 
+
+2.2 Qualification Requirements
+The qualification tests used to test Real Purchase Price (RPP) application can be divided into five categories, and are described in Table 2-1 below.  These tests are utilized in section 4.1 of this document and it contains the cross-reference table.  Test will be conducted at the unit level that verifies the various interfaces and functions properly.
+
+Term
+Description
+Not Applicable
+This section contains an overview, title, or other non requirement material that will not be tested. 
+Inspection
+Qualification methods based on visual inspection
+Analysis
+Acceptance is based on logical or mathematical analysis
+Demonstration
+Qualification method that is done by operation of the RPP and relies on observable functional operations that do not require the use of elaborate instrumentation or special test equipment. 
+Test
+Acceptance is based on data collection from the execution of chosen modules.  
+Table 2-1: Qualification Tests
+
+	The different test types available include normal functional testing, erroneous input testing, and timing tests.  The majority of testing conducted by Real Purchase Price (RPP) developers will be normal functional testing. Another testing method will be giving input and examining the output test functions. 
+
+3. Build Integration
+Build integration does not apply to this program as currently there is only the prototype that is built. 
+
+
+4.0 Test Cases
+
+4.1 SRS Cross Reference Table
+Table 4-1 below shows the cross reference to the SRS document. This section will help identify and locate information form the test plan document and SRS document. The table is broken up to five section; the SRS requirement description, the section number located on the SRS, the qualification method, the qualification level, and the name of the test cases. 
+
+
+SRS Requirement Description 
+SRS Section 
+Qualification Method 
+Qualification Level
+Test Case Name 
+Profile Select Module 
+3.2.1
+Test 
+CSC
+create profile
+select profile 
+save profile 
+advance to vehicle select 
+Vehicle select Module 
+3.2.2
+Test 
+CSC
+select vehicle 
+save vehicle 
+display vehicle info
+advance to display screen 
+Calculation library 
+3.2.3
+Test
+CSC
+load profile 
+load vehicle 
+calculate 
+display info
+Fuel module 
+3.2.4
+Test
+CSU
+pull info
+calculate data 
+provide data 
+Insurance Module 
+3.2.5
+Test
+CSU
+Pull info 
+calculate data
+provide data 
+Maintenance module 
+3.5.6
+Test 
+CSU
+Pull info
+calculate data
+provide data
+Total Cost of Ownership Module 
+3.2.7
+Test  
+CSC 
+Collect data 
+Calculate data 
+provide data 
+Display System 
+3.2.8
+Method
+CSU
+obtain data profile,
+obtain data vehicle, 
+obtain fuel ,
+obtain insurance, 
+obtain maintenance, 
+obtain Total cost of Ownership,
+Display data 
+
+
+Table 4-1: SRS Cross Reference Table
+
+4.2 Test Case Identification
+Table 4-2 below will show the some of the test cases that will be performed to ensure that the end product is functioning smoothly and without any errors. The table is split up in the test case name, the objective of the test case, how to execute the test case, and the results of the test case.
+ 
+
+Test Case Name 
+Objective 
+Execution 
+Results 
+Create profile 
+This test case verifies that the system gives the option to create a profile 
+At the login screen, user selects the create profile button to advance to next step 
+The system should allow the user to click and enter to the next stage 
+Select profile 
+This test case verifies that the system gives the option to select a profile 
+At the login screen, user selects a existing profile then clicks login  
+The system should display the user profile when selected 
+Save profile 
+This test case verifies that the system can successfully save a new profile 
+click save profile 
+The system should save profile if all info is entered 
+Advance to vehicle 
+This test case verifies that the system allows the user to advance to the select vehicle screen 
+click on the select vehicle button 
+The system should allow the user to advance to the next step 
+Vehicle select 
+This test case verifies that the system successfully allows the user to select a vehicle 
+click on the select vehicle button and choose a vehicle 
+The system should locate the vehicle 
+Save vehicle 
+This test case verifies that the system saves the vehicle that was selected 
+click on the save vehicle button 
+The system should save the information 
+Display vehicle info
+This test case verifies that the system successfully saved that vehicle and displays the vehicle to the user 
+no execution needed for this test. Data will appear if there is no errors 
+The system should display the vehicle information 
+Advance to display screen 
+This test case verifies that the system allows the user to advance to the display screen 
+click on the advance to display button 
+The system should advance to the next step once the button has been clicked 
+Load profile 
+This test case verifies that the information in the profile loaded for further use 
+no action is required. the system will advance if no errors are detected 
+The system should load information from the profile 
+Load vehicle 
+This test case verifies that the information in the vehicle loaded for further use 
+no action is required. the system will advance if no errors are detected 
+The system should load information from the vehicle  
+Calculate 
+This test case verifies that the system is able to calculate the data
+no action is required. the system will advance if no errors are detected 
+The system should calculate the information 
+Display info
+This test case verifies that the system is able to display all calculated information 
+no action is required. the system will advance if no errors are detected 
+The system should display all useful  information 
+Pull fuel info
+This test case verifies that the system is able to perform retrieving information for fuel cost 
+no action is required. the system will advance if no errors are detected 
+The system should retrieve fuel information from the vehicle and profile module. 
+Calculate fuel
+This test case verifies that the system is able perform fuel calculations 
+no action is required. the system will advance if no errors are detected 
+The system should calculate fuel cost based on the vehicle and profile information 
+Save  data 
+This test case verifies that the calculated data is available for further use 
+no action is required. the system will advance if no errors are detected 
+The system should save the calculated fuel cost for further used 
+Pull insurance info
+This test case verifies that the system can successfully retrieve insurance information from the  profile 
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve the data for further use 
+Calculate insurance 
+This test case verifies that the system can calculate insurance based on the information from the users profile and vehicle chosen 
+no action is required. the system will advance if no errors are detected 
+The system should be able to calculate the cost of insurance based on the data given 
+Save insurance data
+This test case verifies that the system is able to save the calculated insurance cost.
+no action is required. the system will advance if no errors are detected 
+The system should save the calculated insurance for further use 
+Pull maintenance info
+This test case verifies that the system can successfully retrieve maintenance information from the users profile and vehicle data 
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve the data for further use 
+Calculate maintenance 
+This test case verifies that the system can calculate maintenance based on the information from the users profile and vehicle chosen 
+no action is required. the system will advance if no errors are detected 
+The system should be able to calculate the cost of maintenance based on the data given 
+Save maintenance data
+This test case verifies that the system is able to save the calculated maintenance cost.
+no action is required. the system will advance if no errors are detected 
+The system should save the calculated maintenance cost  for further use 
+Collect total cost of ownership data 
+This test case verifies that the system is able to collect all the data from vehicle MSRP, Fuel cost, Insurance cost, Maintenance cost 
+no action is required. the system will advance if no errors are detected 
+The system should collect the data to use for further use 
+Calculate 
+This test case verifies that the system is able to successfully calculate all the data given 
+no action is required. the system will advance if no errors are detected 
+The system should calculate the data based on information given 
+Provide data 
+This test case verifies that the system is able to save the calculated data give 
+no action is required. the system will advance if no errors are detected 
+The system should save the calculated data to use for further use 
+
+
+
+
+
+
+
+
+Obtain data from profile 
+This test case verifies that the system can retrieve data from the profile 
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve information from the profile to use for the display 
+Obtain data from vehicle 
+This test case verifies that the system can retrieve data from the vehicle module 
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve information from the vehicle module  to use for the display 
+Obtain fuel cost 
+This test case verifies that the system can retrieve data from the Calculate Library for the cost of fuel 
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve information from the calculation library for the cost of fuel   to use for the display 
+Obtain insurance cost 
+This test case verifies that the system can retrieve data from the Calculate Library for the cost of Insurance  
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve information from the calculation library for the cost of insurance  to use for the display 
+Obtain maintenance cost 
+This test case verifies that the system can retrieve data from the Calculate Library for the cost of maintenance 
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve information from the calculation library for the cost of maintenance  to use for the display 
+Obtain total cost 
+This test case verifies that the system can retrieve data from the Calculate Library for the total cost 
+no action is required. the system will advance if no errors are detected 
+The system should be able to retrieve information from the calculation library for the total cost  to use for the display 
+
+
+
+
+
+
+
+
+Display all data
+This test case verifies that all calculated data is display to the user 
+no action is required. the system will advance if no errors are detected 
+The system should display all information to the user 
+Table 4-2: Test Case Identification 
+
+4.3 Features to be Tested
+ All the requirements outlined in requirement definition document will be tested as new features.  
+ Table 4-3 below shows some the features that will be tested.
+
+Identity 
+status 
+Priority
+Description
+Source
+
+
+
+
+
+
+System Administration 
+
+
+ADM-1
+I
+1
+Ability to create a profile 
+SYS
+ADM-2
+I
+1
+Ability to edit a profile
+SYS
+ADM-3
+I
+1
+Ability to view a profile 
+SYS
+ADM-4
+I
+1
+Ability to delete a profile 
+SYS
+
+
+
+
+
+
+Initiator
+
+
+INI-1
+I
+1
+Ability to create and save a profile 
+CTM
+INI-2
+I
+1
+Ability to login into existing profile 
+CTM
+INI-3
+I
+1
+Ability to terminate a profile 
+CTM
+INI-4
+I
+1
+Ability to edit the profile 
+CTM/SYS
+INI-5
+I
+1
+Ability to view the profile 
+CTM/SYS
+INI-6
+I
+1
+Ability to delete an existing profile 
+CTM/SYS
+INI-7
+I
+1
+Ability to select an existing profile 
+CTM
+INI-8
+I
+1
+Ability to select a vehicle 
+CTM
+
+
+
+
+
+
+Observer 
+
+
+OBS-1
+I
+1
+Ability to view profile as assigned 
+SYS
+OBS-2
+I
+1
+Ability to save or delete profile 
+CTM
+OBS-3
+I
+1
+Ability to make observation using a mobile application device
+CTM
+OBS-4
+I
+1
+Ability to send an observation data using mobile application device 
+CTM
+
+
+
+
+
+
+Consumer
+
+
+CSM-1
+I
+1
+Ability to view observed data
+CTM
+CSM-2
+I
+1
+Ability to analyze the observed data
+CTM
+
+
+
+
+
+
+Others
+
+
+OTH-1
+I
+1
+Ability to select another vehicle 
+SYS
+Table 4-3: Features to be Tested
+
+4.3.1 Overall Features 
+The test cases included in this test plan will verify the following items: 
+The create new profile feature and save it contents 
+login to already existing profile 
+Vehicle selection is correct with correct specs
+Calculation are accurate 
+Return functions work correctly 
+
+4.3.2 System Administrator
+The system administrator test cases will verify that all the functionality, which will be available to the administrative user of the system, does function as specified in the SRS document. The same user will perform all the administrative test cases identified in section 4.1 of this document. 
+
+4.4 Features not to be Tested
+The following features will not be tested due to the imposed constraints on the amount of time allocated to the testing schedule:  
+Backup and Recovery
+System Availability
+System Portability 
+Large number of users as high-load stress 
+Network delays 
+
+
+
+4.5 Approach
+The overall approach to testing the system will be adequately specified in the preceding sections of this document. In general, the procedures specified in the SRS, SDD, and the User’s manual will be utilized in execution of the specified test cases. This procedure will ensure that the documents are accurate and provide sufficient verification of the system’s functionality. 
+4.6 Item Pass-Fail Criteria
+The test case identification table in Section 4.2 above identifies the actions and displays that the 
+system is expected to produce in response to each user action. In those test cases, which present 
+multiple actions and responses, each response must meet the specified criteria for the entire test 
+case to pass. If one aspect of the test fails, the entire test is to be redone to ensure full continuity of the function.
+
+5.0 Test Requirements
+
+5.1 Suspension Criteria and Resumption Requirements
+During execution of the test plan, testing of the system shall only be suspended if the system fails 
+consistently on more than one test case and/or if a repeatable internal server error is encountered. 
+
+If the errors are encountered in the System Administration section of the system, then all testing 
+will be suspended until the errors are corrected and the Lead Software Engineer has conducted a 
+unit and integration-level testing of the affected modules. If the errors are encountered in the 
+User section of the system then the testing may continue in the areas that are not affected while 
+the affected system modules are inspected and repaired. 
+
+Once the testing of any area has been suspended, the testing can be resumed again once the Lead 
+Software Engineer has conducted a successful unit and integration-level testing of the affected 
+modules. The testers must execute all test cases related to the affected area of the system and the 
+cases not directly related to the failure.
+
+5.2 Test Deliverables
+Other documents that are part of the testing process and that shall be delivered are: 
+
+● The RPP Software Test Plan 
+● Test design specifications 
+● Test case specifications 
+● Test item transmittal reports 
+● Test logs 
+● Test incident reports 
+● Test summary reports 
+● Test input data and test output data
+
+5.3 Testing tasks
+The preparation for testing the system involves the installation of the Real Purchase Price (RPP) application program on the users mobile device. It shall be noted that no special skill is needed for this activity, other than creating or logging in to an existing account. The initial testing will be accomplished through the use of the users mobile device as a downloaded application. The testing of the system will involve following the test cases specified above. No special skill is needed for testing this program. After the initial testing has been completed, the RPP application will be presented to demonstrate the capability to accomplish the full range of tests through the Real Purchase Price (RPP) application system.
+
+6. Environmental Needs
+
+6.1 Hardware
+The hardware requirements for the Real Purchase Price (RPP) application are as follows: 
+Laptop or Desktop 
+Mobile with Android platform 
+
+6.2 Software
+The software requirements needed to test the Real Purchase Price (RPP) application are as follows: 
+PC Operating System: 
+Windows XP (32-bit)
+Windows Vista (32-or 64-bit)
+Windows 7 (32-or 64-bit)
+Browsers: 
+Opera 10 or later 
+Microsoft Internet Explorer 7 or later 
+Mozilla Firefox 3 or later 
+Apple Safari 4 or later 
+Google Chrome 4.0 or later 
+Mobile Platform:
+Android 2.0/2.1 (Eclair) bases on linux Kernel 2.6.29 or later 
+Eclipse 3.4 (ganymede) or 3.5 (Galileo) with ADT plugin 
+
+6.3 Security
+No security testing will be necessary for the prototype. 
+ 
+6.4 Others 
+Internet connection for PC 
+WiFi/3G/GPRS connection for mobile 
+
+7. Responsibilities
+
+7.1 Development Team
+The development team consists of five members, project manager / QA manager, one test engineer, one software development lead, and two software developers. Due to the small team, many tasks and responsibilities will overlap. The QA manager will schedule all tests and coordinate with the other development team members while the test engineer will develop the test cases and testing methods. All members will be involved in performing both informal and formal testing. The Table 7-1 below shows the responsibilities of each the title members. 
+
+Title
+Responsibility
+Project Manager
+Develop software documentation
+Test Engineer
+Create test cases and procedures
+Software Development Lead
+Design software requirements specification, coding
+Software Developers
+Coding
+Table 7-1: Development Team Responsibilities
+7.2 Test Team
+The responsibilities of the test team members are listed below in table 7-2
+
+Title
+Responsibility
+Project Manager
+Meeting Chair, Test Mitigation
+QA/Test Manager
+Test design, testing, test reporting
+Test Engineer
+Testing, test  recording
+Table 7-2: Test Team Responsibilities
+
+7.3 Quality Support Staff
+Testing results and reports are reviewed by the Quality Support Staff to determine the most
+appropriate course of action, if any, to be taken after testing is complete.
+
+7.4 Operations Staff
+The Testing Operations Staff assembles and maintains the testing environment.
+
+7.5 User Representatives
+The user representatives will test the function of the application. For the purpose of testing anyone can be used for this testing. They will test the login function, vehicle select function and calculate cost. if any of the functions fail, the user will notify the test team. 
+ 
+8.0 Staffing and Training Needs
+The RPP STP requires the following staff with listed training and experience to meet the testing requirements:
+Test Manager
+responsible for finding and training the following test resources
+Test Leads
+must be trained on the process being used for this project
+must be trained on the test specification format utilized
+must be trained on the defect/issue tracking system utilized
+Component Testers
+must have working knowledge of SQL lite and Java
+must be familiar with Android Studio or Eclipse
+must be skilled at unit testing and integration testing
+must be trained on the process being used for this project, the test specification format utilized, and the defect/issue tracking system utilized
+System Testers
+must be experienced in system testing and use case validation testing
+must be trained on the process being used for this project
+must be trained on the test specification format utilized
+must be trained on the defect/issue tracking system utilized
+
+9. Schedule 	 	
+ This section shows the schedule that will be used to make sure the test plan is completed on time. Table 9-1 below is broken up into three sections that gives the Test phase, the time in which that phase will be completed in, and the individuals responsible for the completion of that phase.    
+
+
+
+
+Test Phase
+Time
+Owner
+Test Plan Creation 
+6 days 
+Test Manager 
+Test Specification Creation 
+6 days 
+Test Leads
+Test Specification Team Review
+2 days  
+Project Team 
+Component Testing 
+2 days 
+Component Testers 
+Integration Testing 
+2 days  
+Component & System Testers
+System Testing 
+2 days 
+System Testers 
+Performance Testing 
+2 days
+System Testers 
+Use Case Validation 
+2 days 
+System Testers 
+Alpha Testing 
+2 days  
+Product Managers 
+Beta Testing Pilot Program 
+2 days  
+Pilot Customer 
+Table 9-1:Schedule 
+
+
+10. Risks and Contingencies
+This section provides some of the risks the team can encounter during the test phase and some contingencies to help avoid those risk. Table 10-1 below is broken up into five section that give the risk, the probability in which that risk can happen, the type of risk it is, who will be responsible for the risk, and the contingencies for that risk. 
+	 	 	
+Risk
+Prob	
+Risk
+Type	
+Owner
+Contingencies/ Mitigation Approach
+Unable to acquire the necessary number of skilled personnel as the components become ready to test.
+30%
+	
+Personnel Schedule
+Test Manager
+Resources for components will be split between the existing resources.
+Schedule must be adjusted accordingly.
+Unable to acquire some of the necessary hardware and software required for integration and system testing	
+25%
+	
+Equipment	
+Program Manager
+Test 	Manager
+Development
+Manager
+Utilize existing acquired hardware.Split test execution into morning and evening shifts such that testing can occur for multiple teams in the same day using the limited hardware. This requires support of the development during both shifts.		
+Third party services utilized in the system become unavailable during testing
+		
+5%
+		
+Third 	party
+		
+Alliance
+Manager	
+Setup a communication channel to 3rd party to report and handle issues when they occur.Use the communication channel above to stay aware of planned outages and maintenance to help schedule test execution.		
+Components are not delivered on time
+25%
+	
+Schedule	
+Development Manager	
+Integration testing with those components must be delayed until the component is delivered Overall 	integration test approach may be modified to do an appropriate amount of bottom-up as well as top-down or sandwich integration.Schedule must be adjusted accordingly.		
+Turnover
+5%	
+Personnel	
+Test 	Manager	
+Testers will work in pairs on components. If a single member of the team decides to leave, a secondary testing with the knowledge of the component will still be able to train a new tester or finish the work.Schedule must be adjusted accordingly.
+Table 10-1: Risks and Contingencies 
