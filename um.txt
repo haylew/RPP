@@ -1,0 +1,395 @@
+
+
+
+
+User’s Manual
+For The
+Real Purchase Price Application
+August 13th 2014
+ 
+Prepared for:
+Lauren Rahimi
+ 
+Prepared by:
+GEMZ Software Design
+Eamun Rahimi
+Mike Criswell
+Zach Zaleski
+Gabriel Torres
+
+
+
+Approvals:
+
+Title
+Printed Name
+Signature
+Date
+Project Manager
+Zachary Zaleski
+
+
+
+
+Project Leader
+Eamun Rahimi
+
+
+
+
+Project Engineer
+Gabriel Torres
+
+
+
+
+Project Engineer
+Michael Criswell
+
+
+
+
+
+
+
+
+
+
+Revision Changes: 
+
+Revision
+Date
+Description
+Author
+1.0
+7/13/14
+Initial Draft
+GEMZ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ Restrictions
+Copyright  2014 by Gabriel Torres, Mike Criswell, Eamun Rahimi, Zachary Zaleski.
+
+This publication is protected by federal copyright Law, with all rights reserved. No part of
+this publication may be reproduced, stored in a retrieval system, translated, transcribed, or
+transmitted, in any form, or by any means manual, electric, electronic, electro-magnetic,
+mechanical, chemical, optical, or otherwise, with prior explicit written permission from:
+Real Purchase Price (RPP) Development Team  
+Gabriel Torres: tgabrielrs@aol.com 
+Mike Criswell: mjcriswell@gmail.com
+Eamun Rahimi:eamun.rahimi@gmail.com
+Zachary Zaleski: zachary.zaleski@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of Contents
+1. Introduction…………………………………………………………………….……………… 6
+1.1 Audience Description………………………………………………………………………… 6
+1.2 Applicability………………………………………………………………………..………… 6
+1.3 Purpose…………………………………………………………………………...…………..  7
+1.4 Document Usage………………………………………………………………...…………….7
+1.5 Related Documents…………………………………………………………...……………….7
+1.6 Conventions…………………………………………………………………………………...7
+1.7 Problem Reporting……………………………………………………………..……………..7
+2. Body……………………………………………………………………………….…………...7
+2.1 Instruction Mode………………………………………………………………...……………7
+2.1.1 Profile Selection………………………………………………………….………………….8
+2.1.2 Profile Creation…………………………………………………………….………………..9
+2.1.3 Vehicle Selection…………………………………………………………………………..10
+2.1.4 Final Calculation…………………………………………………………………………...11
+3. Error Conditions………………………………………………………………….……………15
+4. Appendixes………………………………………………………………………...…………..16
+5. Glossary……………………………………………………………………...………………..17
+6. Abbreviations and Acronyms………………………………………………………..………..17
+
+
+
+
+
+
+
+List of Figure 
+Figure 2-1: Select Profile Screen……………………………….…….…………………………...8
+Figure 2-2: Profile Creation Screen……………………………………………………..………...9
+Figure 2-3: Vehicle Selection Screen………………………………………………...………….10
+Figure 2-3: Final Calculation Screen……………………………………………...……………..11
+
+
+List of Tables 
+Table 1-2: Minimum Hardware and Software Requirements………………….………………….6 
+Table 2-1: Profile Selection…………………………………….…………………………….….12
+Table 2-2: Create Profile………………………………………………….……………………...13
+Table 2-3: Vehicle Selection Functions………………………………………………………….14
+Table 2-4: Display Features……………………………………………………………………...14
+
+
+1.0  Introduction
+This is the Real Purchase Price (RPP) application User Manual.  The objective of this document is provide a comprehensive description of the software objectives, define all unfamiliar terms and make reference to additional documents which may provide further background where it is needed. 
+
+1.1  Audience Description
+The User Manual provides detailed information on the operation of the Real Purchase Price (RPP) application.  The application will be used by the client and anyone with a mobile device running the Android operating system.  This document assumes that all users have an Android device that can download applications from the Google Play Store.
+
+1.2   Applicability
+This user manual is intended for use with Real Purchase Price version 1.0.  All devices using this application must meet the following minimum hardware and software requirements.
+
+
+
+Processor
+Single Core Processor exceeding 1.4GHz
+Operating System
+Android version 2.3 (Gingerbread) or higher
+Memory
+512MB RAM 
+Storage
+20MB of free disk space on device
+Network
+3G wireless internet connection
+Table 1-2: Minimum hardware and software requirements 
+
+
+1.3   Purpose
+This manual is intended to familiarize the user with the RPP application and provide guidance on how to use it.  The purpose of the application is to provide the user with a rough estimate for the total cost of ownership of a vehicle.  
+
+1.4   Document Usage
+The Real Purchase Price (RPP) user manual provides an overall description of the software application consisting of its functionality, its users, and constraints. further more, the manual will also include the assumptions and the specific description of the system’s operation. 
+
+
+1.5   Related Documents
+GEMZ Software Design (2014).  Operational Concept Document
+GEMZ Software Design (2014).  Software Project Management Plan
+GEMZ Software Design (2014).  Software Requirements Specifications
+GEMZ Software Design (2014).  Software Design Description
+GEMZ Software Design (2014).  Software Test Plan and Test Procedures
+
+1.6   Conventions
+No symbols, stylistic conventions, or command syntax conventions were used in the RPP application and are not necessary for this document.
+
+1.7   Problem Reporting
+To report a problem with the application, ask questions, or suggest an improvement, feel free to contact GEMZ Software Design at support@eamunrahimi.com.
+
+
+2.0  Body
+
+2.1  Instruction Mode
+The Real Purchase Price application has one generalized user.  The manual covers the functionality of this generalized user.
+
+2.1.1 Profile Selection
+The Profile Selection screen displays the available profiles for selection and an additional option of creating a new profile.  If the user has never launched the Real Purchase Price application, then only the New Profile selection will be available.  Once a selection has been tapped, the user shall press the Select button at the bottom of the screen.
+
+
+
+Figure 2-1: Select Profile Screen 
+
+
+
+2.1.2 Profile Creation
+The Profile Creation screen prompts the user to enter in their name, age, zip code, and annual miles driven.  Once the user has entered in all of these values, they shall press next.
+
+
+
+Figure 2-2: Profile Creation Screen
+
+
+
+
+2.1.3 Vehicle Selection
+The vehicle selection screen displays the available years, make, models, and trims of the vehicles stored in the database.  When the screen is first displayed to the user only the years will display.  Once a year is selected by the user the available makes for that year will display.  After the user selects a make the available models will display.  After selecting a model the available trims will display.  Finally when the user selects a trim the user will need to press the select button to advance to the next screen.
+
+
+
+Figure 2-3: Vehicle Selection Screen
+
+
+
+2.1.4 Final Calculation
+The final calculation screen displays the total cost of ownership of the selected vehicle.  Starting from the top the following calculations are displayed: MSRP, insurance, fuel, maintenance, and the total cost.  Below that are three radio buttons which the user can switch between 1 year, 3 year, and 5 year.  By default the radio button is set to 1 year when the screen is first displayed.  As this is the final screen the user has the option to select a button to either navigate back to the profile screen or the vehicle screen if they choose to make any changes to perform a new calculation.
+
+
+
+Figure 2-4: Final Calculation Screen
+
+2.2   Reference Mode
+
+2.2.1 Profile Selection
+Table 2-1 below provides the procedures of the select profile screen. The table also gives the purpose of each procedure. 
+
+Procedure 
+Purpose 
+1. Click on existing profile 
+1. To ensure the profile select is the profile the user would like to use. 
+2. Click on return to profile select
+2. Return to the profile select screen if the profile selected is not desire profile.
+3. Click on vehicle select button 
+3. Advance to the next screen to select a vehicle 
+Table 2-1: Profile Selection 
+
+2.2.1.1 Scope
+The system select profile shall provides the user access to begin using the application.  There are two types of selections the user can choose from: the first is to select an existing profile, the second is to create a profile.  Once the profile is selected the user will have the option to return to the profile select screen or advance to the vehicle select screen. 
+
+2.2.1.2 Materials
+In the system profile select screen, the user will click on the his/her profile.  Once the profile has been selected the user will confirm that name, zip code, age, and annual miles driven is correct.  If the information is correct the user will advance to vehicle select screen by clicking on the Select Vehicle button located on the bottom right hand side of the screen. 
+
+2.2.1.3 Preparations
+The user must already have entered all the information to have an existing profile.  The user must also have downloaded the application to their mobile device in order to access the profile. 
+
+2.2.1.4 Cautions and Warnings
+There are no warnings if there is no profile to select.  If there is no profile then the user must create a profile to advance to the select vehicle screen. 
+
+2.2.2 Profile Creation
+Table 2-2 below show the procedures and the purpose of those procedures in the create profile screen. 
+
+Procedure 
+Purpose 
+1. Enter Name, Zip Code, Annual Miles Driven, and Age. 
+1. To give the user a profile whenever they want to use the application 
+2. Click Save profile 
+2. This process will save the Profile 
+Table 2-2: Create Profile 
+
+2.2.2.1 Scope
+The system create profile shall prompt the user to create a profile for future use. The user must click on the create a profile button.  Once the user clicks the button the user must enter their name, age, zip code, and annual miles driven.  Once that information is entered the user will then click on the save button to save the information.  Now that a profile has been created the user has the ability to advance to the vehicle select screen. 
+
+2.2.2.2 Materials
+In the system create profile, the user will need to provide a name, a zip code, an age, and annual miles driven.  The information that is entered is not case-sensitive and does not require a password. The information can be entered through the touch keypad on the mobile device. 
+ 
+2.2.2.3 Preparations
+The user must enter all the information in order for the application to deliver correct totals.  The user should know how to work the keypad on their mobile device.  The user will need to know the average miles driven on an annual basis. 
+
+2.2.2.4 Cautions and Warnings
+Not entering all required information will not allow the user to continue to the next screen.  As a precautionary method to prevent the user from entering incorrect data types only a numeric keypad will appear for the age, zip code, and annual miles driven inputs.  Once the user enters all the required information, the user can then continue to the select vehicle screen. 
+
+
+2.2.3 Vehicle Selection
+Table 2-3 below shows the vehicle select functions. the table provides the procedures and the purpose of those procedures. 
+
+
+Procedure 
+Purpose 
+1. Click on  Select vehicle 
+1. Process will allow the user to select a vehicle
+2. Click on the Next 
+2. Proceed to the next screen 
+Table 2-3: Vehicle Selection Functions 
+
+2.2.3.1 Scope
+The vehicle select screen shall provide the user the ability to select a vehicle so that the they can obtain the total cost of that vehicle.  Once the the user has selected the desired vehicle, the user will need to click on the next button. 
+
+2.2.3.2 Materials
+In order for the user to select a vehicle, they must have knowledge on working a touch screen on a  mobile device.  Simply touch the select vehicle button, find a vehicle and then click on the next button. 
+
+2.2.3.3 Preparations
+The user must have a touch screen or a mobile device that can select the button. 
+
+2.2.3.4 Cautions and Warnings
+There are no cautions or warnings on this part of the process. 
+
+
+2.2.4 Display
+Table 2-4 below shows the features located in the display screen. The table has two sections; the procedure sections that allows the user to select how many years the user wants to keep the vehicle, and the purpose of each of those features. 
+
+Procedure
+Purpose 
+1. Select 1 year 
+1. Give the total cost for 1 year 
+2. Select 3 years 
+2. Gives the total cost for 3 years 
+3. Select 5 years 
+3. Gives the total cost for 5 years 
+4. Back to Profile 
+4. Returns back to profile select screen 
+5. Back to Vehicle 
+5. Returns back to select vehicle screen 
+Table 2-4: Display Features
+
+2.2.4.1 Scope
+The Display screen shall provide the user with total cost information.  In the display screen the user will see the MSRP of the vehicle, the total cost of insurance, the total cost of fuel, the total cost on maintenance, and the sum of all those things to give the total cost of the vehicle.  From this screen the user will be have the ability to select how many years the owner is planning to have the vehicle.  Changing how many years will also give the total cost of the vehicle own by the number of years selected.  The user will then have the option to return back to the users profile or return to selecting another vehicle. 
+
+2.2.4.2 Materials
+The user must have a touch screen or a select key option on their device. 
+
+2.2.4.3 Preparations
+The user must select a vehicle from the vehicle selection screen and press the select button in order to advance to the final calculation screen.
+
+2.2.4.4 Cautions and Warnings
+There are no warnings or cautions to look out for in this screen. 
+
+
+3.0  Error Conditions
+This sections gives some reasons for errors during operations of the application.  The following are some error conditions: 
+Loss of services connection
+No internet connection 
+Incomplete profile information 
+
+4.0   Appendices
+
+Bibliography 
+
+Pressman, Roger S., Project Engineering: A Practitioner’s Approach, Seventh Edition, 
+McGraw Hill, 2010.
+
+Torres, G., Rahimi, E., Criswell, M., Zaleski, Z., Real Purchase Price Operational Concept Document August 2014
+
+Torres, G., Rahimi, E., Criswell, M., Zaleski, Z., Real Purchase Price Software Project Management August 2014
+
+Torres, G., Rahimi, E., Criswell, M., Zaleski, Z., Real Purchase Price Software Requirements Specifications Document August 2014
+
+5.0   Glossary
+
+Android Operating System - An operating system for smartphones, tablets and laptops from the Google-sponsored Open Handset Alliance. With myriad models to choose from, Android is the leading mobile platform worldwide.Android is a Linux OS, and Android apps are programmed in Java.
+Google Play Store - Google's online store for downloading music, games, movies, e-books and Android apps. In March 2012, Google consolidated its Android Market app store, Google Music and Google eBookstore into Google Play, or "Play Store" as it appears on Android devices.
+3G - 3G is an International Telecommunication Union specification for the third generation of mobile communications technology.  3G promises increased bandwidth, up to 384Kbps when a device is stationary or moving at pedestrian speed, 128Kbps in a car, and 2Mbps in fixed applications.  3G will work over wireless air interfaces such as GSM, TDMA, and CDMA.
+ 
+
+6.0  Abbreviations and Acronyms
+
+3G - Third Generation
+GEMZ - Gabriel Emaun Michael Zachary
+GHz - Gigahertz
+MB - Megabyte
+MSRP - Manufacturers Suggested Retail Price
+RAM - Random Access Memory
+RPP - Real Purchase Price
