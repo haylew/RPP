@@ -1,0 +1,2918 @@
+
+
+
+
+
+Software Design Document
+For The
+Real Purchase Price Application
+July 13th 2014
+Prepared for:
+Lauren Rahimi
+Prepared by:
+GEMZ Software Design
+Eamun Rahimi
+Mike Criswell
+Zach Zaleski
+Gabriel Torres
+
+
+
+
+
+
+
+
+
+
+
+Approvals:
+Title
+Printed Name
+Signature
+Date
+Project Manager
+Zachary Zaleski
+
+
+
+
+Project Leader
+Eamun Rahimi
+
+
+
+
+Project Engineer
+Gabriel Torres
+
+
+
+
+Project Engineer
+Michael Criswell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Revision Changes:
+
+Revision
+Date
+Description
+Author
+1.0
+7/13/14
+Initial Draft
+GEMZ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table of Contents
+1.	Scope…………………………………………………………………………………..…10
+1.1      System Overview…………………………………………………………………………10
+1.2      Glossary…………………………………………………………………………………..10
+1.2.1   Definitions………………………………………………………………………………..10
+1.2.2   Acronyms…………………………………………………………………………………11
+1.3      Document Overview……………………………………………………………………...11
+2.	References………………………………………………………………………………..12
+3. 	CSCI Overview…………………………………………………………………………..12
+3.1       CSCI Architecture………………………………………………………………………..13
+3.1.1	Functional Architecture…………………………………………………………………..13
+3.1.1.1	Profile…………………………………………………………………………………….13
+3.1.1.2	Vehicle Select……………………………………………………………………………15
+3.1.1.3	Calculation Library………………………………………………………………………17
+3.1.1.4	Display…………………………………………………………………………………...22
+3.1.2	Non-functional Architecture……………………………………………………………..24
+3.1.2.1	Reliability………………………………………………………………………………...24 
+3.1.2.2	Maintainability…………………………………………………………………………...25 
+3.1.2.3	Testability………………………………………………………………………………...26
+3.1.2.4	Portability………………………………………………………………………………...27
+3.1.2.5	Usability………………………………………………………………………………….28 
+3.1.2.6	Security…………………………………………………………………………………..29 
+3.1.2.7	Efficiency………………………………………………………………………………...31 
+3.1.2.8	Availability……………………………………………………………………………….33 
+3.2	General Constraints……………………………………………………………………....34
+3.2.1	Hardware Environment…………………………………………………………………..34
+3.2.2	Software Environment…………………………………………………………………...34 
+3.2.3	Availability of Resources………………………………………………………………...34 
+3.2.4	GUI……………………………………………………………………………………….34 
+3.3	Assumptions and Dependencies…………………………………………………………35
+4.	Detailed Design…………………………………………………………………………..36
+4.1	Screen Display Samples………………………………………………………………….36
+4.2	Detailed Object Model…………………………………………………………………...40
+4.3	Detailed Dynamic Model………………………………………………………………...41
+4.4	Detailed Functional Model……………………………………………………………….45
+4.5	Select Profile Class………………………………………………………………………46
+4.5.1	Create Profile Method……………………………………………………………………46
+4.5.2	Get Profile Method………………………………………………………………………48
+4.6	Profile Class……………………………………………………………………………49
+4.6.1	Store Profile Method…………………………………………………………………...49
+4.7	Vehicle Class…………………………………………………………………………...51
+4.7.1	Get Years Method………………………………………………………………………51
+4.7.2	Get Makes Method……………………………………………………………………...52
+4.7.3	Get Models Method……………………………………………………………………..53
+4.7.4	Get Trims Method……………………………………………………………………….55
+4.7.5	Get All Vehicle Information Method……………………………………………………56
+4.8	Insurance Class…………………………………………………………………………..58
+4.8.1	Get Profile Information Method…………………………………………………………58
+4.8.2	Get Vehicle Information Method………………………………………………………..59
+4.8.3	Set Rate Method………………………………………………………………………….60
+4.9	Fuel Class………………………………………………………………………………...61
+4.9.1	Get Profile Information Method…………………………………………………………62
+4.9.2	Get Vehicle Information Method………………………………………………………..63
+4.9.3	Set Fuel Cost Method……………………………………………………………………64
+4.10	Maintenance Class……………………………………………………………………….65
+4.10.1	Get Profile Information Method…………………………………………………………65
+4.10.2	Get Vehicle Information Method………………………………………………………...66
+4.10.3	Set Maintenance Cost Method…………………………………………………………...68
+4.11	Calculate Class…………………………………………………………………………...69
+4.11.1	Load Vehicle Data Method………………………………………………………………69
+4.11.2	Load Profile Data Method……………………………………………………………….70
+4.11.3	Set Year Method…………………………………………………………………………72
+4.11.3	Get MSRP Method………………………………………………………………………73
+4.11.4	Get Insurance Cost Method……………………………………………………………...74
+4.11.5	Get Fuel Cost Method……………………………………………………………………75
+4.11.6	Get Maintenance Cost Method…………………………………………………………..76
+4.11.7	Get Total Cost of Ownership Method……………………………………………………77
+4.12	Display Calculation Class………………………………………………………………..79
+4.12.1	Display MSRP Method…………………………………………………………………..79
+4.12.2	Display Insurance Cost Method………………………………………………………….80
+4.12.3	Display Fuel Cost Method……………………………………………………………….81
+4.12.4	Display Maintenance Cost Method……………………………………………………...84
+4.12.5	Display Total Cost Method……………………………………………………………...84
+4.12.6	Change Year Method…………………………………………………………………….85
+4.12.7	Back to Profile Method………………………………………………………………….86
+4.12.8	Back to Vehicle Method………………………………………………………………...87
+5.	CSCI Data………………………………………………………………………………..89
+6.	CSCI Data Files………………………………………………………………………….90
+6.1	Data File to CSC/CSU Cross-Reference………………………………………………...90
+6.2	Data File Name…………………………………………………………………………..91
+7. 	Requirements Traceability……………………………………………………………….92 
+
+
+List of Figures
+
+Figure 3-1:  CSCI Architecture………..……………………………...…………………………12
+Figure 3-2:  Profile CSC Architecture………………………………………………………...…13
+Figure 3-3:  Vehicle Select CSC Architecture…………………………………………………...15
+Figure 3-4:  Calculation Library CSC Architecture……………………………………………...17
+Figure 3-5:  Insurance Sub-CSC Architecture…………………………………………………...18
+Figure 3-6:  Fuel Sub-CSC Architecture…………………………………………………………19
+Figure 3-7:  Maintenance Sub-CSC Architecture………………………………………………..20
+Figure 3-8:  Total Cost of Ownership Sub-CSC Architecture…………………………………...21
+Figure 3-9:  Display CSC Architecture…………………………………………………………..22
+Figure 3-10: Reliability Scenario………………………………………………………………...24
+Figure 3-11: Reliability Tactics………………………………………………………………….24
+Figure 3-12: Maintainability Scenario…………………………………………………………...25
+Figure 3-13: Maintainability Tactics…………………………………………………………….25
+Figure 3-14: Testability Scenario………………………………………………………………..26
+Figure 3-15: Testability Tactics………………………………………………………………….26
+Figure 3-16: Portability Scenario………………………………………………………………...27
+Figure 3-17: Portability Tactics………………………………………………………………….27
+Figure 3-18: Usability Scenario………………………………………………………………….28
+Figure 3-19: Usability Tactics…………………………………………………………………...28
+Figure 3-20: Integrity Scenario…………………………………………………………………..29
+Figure 3-21: Security Scenario…………………………………………………………………..29
+Figure 3-22: Integrity Tactics……………………………………………………………………30
+Figure 3-23: Security Tactics…………………………………………………………………….30
+Figure 3-24: Efficiency Scenario………………………………………………………………...31
+Figure 3-25: Efficiency Tactics………………………………………………………………….32
+Figure 3-26: Availability Scenario………………………………………………………………33
+Figure 3-27: Availability Tactics………………………………………………………………...33
+Figure 4-1: Profile Select Screen………………………………………………………………...36
+Figure 4-2: Create Profile Screen………………………………………………………………..37
+Figure 4-3: Vehicle Select Screen……………………………………………………………….38
+Figure 4-4: Display Calculation Screen…………………………………………………………39
+Figure 4-5: RPP Detailed Object Model………………………………………………………...40
+Figure 4-6: Profile Select Sequence Diagram…………………………………………………...41
+Figure 4-7: Create Profile Sequence Diagram…………………………………………………..41
+Figure 4-8: Vehicle Select Sequence Diagram………………………………………………….42
+Figure 4-9: Insurance Sequence Diagram……………………………………………………….42
+Figure 4-10: Fuel Sequence Diagram……………………………………………………………43
+Figure 4-11: Maintenance Sequence Diagram…………………………………………………..43
+Figure 4-12: Calculation Sequence Diagram…………………………………………………….44
+Figure 4-13: RPP State Diagram…………………………………………………………………45
+
+
+
+List of Tables
+
+Table 4-1: Create Profile Method Input Data Table……………………………………………..46
+Table 4-1: Create Profile Method Input Data Table……………………………………………..46
+Table 4-3:  Get Profile Method Input Data Table………………………………………………..48
+Table 4-4: Get Profile Method Output Data Table………………………………………………48
+Table 4-5: Store Profile Method Input Data Table………………………………………………50
+Table 4-6: Get Years Method Output Data Table………………………………………………..51
+Table 4-7: Get Makes Method Input Data Table………………………………………………...52
+Table 4-8: Get Years Method Output Data Table………………………………………………..53
+Table 4-9: Get Models Method Input Data Table………………………………………………..54
+Table 4-10: Get Models Method Output Data Table…………………………………………….54
+Table 4-11: Get Trims Method Input Data Table………………………………………………..55
+Table 4-12: Get Trims Method Output Data Table………………………………………………55
+Table 4-13: Get All Vehicle Information Method Input Data Table…………………………….56
+Table 4-14: Get All Vehicle Information Method Output Data Table…………………………...57
+Table 4-15: Get Profile ID Method Data Output Table………………………………………….58
+Table 4-16: Get Vehicle Information Method Data Output Table……………………………….59
+Table 4-17: Set Rate Method Input Data Table………………………………………………….60
+Table 4-18: Set Rate Method Output Data Table………………………………………………...61
+Table 4-19: Get Profile Information Method Output Data Table………………………………..62
+Table 4-20: Get Vehicle Information Method Output Data Table……………………………….63
+Table 4-21: Set Fuel Cost Method Input Data Table…………………………………………….64
+Table 4-22: Set Fuel Cost Method Output Data Table…………………………………………...64
+Table 4-23: Get Profile Information Output Data Table…………………………………………66
+Table 4-24: Get Vehicle Information Output Data Table………………………………………..67
+Table 4-25: Set Maintenance Cost Method Input Data Table……………………………………68
+Table 4-26: Set Maintenance Cost Method Output Data Table………………………………….68
+Table 4-27: Load Vehicle Data Method Output Data Table……………………………………..69
+Table 4-28: Load Profile Data Method Output Data Table……………………………………...71
+Table 4-29: Set Year Method Input Data Table………………………………………………….72
+Table 4-30: Get MSRP Method Output Data Table……………………………………………...73
+Table 4-31: Get Insurance Cost Method Output Data Table……………………………………..74
+Table 4-32: Get Fuel Cost Method Output Data Table…………………………………………..75
+Table 4-33: Get Maintenance Cost Method Output Data Table…………………………………76
+Table 4-34: Get Total Cost of Ownership Method Output Data Table…………………………..78
+Table 4-35: Display MSRP Method Output Data Table…………………………………………79
+Table 4-36: Display Insurance Cost Method Output Data Table………………………………...80
+Table 4-37: Display Fuel Cost Method Output Data Table……………………………………...81
+Table 4-38: Display Maintenance Cost Method Output Data Table……………………………..83
+Table 4-39: Display Total Cost Method Output Data Table……………………………………..84
+Table 4-40: Change Year Method Input Data Table……………………………………………..85
+Table 5-1: Profile Table………………………………………………………………………….89
+Table 5-2: Vehicle Table…………………………………………………………………………89
+Table 6-1: Cross Reference Table………………………………………………………………..91
+Table 7-1: Traceability Table…………………………………………………………………….92
+
+ 1.0 Scope
+The Real Purchase Price application is designed to help the future automobile consumer analyze the total cost of ownership of a selected vehicle.  The RPP application will allow the user to create a profile to store their pertinent information, such as geographical location, estimated miles driven, and age used to calculate total cost of ownership.  The storage of the profile information will be outsourced to an existing Cloud storage system. This stored information then allows the user to compare multiple vehicles without having to enter redundant information.  The other costs that determine the total cost of ownership are insurance, interest on a loan, scheduled maintenance, and fuel costs.  Fuel mileage from each vehicle will be obtained from the United States Environmental Protection Agency (EPA).  
+
+ 1.1 System Overview
+This System Design Document (SDD) provides details on the design requirements necessary for the development of the application Real Purchase Price (RPP). The RPP app is being developed to give the user an estimate of real cost of a vehicle after the cost of maintenance, fuel , and insurance. Creating this application will give the user a better picture of what the vehicle is really going to cost them. The intended audience for this SDD are as follows: 
+The customer 
+The Real Purchase Price development team 
+Project management 
+
+ 1.2 Glossary
+
+ 1.2.1 Definitions
+Android - Operating system developed by Google for use in cellular and tablet devices.
+GitHub - GitHub is a web-based hosting service for software development projects that use the Git revision control system.
+
+
+ 1.2.2 Acronyms
+AVD - Android Virtual Device
+CL - Calculation Library
+CM - Configuration Manager
+DDoS- Distributed Denial of Service
+EPA - Environmental Protection Agency
+GEMZ - Gabriel Eamun Michael Zachary
+GUI - Graphical User Interface
+IDE - Integrated Development Environment
+MSRP - Manufacturer’s Suggested Retail Price
+OCD - Operational Concept Document
+RPP - Real Purchase Price
+SDD - Software Design Document
+SPMP - Software Project Management Plan
+SRS - Software Requirements Specifications 
+SQA - Software Quality Assurance
+SRS - Software Requirements Specification
+TCO - Total Cost of Ownership
+V&V - Verification and Validation
+
+1.3 Document Overview
+In the Software Design Document the system architecture and the description are the main focus. This document will provide an overview of the system’s components, functions, and the interactions between the components. The document and its sections are arranged as follows: 
+Section 1 contains the Scope, the system overview, and the document overview. 
+Section 2 contains the references to this document. 
+Section 3 provides an CSCI  overview and the architecture of the CSCI. Also included in this section are the general constraints and the assumptions and dependencies. 
+Section 4 provides each class and subclass for the whole RPP application. 
+Section 5 provides a some tables with data types 
+Section 6 provides with some tables with data files 
+Section 7 provides a table that traces certain parts of the SDD to the SRS 
+
+
+2.0 References
+Roger S. Pressman (2010).  Software Engineering:  A Practitioner’s Approach 7th Edition
+GEMZ Software Design (2014).  Operational Concept Document
+GEMZ Software Design (2014).  Software Project Management Plan
+GEMZ Software Design (2014).  Software Requirements Specifications
+Microsoft Azure Trust Center (2014).  Retrieved July 20, 2014, from http://azure.microsoft.com/en-us/support/trust-center/security/
+
+3.0 CSCI Overview
+The CSCI provides a detailed depiction of the Real Purchase Price Application.
+
+3.1 CSCI Architecture
+The Figure 3-1 below displays the CSCI Architecture. 
+
+Figure 3-1:  CSCI Architecture
+
+The CSCI Architecture is divided into four main CSC’s: Profile, Vehicle Select, Calculation Library, and Display. The RPP CSCI Architecture is an object oriented architecture with four Computer Software Component (CSC) modules.  Each module is its own object class that can be composed of sub-CSCs and Computer Software Units (CSUs).  The objects are instantiated and are loosely coupled.  
+
+
+3.1.1 Functional Architecture
+
+3.1.1.1 Profile (CSC)
+The figure 3-2  below displays the Profile CSC architecture. 
+
+
+Figure 3-2:  Profile CSC Architecture 
+
+The Profile CSC consists of the component’s display screens and its functions to select, create, and load user profiles.  From the Profile CSC, users will either navigate to the Profile Creation Screen or the Vehicle Selection Screen.
+
+3.1.1.1.1 Profile Selection Screen (Sub-CSC)
+The Profile Selection Screen Sub-CSC displays an option to create a new profile and a list of profiles to choose from if previous profiles have been created.
+
+3.1.1.1.1.1 Load Existing Profiles (CSU)
+The Load Existing Profile CSU retrieves a selected profile that is stored on the users device.  When the profile is loaded the user has the option to check the profile to ensure that the information is current or correct which will essentially be the same as the profile creation screen.  Once confirmed the interface will advance to the vehicle selection screen.
+
+3.1.1.1.1.2 Advance to Profile Creation Screen (CSU)
+Upon selection of the radio button to create a profile or an existing profile in the Profile Selection Screen, the system will navigate the user to the profile creation screen.
+
+3.1.1.1.2 Profile Creation Screen (Sub-CSC)
+The Profile Creation Screen Sub-CSC will provide a user interface to enter personal information.  The screen will contain four text boxes for the user to enter their name, age, zip, and annual miles driven.  A button will also be provided for the user to advance to the next screen.
+
+3.1.1.1.2.1 Store Profile into System (CSU)
+When all text boxes are filled with the user profile information and the button is pressed, the information will be stored in the users device and the user will advance to the Vehicle Selection Screen. 
+
+3.1.1.1.2.2 Advance to Vehicle Selection Screen (CSU)
+Upon selection of the radio button to select a vehicle in the Vehicle Selection Screen, the system will navigate the user to the Vehicle selection screen.
+
+
+
+3.1.1.2 Vehicle Select (CSC)
+The figure 3-3 below displays the Vehicle Select CSC architecture. 
+
+Figure 3-3:  Vehicle Select CSC Architecture 
+
+The Vehicle Select CSC will provide the user the ability to select a vehicle from specific qualities.  Those qualities are year, make, model and trim.  Once a vehicle has been selected, the vehicle’s other qualities will be loaded into the system.  These qualities are insurance factor, miles per gallon, maintenance factor, and MSRP.
+
+3.1.1.2.1 Vehicle Selection Screen (Sub-CSC)
+The Vehicle Selection Screen will contain four drop-down style menus for the user to select a vehicle based on year, make, model, and trim.  Once all the information is selected the user can then press the button to advance to the next screen.
+
+3.1.1.2.1.1 Select Year/Make/Model/Trim (CSU)
+The drop-down list for year will be populated with a selection of years to choose from.  Once a year is selected the make drop-down list will be populated with various makes of automobiles.  When a make is selected the model drop-down list will be populated with various models offered by that specific manufacturer.  When a specific model is selected by the user the trim drop-down menu will be populated with different options for the selected model.  Once the trim is selected and the button is pressed the user will advance to the next screen.
+
+3.1.1.2.1.2 Retrieve Vehicle Data from Database (CSU)
+The vehicle data retrieval will take place over multiple instances.  The year will be the first to be retrieved from the database.  Once a year is selected the makes will be retrieved to populate the make list.  Once a make is selected the models will be retrieved to populate the model list.  Finally when the model is selected the trims will be retrieved to populate the trim list.
+
+3.1.1.2.1.3 Advance to CL (CSU)
+The Advance to CL CSU will enable the user to navigate away from the vehicle selection screen and pass into the Calculation Library.  The Vehicle information will be stored in the device’s memory for later use.
+
+3.1.1.2.2 Mobile Service (Sub-CSC)
+The Mobile Service Sub-CSC consists of two CSU functions to retrieve data from the database.
+
+3.1.1.2.2.1 Load Year/Make/Model/Trim (CSU)
+The Load Year/Make/Model/Trim CSU will be a read-only call from the application to the mobile service to retrieve the year, make, model, and trims available from the database.  An identification number will accompany each Year/Make/Model/Trim row.
+
+3.1.1.2.2.2 Load MSRP/MPG/Insurance/Maintenance (CSU)
+The Load MSRP/MPG/Insurance/Maintenance CSU function will pass an identification number from the application to the mobile service to retrieve the above data back to the application.
+
+
+3.1.1.3 Calculation Library (CSC)
+The figure 3-4 below displays the Calculation library CSC architecture. 
+
+Figure 3-4:  Calculation Library CSC Architecture
+
+The Calculation library CSC will retrieve information from the profile CSU, Vehicle CSU and all the sub-CSC such as Insurance, fuel, maintenance, and total cost of ownership. Once the CL as obtain the information it will perform calculation and store it for display module. 
+
+3.1.1.3.1 Load Vehicle Data (CSU)
+The Load Vehicle Data CSU will load the user’s chosen vehicle into the Calculation Library for use by its modules.
+
+3.1.1.3.2 Load Profile Data (CSU)
+The Load Profile Data CSU will load the user’s chosen vehicle into the Calculation Library for use by its modules.
+
+
+3.1.1.3.3 Insurance (Sub-CSC)
+The figure 3-5 below displays the Insurance Sub-CSC architecture. 
+
+Figure 3-5:  Insurance Sub-CSC Architecture
+
+The Insurance Sub-CSC will retrieve information from the Calculation Library. The Insurance information consist of the users Age, the users living location, and an insurance factor. 
+
+3.1.1.3.3.1 Get Age from CL (CSU)
+The Get Age CSU will retrieve age information regarding the user from the Calculation Library. 
+
+3.1.1.3.3.2 Get User Location from CL (CSU)
+The Get User Location CSU will retrieve information from the Calculation Library. 
+
+3.1.1.3.3.3 Get Insurance Factor from CL (CSU)
+The Get Insurance Factor CSU will retrieve information from the Calculation Library. 
+
+3.1.1.3.3.4 Calculate Insurance Cost (CSU)
+The Calculate Insurance Cost CSU will calculate the age, the user location, and the Insurance Factor to get the total cost of Insurance. 
+
+3.1.1.3.3.5 Provide Insurance Cost (CSU)
+The Provide Insurance Cost CSU will retrieve the calculated information and return it to the Calculation library (CL). 
+
+
+3.1.1.3.4 Fuel (Sub-CSC)
+The figure 3-6 below displays the Fuel Sub-CSC architecture. 
+
+Figure 3-6:  Fuel Sub-CSC Architecture
+
+The Fuel Sub-CSC will retrieve fuel information from the Calculation library.  Fuel Information such as, annual miles driven and the vehicle’s MPG. 
+ 
+3.1.1.3.4.1 Get Annual Miles Driven from CL (CSU)
+The get annual miles driven CSU will retrieve information from the calculation library. 
+
+3.1.1.3.4.2 Get Miles Per Gallon of Vehicle from CL (CSU)
+The get miles per gallon of vehicle CSU will retrieve information from the calculation library. 
+
+3.1.1.3.4.3 Calculate Fuel Cost  (CSU)
+The Calculate fuel cost CSU will calculate the MPG by the annual miles driven and the number of years imputed to give the total cost of Fuel. 
+
+3.1.1.3.4.4 Provide Fuel Cost (CSU)
+The Provide Fuel Cost CSU will get the calculated information and provides it to the Calculation library (CL).   
+
+
+3.1.1.3.5 Maintenance (Sub-CSC)
+The figure 3-7 below displays the Maintenance Sub-CSC architecture.
+
+
+Figure 3-7:  Maintenance Sub-CSC Architecture
+
+The Maintenance Sub-CSC will retrieve Maintenance cost information from the Calculation Library (CL).  The Maintenance cost information consist of annual mile driven and the maintenance factor. 
+
+3.1.1.3.5.1 Get Annual Miles Driven from CL (CSU)
+The get annual miles driven CSU will retrieve information from the Calculation Library (CL). 
+
+3.1.1.3.5.2 Get Maintenance Factor from CL (CSU)
+The get Maintenance Factor CSU will retrieve information from the Calculation Library(CL).
+
+3.1.1.3.5.3 Calculate Maintenance Cost (CSU)
+The Calculate Maintenance Cost CSU will calculate the Maintenance Factor by the annual miles driven and the number of years imputed to give a total cost of maintenance. 
+
+3.1.1.3.5.4 Provide Maintenance Cost (CSU)
+The Provide Maintenance Cost CSU will  retrieve the calculated information and provide it to the Calculation Library (CL).  
+
+
+3.1.1.3.6 Total Cost of Ownership (Sub-CSC)
+The figure 3-8 below displays the Total Cost of Ownership Sub-CSC architecture. 
+
+
+Figure 3-8:  Total Cost of Ownership Sub-CSC Architecture
+
+The Total Cost of Ownership sub-CSC will retrieve information from the Calculation Library. The total cost of ownership information consist of MSRP, the total Fuel cost, the Insurance cost, and the total maintenance cost. 
+
+3.1.1.3.6.1 Get MSRP from CL (CSU)
+The Get MSRP CSU will retrieve information from the Calculation library (CL). 
+
+3.1.1.3.6.2 Get Fuel Cost from CL (CSU)
+The Get Fuel Cost CSU will retrieve information from the Calculation library (CL). 
+
+3.1.1.3.6.3 Get Insurance Cost from CL (CSU)
+The Get Insurance Cost CSU will retrieve the insurance cost from the Calculation library (CL). 
+
+3.1.1.3.6.4 Get Maintenance Cost from CL (CSU)
+The Get Maintenance Cost CSU will retrieve the maintenance cost from the Calculation library (CL). 
+
+3.1.1.3.6.5 Calculate Total Cost of Ownership (CSU)
+The Calculate Total Cost of Ownership CSU will calculate the MSRP, the total fuel cost, the total insurance cost, and the total maintenance cost to give the Total Cost of Ownership. 
+
+3.1.1.3.6.6 Provide Total Cost of Ownership (CSU)
+The Provide Total Cost of Ownership CSU will retrieve the calculated information and provide it to the Calculation Library (CL).  
+3.1.1.4 Display (CSC)
+The figure 3-9 below displays the Display CSC architecture.
+
+
+Figure 3-9:  Display CSC Architecture
+
+The Display CSC will be the final screen of the application to display the outputs of the calculation.  The Display CSC will have one Sub-CSC, Get Data, to organize all of the data functions that need to run in order to obtain the necessary information but remain in a module.
+
+3.1.1.4.1 Get Data (Sub-CSC)
+The Get Data Sub-CSC will retrieve information from the Calculation library (CL) and make it available to the Display module.
+
+3.1.1.4.1.1 Get MSRP from CL (CSU)
+The Get MSRP CSU will retrieve information from the Calculation library (CL). 
+
+3.1.1.4.1.2 Get Insurance Cost from CL (CSU)
+The Get Insurance Cost CSU will retrieve information from the Calculation library (CL). 
+
+3.1.1.4.1.3 Get Fuel Cost from CL (CSU)
+The Get Fuel Cost CSU will retrieve information from the Calculation library (CL). 
+
+3.1.1.4.1.4 Get Maintenance Cost from CL (CSU)
+The Get Maintenance Cost CSU will retrieve information from the Calculation library (CL). 
+
+3.1.1.4.1.5 Get Total Cost of Ownership from CL (CSU)
+The Get Total Cost of Ownership CSU will retrieve information from the Calculation library (CL). 
+
+3.1.1.4.1.6 Display Information (CSU)
+The Display Information CSU will get the MSRP, total Insurance cost, total Fuel cost, total maintenance cost, and total cost of ownership data and loads into the screen. 
+
+3.1.1.4.1.7 Advance back to Profile Selection (CSU)
+The advance back to Profile selection CSU is a selection button that allows the user to return the profile select screen once completed. 
+
+3.1.1.4.1.8 Advance back to Vehicle Selection Screen (CSU)
+The Advance back to Vehicle Selection Screen CSU is a selection button that allows the user to return to vehicle selection screen once they are completed. 
+
+3.1.1.4.1.9 Select Year Total Cost of Ownership (CSU)
+The select year of Total Cost of Ownership CSU will allow the user to choose either one, three, or five years of ownership to calculate the total cost based on the input. 
+
+
+3.1.2 Non-functional Architecture
+
+3.1.2.1 Reliability
+The reliability of the Real Purchase Price (RPP) application will be define in terms of bugs and always functioning without crashing. System reliability will be tested based on the procedures defined in the requirements.
+
+3.1.2.1.1 Scenarios
+A user encounters an error while filling out their first profile, leading to a crash back to the operating system.  Figure 3-10 outlines the reliability scenario.
+
+Figure 3-10: Reliability Scenario
+
+3.1.2.1.2 Tactics
+The error will be handled gracefully and will be able to be caught and a file be generated to send to the development and maintenance team for analysis.  Figure 3-11 outlines the reliability tactics.
+
+
+Figure 3-11: Reliability Tactics
+
+
+3.1.2.2 Maintainability
+To allow for maximum code reuse and easy maintenance, the code base for the RPP Application is object orientated in design.  Common operations and access to data are encapsulated in classes, this decouples the interface from the implementation. 
+
+3.1.2.2.1 Scenarios
+With upgrades to hardware and new vehicles being sold the software will have to be updated and maintained.  The administrators will keep the data within the system up to date.  Figure 3-12 outlines the maintainability scenario.
+
+
+Figure 3-12: Maintainability Scenario
+
+3.1.2.2.2 Tactics
+Maintaining the RPP Application software and hardware, describing the aforementioned attributes are the appropriate tactics to apply to the Maintainability quality attribute.  Maintaining the RPP Application software will involve configuration management and change management. Maintaining the hardware will focus on keeping the hardware functional and the operational maintenance agreements.  Figure 3-13 outlines the maintainability tactics.
+
+
+Figure 3-13: Maintainability Tactics
+
+3.1.2.3 Testability
+In order to determine the software is consistent and complete and to make sure the software is fulfilling each of the requirements, a testing program will be used.  Testing guidelines are predetermined and any results that are not meeting the guidelines will be dealt with immediately by the software development team.  
+
+3.1.2.3.1 Scenarios
+This scenario has the software developers as the source that will provide the stimulus of performing the application test on the system.  The software developers will carry out actions or tests to determine if the desired action are successfully carried out and completed with no errors.  Figure 3-14 outlines the testability scenario.
+
+
+Figure 3-14: Testability Scenario
+
+3.1.2.3.2 Tactics
+There are two factors to consider when testing for errors or bugs.  The first factor is to maintain an internal monitoring system.  The second factor is managing Input and output information. With both of these factors being monitored and managed the software development team can ensure that the testability quality is being done with efficiency.  Figure 3-15 outlines the testability tactics.
+
+
+Figure 3-15: Testability Tactics
+3.1.2.4 Portability
+The system will run on a mobile service application.  The system is designed for mobile devices. Installation will be easy and accessible through an app store.  The application is only being built for the Android system but it will support 88.4% of all android devices.  A main goal for the enhance version will be to run on all mobile device.  
+
+3.1.2.4.1 Scenarios
+With android constantly coming out with new phones and new operating systems, the application will not function when these new devices are on the market.  Updated software will prevent the application from operating in the updated systems.  Figure 3-16 outlines the portability scenario.
+
+Figure 3-16: Portability Scenario
+
+3.1.2.4.2 Tactics
+The RPP software will have to be updated by GEMZ software design in order for the application to function in the new operating systems.  The goal of GEMZ software design is to have ease when updating the product for portability and provide cross-platform design.  Figure 3-17 outlines the portability tactics.
+
+ 
+Figure 3-17: Portability Tactics
+
+
+3.1.2.5 Usability
+The system will enable the user and software developers easy access to the application.  The application will be straightforward and easy to use.  The goal is to have quick and easy functions so everyone can use the application with ease.  
+
+3.1.2.5.1 Scenarios
+The goal is to have easy access to information, so in this scenario the user will know the source of an error in data.  In this case, the user will try to select a vehicle and the vehicle does not show up even when the vehicle that is being selected is a popular one.  The user is having a hard time finding the vehicle in the application and keeps getting a error display.  Figure 3-18 outlines the usability scenario.
+
+
+Figure 3-18: Usability Scenario
+
+3.1.2.5.2 Tactics
+The software will be consistently updated and check for any bugs or errors that may occur.  In case of an error the user will also be give an option to cancel the vehicle selected and undo the action.  Once the error has occured, GEMZ software design will get a notification of the problem and verify the data. one the data has been verified the next step is to test it.  Figure 3-19 outlines the usability tactics.
+
+
+Figure 3-19: Usability Tactics
+
+3.1.2.6 Integrity and Security
+The integrity of the application will be obtained by ensuring that the system performs all processes and calculations correctly.  In order to maintain integrity the development team will anticipate all possible scenarios that the application could fail.  The development team will also institute code to support a rollback feature should the application fail to return it to a previous state.  The security of the application and its data will be heavily reliant on the mobile service.  Although there is no risk of the user’s personal information being compromised, the application will need a secure DBMS to maintain integrity.
+
+3.1.2.6.1 Scenarios
+A possible scenario involving integrity would be if a user entered non-numeric data in a numeric data input.  If that were the case the calculation would be incorrect.  A possible scenario affecting security with respect to the data would be if an unauthorized user manipulated or deleted data from the mobile service DBMS.  If that were the case the data being retrieved by the application would be corrupt or null.  Figures 3-20 and 3-21 outline the integrity and security scenarios.
+
+
+Figure 3-20: Integrity Scenario
+
+
+
+Figure 3-21: Security Scenario
+
+
+3.1.2.6.2 Tactics
+The system will contain code to prevent the input of incorrect data in the user interface.  The system will also contain code for all anticipated scenarios that could cause incorrect processes and calculations.  Tactics for security will rely on the features provided by the mobile service which will include the following:
+24 hour monitored physical security
+Monitoring and logging
+Patching
+Antivirus/Antimalware protection
+Intrusion detection and DDoS
+Zero standing privileges
+Isolation
+Azure Virtual Networks
+Encrypted communications
+Private connection
+Identity and access
+Figures 3-22 and 3-23 outline the integrity and security tactics.
+
+
+Figure 3-22: Integrity Tactics
+
+
+Figure 3-23: Security Tactics
+
+3.1.2.7 Efficiency
+The efficiency of the application will be maintained by ensuring that a minimal amount of resources on the users mobile device and on the mobile service are used. GEMZ software design will efficiently test to ensure that minimal amount of set of combinations of code is being used to produce the maximum amount of output. 
+
+3.1.2.7.1 Scenarios
+In this scenario writing efficient code will consist of using code that goes to a redundant process.  Writing redundant code for the application will slow down testing and will take more time.  Figure 3-24 outlines the efficiency scenario.
+
+Figure 3-24: Efficiency Scenario 
+
+
+
+
+3.1.2.7.2 Tactics
+The best practice for dealing with this scenario is to remove unnecessary code and remove redundant code which will increase productivity.  Other tactics for dealing with efficiency are as followed:
+To make use of optimal memory and nonvolatile storage
+To ensure the best speed or run time for completing the algorithm
+To make use of reusable components wherever possible
+To make use of error and exception handling at all layers of software, such as the user interface, logic and data flow
+To create programming code that ensures data integrity and consistency
+To develop programming code that's compliant with the design logic and flow
+To make use of coding practices applicable to the related software
+Figure 3-25 outlines the efficiency tactics.
+
+
+Figure 3-25: Efficiency Tactics
+
+
+3.1.2.8 Availability
+The availability of this application to be downloaded and used is 24 hours a day every day of the year.  Since the data layer of the application is cloud based, the system can be easily maintained with minimal to no down time.
+
+3.1.2.8.1 Scenarios
+A critical patch for the DBMS is released and requires immediate updating to prevent a security breach.  Figure 3-26 outlines the availability scenario.
+
+
+Figure 3-26: Availability Scenario
+
+3.1.2.8.2 Tactics
+The system will be able to use the cloud to have zero downtime while the DBMS is being patched through the cloud’s technology.  Figure 3-27 outlines the availability tactics.
+
+
+Figure 3-27: Availability Tactics
+
+
+3.2 General Constraints
+The general constraints for the development of the RPP application are limitations that may have an impact on the design of the software.
+
+3.2.1 Hardware Environment
+The hardware environment needs to be currently supported by Androids latest operating system to provide optimal functionality. 
+
+3.2.2 Software Environment
+The software environment needs to be a current or supported release of the Android operating system.
+
+3.2.3 Availability of Resources
+Resources are required to be available to the user to perform a calculation. The database will be populated with sufficient data and maintained to provide a quality experience. 
+
+3.2.4 GUI
+The graphical user interface will need to be designed to meet Android specifications to provide the user with an easily navigable environment. Each screen will be self explanatory and fluidly navigate to the next screen.
+
+
+3.3 Assumptions and Dependencies
+
+3.3.1 Assumptions 
+Gemz software design assumed the following: 
+The Product will be completed on time and with the exact specification of the customer 
+The Product will be completed on budget
+Total cost owner of the vehicles that are being used will be accurate 
+The user of the product will have a mobile device and access to the Internet. 
+The customer will be satisfy with the end product 
+User will have knowledge of creating a profile and knowledge of downloading apps
+
+3.3.2 Dependencies
+The Project is dependant on the following: 
+Budget and the time that is allowed to create the product 
+Resources to gather information is accurate 
+software to create the app 
+Internet access for research 
+the software design is dependent on a mobile device  
+
+
+
+4.0 Detail Design 
+
+4.1 Screen Display Samples
+The RPP application will contain four GUI screens: Profile Select, Create Profile, Vehicle Select, and Display Calculation.  This section will display and describe the GUI for the RPP application.
+
+4.1.1 Profile Select Screen
+The Profile Select screen will be the first interactive screen that the user will encounter.  The text field at the top of the screen instructs the user to select an existing profile.  The radio buttons will follow allowing the user to select an existing profile or the Create New Profile option.  The number of radio buttons displayed will depend on the amount of profiles that exist on the users mobile device.  Once an option is selected by the user the Select  button will need to be pressed to advance to the next screen. 
+
+
+Figure 4-1: Profile Select Screen
+
+4.1.2 Create Profile Screen
+The Create Profile screen will enable the user to create a personal profile.  The interface will contain four text boxes that will be able to accept a value entered by the user.  The first box will be labeled Name and accept a String value.  The second box will be labeled Age and accept an Int value.  The third box will be labeled Zip Code and accept an Int value.  The fourth box will be labeled Annual Miles Driven and accept an Int value.  To proceed to the next screen a button labeled Next will be positioned at the bottom of the screen for the user to press once the profile is complete.
+
+
+Figure 4-2: Create Profile Screen
+
+
+4.1.3 Vehicle Select Screen
+The Vehicle Select screen will display four drop-down style lists labeled: Select Year, Select Make, Select Model, and Select Trim.  Upon selecting a year the application will retrieve from the database the available makes for that year.  When the make has been selected the application will retrieve from the database the available models.  When the model has been selected the application will retrieve the available trims from the database.  Finally once the trim has been selected the user will need to press the button labeled Next located at the bottom of the screen to proceed to the next screen.
+
+
+Figure 4-3: Vehicle Select Screen
+
+
+
+4.1.4 Display Calculation Screen
+The Display Calculation screen will contain five read-only text fields that display the calculations.  The first field labeled MSRP will display the manufacturer’s suggested retail price of the selected vehicle.  The second field labeled Insurance will display a rough estimate of the cost to insure the vehicle.  The third field labeled Fuel will display an average cost of fuel to operate the vehicle based on the annual miles driven entered by the user.  The fourth field labeled Maintenance will display the average maintenance cost for the select vehicle.  The fifth field labeled Total Cost will display the sum of the first four fields to provide the total cost.  Below that field will be a minimum of three radio buttons labeled: 1 Year, 3 Year, and 5 Year.  By default the button labeled 1 Year will be selected but the user has the option to select any available radio button.  When selecting a radio button other than the default, all but the MSRP calculation will change to reflect the number of years that the calculation will be based on.
+
+Figure 4-4: Display Calculation Screen
+
+
+
+
+4.2 Detailed Object Model
+The following figure shows a diagram of the RPP detailed object model.
+
+
+Figure 4-5: RPP Detailed Object Model
+4.3 Detailed Dynamic Model
+
+4.3.1 Profile Select Sequence Diagram
+Figure 4-6 outlines the sequence diagram for the profile select screen.
+
+
+Figure 4-6: Profile Select Sequence Diagram
+
+4.3.2 Create Profile Sequence Diagram
+Figure 4-7 outlines the sequence diagram for the create profile screen.
+
+
+Figure 4-7: Create Profile Sequence Diagram
+4.3.3 Vehicle Select Sequence Diagram
+Figure 4-8 outlines the sequence diagram for the vehicle select screen.
+
+
+Figure 4-8: Vehicle Select Sequence Diagram
+
+4.3.4 Insurance Sequence Diagram
+Figure 4-9 outlines the sequence diagram for the insurance module.
+
+
+Figure 4-9: Insurance Sequence Diagram
+4.3.5 Fuel Sequence Diagram
+Figure 4-10 outlines the sequence diagram for the fuel module.
+
+
+Figure 4-10: Fuel Sequence Diagram
+
+4.3.6 Maintenance Sequence Diagram
+Figure 4-11 outlines the sequence diagram for the maintenance module.
+
+Figure 4-11: Maintenance Sequence Diagram
+
+
+4.3.7 Calculation Sequence Diagram
+Figure 4-12 outlines the sequence diagram for the calculation module.
+
+
+Figure 4-12: Calculation Sequence Diagram
+
+
+4.4 Detailed Functional Model
+Figure 4-13 shows the state diagram for the RPP application.
+
+Figure 4-13: RPP State Diagram
+
+4.5 Select Profile Class 
+In the select profile class the user will have the ability to to choose from creating a new profile that will store their information or select an existing profile. The methods used in this class are as follows: Create Profile and Get Profile. 
+
+4.5.1 Create Profile Method
+
+4.5.1.1 Narrative
+This method allows the user to create a profile by entering the following information: Name, Age, Annual Miles Driven, and Zip Code. Once this information is entered it passes to the Profile Class.
+
+4.5.1.2 Input Data Elements
+Table 4-1 depicts the input data elements for the Create Profile method. Once the inputs are entered the Create Profile uses this data to create a profile ID.
+
+Identifier
+Description
+Data Type
+Range
+Source 
+Input Method
+Name
+Profile User Name
+String
+Unlimited
+User
+By Value
+Age
+Profile User Age
+Integer
+32 bit
+User
+By Value
+Annual Miles Driven
+Estimated annual miles
+Integer
+32 bit
+User
+By Value
+Zip Code
+Zip code where user resides
+Integer
+32 bit
+User
+By Value
+Table 4-1: Create Profile Method Input Data Table
+
+4.5.1.3 Output Data Elements
+Table 4-2 depicts the output data element of the Create Profile method. The output of this method is the Profile ID. This is a unique number assigned to the profile to identify it for reference by other methods.
+
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Profile ID
+Unique number used to identify stored profiles
+Integer
+32 bit
+Profile Class
+By Value
+Table 4-2: Create Profile Method Output Data Table
+
+4.5.1.4 Processing Characteristics
+The process shall be done internally into the system only and will be on the device’s own architecture.
+
+4.5.1.4.1 Algorithms
+The Create Profile method takes 4 input parameters, a string, and 3 integers, and outputs a unique integer identifying the profile, described in the pseudocode below.
+
+Create Profile (String, Int, Int, Int)
+
+	Create Profile ID
+	Verify ID is unique
+
+Return (Int) 
+
+4.5.1.4.2  Error Handling
+The input parameters will be verified to be of the correct data type, if the user enters the wrong data type they are prompted to enter the information again.
+
+4.5.1.5 Utilization of Other Elements
+No other elements are utilized for this method.
+
+4.5.1.6  Limitations
+The system shall only accept 32-bit integers for the integer values.  Any value exceeding the 32 bit integer maximum will be rejected.
+
+
+4.5.2  Get Profile Method 
+
+4.5.2.1 Narrative
+This method allows the user to select a profile that has already been created and saved in the database.
+
+4.5.2.2 Input Data Elements
+Table 4-3 depicts the input data elements for the Get Profile method. Once the input is entered the Get Profile Method uses this data to identify a profile ID that is stored in the database. 
+
+Identifier
+Description
+Data Type
+Range
+Source
+Input Method
+Button Selection
+User selects from a list of stored profiles
+Integer
+32 bit
+Database
+By Value
+Table 4-3:  Get Profile Method Input Data Table
+
+4.5.2.3 Output Data Elements
+Table 4-4 depicts the output data element of the Get Profile method. The output of this method is the information stored in the profile, User Name, Age, Average Miles Driven, and Zip Code. 
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Name
+Profile User Name
+String
+Unlimited
+Database
+By Value
+Age
+Profile User Age
+Integer
+32 bit
+Database
+By Value
+Avg Miles Driven
+Estimated annual miles
+Integer
+32 bit
+Database
+By Value
+Zip Code
+Zip code where user resides
+Integer
+32 bit
+Database
+By Value
+Table 4-4: Get Profile Method Output Data Table
+
+4.5.2.4 Processing Characteristics
+The processing characteristics of the the Get Profile method will retrieve the users name, age, avg miles driven, and zip code from the database and then display it to the user. 
+
+
+4.5.2.4.1 Algorithms
+
+Get Profile(_pId)
+	
+	search database
+		retrieve profiles
+		display in GUI
+	
+return(profiles)
+
+4.5.2.4.2  Error Handling
+There will be error checks for this method to ensure the data is correctly received from the database and correctly displayed in the GUI.
+
+4.5.2.4.3 Data Conversions
+the data will remain as integers.
+ 
+4.5.2.5 Utilization of Other Elements
+No other elements will be utilized for this method.
+
+4.5.2.6  Limitations
+Only the the pre-existing profile or profiles will be used. 
+
+4.6 Profile Class 
+The purpose of the profile class is to store all the users information in the database once the profile has been created.
+
+4.6.1 Store Profile Method
+
+4.6.1.1 Narrative
+The purpose of the store profile method is store the user entered profile created by the create profile method.  The profile is assigned a unique id and placed in the database.  This method has no outputs.
+
+
+4.6.1.2 Input Data Elements
+Table 4-5 depicts the input data elements for the Store Profile method. Once the inputs are received from the Select Profile Class this method stores the information in the database. 
+
+Identifier
+Description
+Data Type
+Range
+Source 
+Input Method
+Name
+Profile User Name
+String
+Unlimited
+Select Profile Class
+By Value
+Age
+Profile User Age
+Integer
+32 bit
+Select Profile Class
+By Value
+Avg Miles Driven
+Estimated annual miles
+Integer
+32 bit
+Select Profile Class
+By Value
+Zip Code
+Zip code where user resides
+Integer
+32 bit
+Select Profile Class
+By Value
+Profile ID
+Unique number used to identify stored profiles
+Integer
+32 bit
+Select Profile Class
+By Value
+Table 4-5: Store Profile Method Input Data Table
+
+4.6.1.3 Output Data Elements
+This method has no output.
+
+4.6.1.4 Processing Characteristics
+Once the user enters their name, age, Avg. miles driven, and zip code the information will be then be stored in the database. 
+
+4.6.1.4.1 Algorithms
+
+	Store Profile(Profile)
+
+		store profile in database
+
+	return()
+
+4.6.1.4.2  Error Handling
+The error handling for this method will ensure that the profile is successfully stored in the database.
+
+
+4.6.1.4.3 Data Conversions
+No data conversions are necessary in this method.
+
+4.6.1.5 Utilization of Other Elements
+No other elements are utilized for this method.
+
+4.6.1.6  Limitations
+This method is limited to storing information.
+
+4.7 Vehicle Class 
+The vehicle class handles all the data for the vehicles stored in the database.  The class will contain five methods: get years, get makes, get models, get trims, and get all vehicle information.
+
+4.7.1 Get Years Method
+
+4.7.1.1 Narrative
+The Get Years method will get all available years from the database to provide back to the user interface.
+
+4.7.1.2 Input Data Elements
+The Get Years Method has no input elements.
+
+4.7.1.3 Output Data Elements
+Table 4-6 provides the Get Years method. It shall return all years. 
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Year
+Year of vehicle
+Integer
+32 bit
+Memory
+By Value
+Table 4-6: Get Years Method Output Data Table
+
+4.7.1.4 Processing Characteristics
+The Get Years method shall make a call to the database and return the data back in memory.  This is a read-only action.
+
+The store vehicle method will have five input elements.  The first four are selected by the user and the vehicle id is assigned to the user once their vehicle selection is done.
+
+
+4.7.1.4.1 Algorithms
+
+	get Trims(int year, string make, string model)
+
+		call database to return all years
+
+	return list of years
+
+4.7.1.4.2  Error Handling
+Error handling for the store vehicle method will be used to ensure that correct data is returned from the database.
+
+4.7.1.4.3 Data Conversions
+The data shall remain as integers.
+
+4.7.1.5 Utilization of Other Elements
+No other elements will be used for this method.
+
+4.7.1.6  Limitations
+Only years of vehicles in the database shall be returned.  
+
+4.7.2 Get Makes Method
+
+4.7.2.1 Narrative
+The Get Makes will return all available Makes in the database for the corresponding year.
+
+4.7.2.2 Input Data Elements
+Table 4-7 below provides the Get Makes Method. It requires the year of the Makes as an integer value.
+Identifier
+Description
+Data Type
+Range
+Source 
+Input Method
+Year
+Year of vehicle
+Integer
+32 bit
+Database
+By Value
+Table 4-7: Get Makes Method Input Data Table
+
+
+4.7.2.3 Output Data Elements
+Table 4-8 below provides the  Get Makes method. It shall return all Makes.
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Makes
+Make of vehicle
+String
+500 characters
+Memory
+By Value
+Table 4-8: Get Years Method Output Data Table
+
+4.7.2.4 Processing Characteristics
+The Get Makes method shall make a call to the database and return the data back in memory.  This is a read-only action inside of the database.
+
+4.7.2.4.1 Algorithms
+
+	get Makes(int year)
+
+		call database with year constriction selecting all makes
+
+	return list of makes
+
+4.7.2.4.2  Error Handling
+Error handling for the get makes method will be used to ensure that correct data is returned from the database.
+
+4.7.2.4.3 Data Conversions
+The data shall be converted from a variable 500 character database object into a String object.
+
+4.7.2.5 Utilization of Other Elements
+No other elements will be used for this method.
+
+4.7.2.6  Limitations
+Only makes of vehicles in the database shall be returned.  
+
+4.7.3 Get Models Method
+
+4.7.3.1 Narrative
+The Get Models method will get all available models from the database to provide back to the user interface.
+
+
+4.7.3.2 Input Data Elements
+Table 4-9 below provides the Get Models method. It requires the year as an integer value and the make as a stringvalue.
+Identifier
+Description
+Data Type
+Range
+Source
+Input Method
+Year
+Year of vehicle
+Integer
+32 bit
+Database
+By Value
+Make
+Make of Vehicle
+String
+500 characters
+Database
+By Value
+Table 4-9: Get Models Method Input Data Table
+
+4.7.3.3 Output Data Elements
+Table 4-10 below provides the Get Models method. It shall return all models with the provided constrictions.
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Model
+Model of vehicle
+String
+500 characters
+Memory
+By Value
+Table 4-10: Get Models Method Output Data Table
+
+4.7.3.4 Processing Characteristics
+The Get Models method shall make a call to the database and return the data back in memory.  This is a read-only action.
+
+4.7.3.4.1 Algorithms
+
+	get Models(int year, string make)
+
+		call database to return all models with year and make constriction
+
+	return list of models
+
+4.7.3.4.2  Error Handling
+Error handling for the get models method will be used to ensure that correct data is returned from the database.
+
+4.7.3.4.3 Data Conversions
+The data shall be converted from a character database object into a string object.
+
+4.7.3.5 Utilization of Other Elements
+No other elements will be used for this method.
+
+4.7.3.6  Limitations
+Only models of vehicles in the database shall be returned. 
+
+4.7.4 Get Trims Method
+
+4.7.4.1 Narrative
+The Get Trims method will get all available Trims from the database with the year, make, and model constrictions back to the user interface.
+
+4.7.4.2 Input Data Elements
+Table 4-11 provides the Get Trims method. It requires the year as an integer value, the make as a string value, and the model as a string value.
+Identifier
+Description
+Data Type
+Range
+Source 
+Input Method
+Year
+Year of vehicle
+Integer
+32 bit
+Database
+By Value
+Make
+Make of vehicle
+String
+500 characters
+Database
+By Value
+Model
+Model of vehicle
+String
+500 characters
+Database
+By Value
+Table 4-11: Get Trims Method Input Data Table
+
+4.7.4.3 Output Data Elements
+Table 4-12 below provide the Get Trims method. It shall return all trims with the specified constrictions.
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Trim
+Trim of vehicle
+String
+500 characters
+Memory
+By Value
+Table 4-12: Get Trims Method Output Data Table
+
+4.7.4.4 Processing Characteristics
+The Get Trims method shall make a call to the database and return the data back in memory.  This is a read-only action.
+
+4.7.4.4.1 Algorithms
+
+	get Trims(int year, string make, string model)
+
+		call database to return all trims with the specified year, make, and model
+
+	return list of trims
+4.7.4.4.2  Error Handling
+Error handling for the get trims method will be used to ensure that correct data is returned from the database.
+
+4.7.4.4.3 Data Conversions
+The data shall be converted from a database varchar object to a string object.
+
+4.7.4.5 Utilization of Other Elements
+No other elements will be used for this method.
+
+4.7.4.6  Limitations
+Only trims of vehicles in the database shall be returned.  
+
+4.7.5 Get All Vehicle Information Method
+
+4.7.5.1 Narrative
+The Get All Vehicle Information method will get all available information regarding a certain vehicle when specified with a year, make, model, and trim.
+
+4.7.5.2 Input Data Elements
+Table 4-13 below provides the Get All Vehicle Information method. It requires the year as an integer value, the make as a string value, the model as a string value, and the trim as a string value.
+Identifier
+Description
+Data Type
+Range
+Source 
+Input Method
+Year
+Year of vehicle
+Integer
+32 bit
+Database
+By Value
+Make
+Make of vehicle
+String
+500 characters
+Database
+By Value
+Model
+Model of vehicle
+String
+500 characters
+Database
+By Value
+Trim
+Trim of Vehicle
+String
+500 characters
+Database
+By Value
+Table 4-13: Get All Vehicle Information Method Input Data Table
+
+
+4.7.5.3 Output Data Elements
+Table 4-14 below provides the Get Trims method. It shall return all trims with the specified constrictions.
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+MSRP
+Trim of vehicle
+String
+500 characters
+Memory
+By Value
+MPG
+MPG of vehicle
+Float
+64 bit
+Memory
+By Value
+Insurance Factor
+Insurance Factor of vehicle
+String
+2 characters
+Memory
+By Value
+Maintenance Factor
+Maintenance Factor of vehicle
+String
+2 characters
+Memory
+By Value
+Table 4-14: Get All Vehicle Information Method Output Data Table
+
+4.7.5.4 Processing Characteristics
+The Get All Vehicle Information method shall make a call to the database and return the data back in memory.  This is a read-only action.
+
+4.7.5.4.1 Algorithms
+
+	get allVehicleInfo(int year, string make, string model, string trim)
+
+		call database to return all vehicle information with the specified year, make, model, and trim.
+
+	return vehicle information
+
+4.7.5.4.2  Error Handling
+Error handling for the get trims method will be used to ensure that correct data is returned from the database.
+
+4.7.5.4.3 Data Conversions
+The MPG data shall be converted from a float to a double.  The insurance factor data shall be converted from a 2 character database object to a string.  The maintenance factor shall be converted from a 2 character database object to a string.  The MSRP data shall be converted from a float to a double.
+
+4.7.5.5 Utilization of Other Elements
+No other elements will be used for this method.
+4.7.5.6  Limitations
+Only information of vehicles in the database shall be returned.  
+
+4.8 Insurance Class 
+The Insurance class holds data that contains the cost of insurance for a vehicle. The methods in this class are: Get Profile Information, Get Vehicle Information, and Set Rate. 
+
+4.8.1 Get Profile Information Method
+
+4.8.1.1 Narrative
+The Get Profile Information Method inside of the Insurance Class obtains the profile data through a reference in memory.
+
+4.8.1.2 Input Data Elements
+There are no specific inputs for the Get Profile ID method of the Insurance Class.
+
+4.8.1.3 Output Data Elements
+Table 4-15 below provides the Get Profile Information Method. It allows the Insurance Class to access the information stored in the selected profile.
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Age
+Age of User
+Integer
+32 bit
+Memory Reference
+By Value
+Zip Code
+Zip Code provided by user
+Integer
+32 bit
+Memory Reference
+By Value
+Table 4-15: Get Profile ID Method Data Output Table 
+
+4.8.1.4 Processing Characteristics
+This method allows the insurance class to access profile data for its other methods.
+
+4.8.1.4.1 Algorithms
+
+get profileInformation()
+
+		set instantiated profile data object to the profile data in memory.
+
+	return()
+
+
+4.8.1.4.2  Error Handling
+The method shall gracefully catch and fail out if no profile is in memory.
+
+4.8.1.4.3 Data Conversions
+There are no data member to convert in this method.
+
+4.8.1.5 Utilization of Other Elements
+This method utilizes the Profile data object when referencing the profile data in memory.
+
+4.8.1.6  Limitations
+This method is limited to accessing profile information. 
+
+4.8.2 Get Vehicle Information Method 
+
+4.8.2.1 Narrative
+The Get Vehicle Information Method inside of the Insurance Class obtains the vehicle data through a reference in memory.
+
+4.8.2.2 Input Data Elements
+There are no specific inputs for the Get Vehicle Information method of the Insurance Class.
+
+4.8.2.3 Output Data Elements
+Table 4-16 below provides the Get Vehicle Information Method. It allows the Insurance Class to access the information stored relating to the selected vehicle.
+
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Insurance Factor
+The insurance factor of the vehicle
+String
+Unlimited
+Memory Reference
+By Value
+Table 4-16: Get Vehicle Information Method Data Output Table 
+
+4.8.2.4 Processing Characteristics
+This method allows the insurance class to access vehicle data for its other methods.
+
+
+4.8.2.4.1 Algorithms
+
+get vehicleInformation()
+
+		set instantiated vehicle data object to the vehicle data in memory.
+
+	return()
+
+4.8.2.4.2  Error Handling
+The method shall gracefully catch and fail out if no profile is in memory.
+
+4.8.2.4.3 Data Conversions
+There are no data member to convert in this method.
+
+4.8.2.5 Utilization of Other Elements
+This method utilizes the Vehicle data object when referencing the profile data in memory.
+
+4.8.2.6  Limitations
+The method is only limited to accessing vehicle data. 
+
+4.8.3 Set Rate Method 
+
+4.8.3.1 Narrative
+The Set Rate method calculates the insurance rate given the needed profile information and vehicle information.
+
+4.8.3.2 Input Data Elements
+Table 4-17 below provides the method. It shall require the profile’s age and zip code as well as the vehicle’s insurance factor to yield the insurance cost.
+Identifier
+Description
+Data Type
+Range
+Source
+Input Method
+Age
+Age that user provided
+Integer
+32 bit
+Memory Reference
+By Reference
+Zip Code
+Zip Code of the user
+Integer
+32 bit
+Memory Reference
+By Reference
+Insurance Factor
+Insurance Factor of the vehicle
+String
+2 characters
+Memory Reference
+By Reference
+Table 4-17: Set Rate Method Input Data Table
+
+4.8.3.3 Output Data Elements
+Table 4-18 below contains the Set Rate Method output data. 
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Insurance Cost
+The cost of insurance based on the profile and vehicle information
+Double
+64 bit
+Memory 
+By Value
+Table 4-18: Set Rate Method Output Data Table
+
+4.8.3.4 Processing Characteristics
+The method shall use calculations based off of data that is already in memory, such as age, zip code, and insurance factor. 
+
+4.8.3.4.1 Algorithms
+double setRate(int age, int zipcode, string insurance factor)
+	Get the conversion to the insurance factor
+	return age * zip code * insurance factor
+
+4.8.3.4.2  Error Handling
+The system shall gracefully fail in case of invalid inputs.
+
+4.8.3.4.3 Data Conversions
+The insurance factor string shall be converted to a double based off the character string.
+
+4.8.3.5 Utilization of Other Elements
+The method shall be using the information stored from the profile and vehicle data in memory.
+
+4.8.3.6  Limitations
+This method is limited to accessing information from the user profile to calculate insurance cost. 
+
+4.9 Fuel Class 
+The Fuel class contains data that will give the cost of fuel for a vehicle. The methods in this class are: Get Profile Information, Get Vehicle Information, and Set Fuel Cost. 
+
+
+4.9.1 Get Profile Information Method
+
+4.9.1.1 Narrative
+The Get Profile Information Method inside of the Fuel Class obtains the profile data through a reference in memory.
+
+4.9.1.2 Input Data Elements
+There are no specific inputs for the Get Profile Information method of the Fuel Class.
+
+4.9.1.3 Output Data Elements
+Table 4-19 below contains the Get Profile Information Method. It allows the Insurance Class to access the information stored in the selected profile.
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Annual Miles Driven
+Annual Miles Driven provided by User
+Integer
+32 bit
+Memory Reference
+By Value
+Zip Code
+Zip Code provided by user
+Integer
+32 bit
+Memory Reference
+By Value
+Table 4-19: Get Profile Information Method Output Data Table 
+
+4.9.1.4 Processing Characteristics
+This method allows the Fuel class to access profile data for its other methods.
+
+4.9.1.4.1 Algorithms
+
+get profileInformation()
+
+		set instantiated profile data object to the profile data in memory.
+
+	return()
+
+4.9.1.4.2  Error Handling
+The method shall gracefully catch and fail out if no profile is in memory.
+
+4.9.1.4.3 Data Conversions
+There are no data member to convert in this method.
+
+
+4.9.1.5 Utilization of Other Elements
+This method utilizes the Profile data object when referencing the profile data in memory.
+
+4.9.1.6  Limitations
+This method is limited to accessing profile information to obtain average miles driven and zip code. 
+
+4.9.2 Get Vehicle Information Method 
+
+4.9.2.1 Narrative
+The Get Vehicle Information Method inside of the Fuel Class obtains the vehicle data through a reference in memory.
+
+4.9.2.2 Input Data Elements
+There are no specific inputs for the Get Vehicle Information method of the Fuel Class.
+
+4.9.2.3 Output Data Elements
+Table 4-20 below contains the Get Vehicle Information Method. It allows the Fuel Class to access the information stored relating to the selected vehicle.
+
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+MPG
+The MPG of the vehicle
+Double
+64 bit
+Memory Reference
+By Value
+Table 4-20: Get Vehicle Information Method Output Data Table 
+
+4.9.2.4 Processing Characteristics
+This method allows the Fuel class to access vehicle data for its other methods.
+
+4.9.2.4.1 Algorithms
+
+get vehicleInformation()
+
+		set instantiated vehicle data object to the vehicle data in memory.
+
+	return()
+4.9.2.4.2  Error Handling
+The method shall gracefully catch and fail out if no profile is in memory.
+
+4.9.2.4.3 Data Conversions
+There are no data member to convert in this method.
+
+4.9.2.5 Utilization of Other Elements
+This method utilizes the vehicle data object when referencing the profile data in memory.
+
+4.9.2.6  Limitations
+This method is limited to accessing vehicle information to obtain the MPG. 
+
+4.9.3 Set Fuel Cost Method 
+
+4.9.3.1 Narrative
+The Set Fuel Cost method calculates the fuel cost  given the needed profile information and vehicle information.
+
+4.9.3.2 Input Data Elements
+Table 4-21 below contains the method. It shall require the profile’s age and zip code as well as the vehicle’s Fuel factor to yield the Fuel cost.
+Identifier
+Description
+Data Type
+Range
+Source
+Input  Method
+Annual Miles Driven
+Annual Miles Driven that the user provided
+Integer
+32 bit
+Memory Reference
+By Reference
+Zip Code
+Zip Code of the user
+Integer
+32 bit
+Memory Reference
+By Reference
+MPG
+MPG of the vehicle
+Double
+64 bit
+Memory Reference
+By Reference
+Table 4-21: Set Fuel Cost Method Input Data Table 
+
+4.9.3.3 Output Data Elements
+Table 4-22 below contains the Set fuel cost method output. 
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Fuel Cost
+The cost of Fuel based on the profile and vehicle information
+Double
+64 bit
+Memory 
+By Value
+Table 4-22: Set Fuel Cost Method Output Data Table 
+
+4.9.3.4 Processing Characteristics
+The method shall use calculations based off of data that is already in memory.
+
+4.9.3.4.1 Algorithms
+double setFuelCost(int annualMiles, int zipcode, double mpg)
+	get the price of gas based from zipcode
+return annualMiles * price of gas * mpg
+
+4.9.3.4.2  Error Handling
+The system shall gracefully fail in case of invalid inputs.
+
+4.9.3.4.3 Data Conversions
+The zip code shall be factored in to determine the price of gas
+
+4.9.3.5 Utilization of Other Elements
+The method shall be using the information stored from the profile and vehicle data in memory.
+
+4.9.3.6  Limitations
+This method is limited to accessing information from the user’s profile and the vehicle class. 
+
+4.10 Maintenance Class 
+The Maintenance class contains data that will give the cost of maintenance for a vehicle. The methods in this class are as follows: Get Profile Information, Get Vehicle Information, and Set Maintenance Cost. 
+
+4.10.1 Get Profile Information Method
+
+4.10.1.1 Narrative
+The Get Profile Information Method inside of the Maintenance Class obtains the profile data through a reference in memory.
+
+4.10.1.2 Input Data Elements
+There are no specific inputs for the Get Profile ID method of the Maintenance Class.
+
+
+4.10.1.3 Output Data Elements
+Table 4-23 contains the Get Profile Information Method. It allows the Maintenance Class to access the information stored in the selected profile.
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Annual Miles Driven
+Annual Miles Driven by User
+Integer
+32 bit
+Memory Reference
+By Value
+Table 4-23: Get Profile Information Output Data Table 
+
+4.10.1.4 Processing Characteristics
+This method allows the Maintenance class to access profile data for its other methods.
+
+4.10.1.4.1 Algorithms
+
+get profileInformation()
+
+		set instantiated profile data object to the profile data in memory.
+
+	return()
+
+4.10.1.4.2  Error Handling
+The method shall gracefully catch and fail out if no profile is in memory.
+
+4.10.1.4.3 Data Conversions
+There are no data member to convert in this method.
+
+4.10.1.5 Utilization of Other Elements
+This method utilizes the Profile data object when referencing the profile data in memory.
+
+4.10.1.6  Limitations
+This method is limited to accessing only profile information to retrieve data. 
+
+4.10.2 Get Vehicle Information Method 
+
+4.10.2.1 Narrative
+The Get Vehicle Information Method inside of the Maintenance Class obtains the vehicle data through a reference in memory.
+
+
+4.10.2.2 Input Data Elements
+There are no specific inputs for the Get Vehicle Information method of the Maintenance Class.
+
+4.10.2.3 Output Data Elements
+Talble 4-24 below provides the Get Vehicle Information Method. It allows the Maintenance Class to access the information stored relating to the selected vehicle.
+
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Maintenance Factor
+The Maintenance factor of the vehicle
+String
+Unlimited
+Memory Reference
+By Value
+Table 4-24: Get Vehicle Information Output Data Table 
+
+4.10.2.4 Processing Characteristics
+This method allows the Maintenance class to access vehicle data for its other methods.
+
+4.10.2.4.1 Algorithms
+
+get vehicleInformation()
+
+		set instantiated vehicle data object to the vehicle data in memory.
+
+	return()
+4.10.2.4.2  Error Handling
+The method shall gracefully catch and fail out if no profile is in memory.
+
+4.10.2.4.3 Data Conversions
+There are no data member to convert in this method.
+
+4.10.2.5 Utilization of Other Elements
+This method utilizes the vehicle data object when referencing the profile data in memory.
+
+4.10.26  Limitations
+This method is limited to accessing only vehicle information from the vehicle class. 
+
+
+
+4.10.3 Set Maintenance Cost Method 
+
+4.10.3.1 Narrative
+The Set Maintenance Cost method calculates the Maintenance cost given the needed profile information and vehicle information.
+
+4.10.3.2 Input Data Elements
+Table 4-25 below contains the method. It shall require the profile’s age and zip code as well as the vehicle’s Maintenance factor to yield the Maintenance cost.
+Identifier
+Description
+Data Type
+Range
+Source
+Output Method
+Annual Miles Driven
+Annual Miles Driven by User
+Integer
+32 bit
+Memory Reference
+By Reference
+Maintenance Factor
+Maintenance Factor of the vehicle
+String
+2 characters
+Memory Reference
+By Reference
+Table 4-25: Set Maintenance Cost Method Input Data Table 
+
+4.10.3.3 Output Data Elements
+Table 4-26 below contains the Set Maintenance cost method. 
+Identifier
+Description
+Data Type
+Range
+Destination
+Output Method
+Maintenance Cost
+The cost of Maintenance based on the profile and vehicle information
+Double
+64 bit
+Memory 
+By Value
+Table 4-26: Set Maintenance Cost Method Output Data Table 
+
+4.10.3.4 Processing Characteristics
+The method shall use calculations based off of data that is already in memory.
+
+4.10.3.4.1 Algorithms
+double setRate(int age, int zipcode, string Maintenance factor)
+	Get the conversion to the Maintenance factor
+	return annual miles driven  * Maintenance factor
+
+4.10.3.4.2  Error Handling
+The system shall gracefully fail in case of invalid inputs.
+4.10.3.4.3 Data Conversions
+The Maintenance factor string shall be converted to a double based off the character string.
+
+4.10.3.5 Utilization of Other Elements
+The method shall be using the information stored from the profile and vehicle data in memory.
+
+4.10.3.6  Limitations
+This method is limited to retrieving information from the profile class and setting the cost of maintenance. 
+
+4.11 Calculate Class 
+The Calculate class calculates all the data to give a total cost of ownership. The methods in this class are as follows: Load Vehicle Data, Load Profile Data, Set Year, Get MSRP, Get Insurance Cost, Get Fuel cost, Get Maintenance Cost, Get Total Cost of Ownership. 
+
+4.11.1 Load Vehicle Data Method
+
+4.11.1.1 Narrative
+	Upon transfer from the selection of vehicle to the display, the vehicle data shall be captured and stored in memory for use in the Calculate class to then share certain portions of the vehicle data to the Insurance, Maintenance, and Fuel classes.
+
+4.11.1.2 Input Data Elements
+There are no input data elements to call.
+
+4.11.1.3 Output Data Elements
+Table 4-27 below provides the Load Vehicle Data Method. It shall allocate memory and provide a local, instantiated version of the vehicle data available.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+MSRP
+Trim of vehicle
+String
+500 characters
+Memory
+By Value
+MPG
+MPG of vehicle
+Float
+64 bit
+Memory
+By Value
+Insurance Factor
+Insurance Factor of vehicle
+String
+2 characters
+Memory
+By Value
+Maintenance Factor
+Maintenance Factor of vehicle
+String
+2 characters
+Memory
+By Value
+Table 4-27: Load Vehicle Data Method Output Data Table 
+
+4.11.1.4 Processing Characteristics
+The expected data will be serialized going into the calculate class.  The Load Vehicle Data Method shall de-serialize the data.
+
+4.11.1.4.1 Algorithms
+LoadVehicleData(JSON vehicleObject)
+	De-serialize the vehicleObject and cast it into a private Vehicle Data object
+return()
+
+4.11.1.4.2  Error Handling
+The method shall gracefully fail is there is no object to de-serialize.
+
+4.11.1.4.3 Data Conversions
+The data shall be converted from a JSON object to a vehicle object.
+
+4.11.1.5 Utilization of Other Elements
+The Vehicle Class shall be imported for architectural and private member purposes.
+
+4.11.1.6  Limitations
+Only one vehicle object shall be able to be loaded at any given time.
+
+4.11.2 Load Profile Data Method
+
+4.11.2.1 Narrative
+Upon transfer from the selection of vehicle to the display, the profile data shall be stored in memory for use in the Calculate class to then share certain portions of the vehicle data to the Insurance, Maintenance, and Fuel classes.
+
+4.11.2.2 Input Data Elements
+There are no input data elements to call.
+
+
+4.11.2.3 Output Data Elements
+Table 4-28 below contains the Load Profile Data Method. It shall allocate memory and provide a local, instantiated version of the vehicle data available.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Name
+Name of User
+String
+Unlimited
+Memory
+By Value
+Age
+Age of User
+Integer
+32 bit
+Memory
+By Value
+Zip Code
+Zip Code of User
+Integer
+32 bit
+Memory
+By Value
+Annual Miles Driven
+Annual Miles Driven of User
+Integer
+32 bit
+Memory
+By Value
+Table 4-28: Load Profile Data Method Output Data Table 
+
+4.11.2.4 Processing Characteristics
+The expected data will be serialized going into the calculate class.  The Load Profile Data Method shall de-serialize the data.
+
+4.11.2.4.1 Algorithms
+LoadProfileData(JSON profileObject)
+	De-serialize the profileObject and cast it into a private Profile Data object
+return()
+
+4.11.2.4.2  Error Handling
+The method shall gracefully fail is there is no object to de-serialize.
+
+4.11.2.4.3 Data Conversions
+The data shall be converted from a JSON object to a profile object.
+
+4.11.2.5 Utilization of Other Elements
+The Profile Class shall be imported for architectural and private member purposes.
+
+4.11.2.6  Limitations
+Only one profile object shall be able to be loaded at any given time.
+
+
+4.11.3 Set Year Method
+
+4.11.3.1 Narrative
+The Set Year Method shall set the number of years of expected ownership of the person.  This call is passed from the user interface and sets the year private member in the Calculate Library.
+
+4.11.3.2 Input Data Elements
+Table 4-29 below contains the set year. It shall be passed into the method as an integer.
+
+Identifier
+Description
+Data Type
+Range
+Source 
+Input Method
+Year
+Years of expected ownership of vehicle
+Integer
+32 bit
+Memory
+By Value
+Table 4-29: Set Year Method Input Data Table 
+
+4.11.3.3 Output Data Elements
+No data shall be output from this method.
+
+4.11.3.4 Processing Characteristics
+Once the value has been passed through and the method completes, the Calculate Library’s class will be able to re-calculate values for the new year. 
+
+4.11.3.4.1 Algorithms
+void setYear(int year)
+	this.year = year
+return()
+
+4.11.3.4.2  Error Handling
+This process will fail if the number of years was not inputed. 
+
+4.11.3.4.3 Data Conversions
+The Set Year Method requires no data conversions.
+
+4.11.3.5 Utilization of Other Elements
+The Set Year Method requires no other elements.
+
+4.11.3.6  Limitations
+The Set Year expects a value greater than one.
+4.11.3 Get MSRP Method
+
+4.11.3.1 Narrative
+The Get MSRP Method shall return the MSRP of the selected vehicle back to its caller.
+
+4.11.3.2 Input Data Elements
+The Get MSRP Method does not require any data inputs.	
+
+4.11.3.3 Output Data Elements
+Table 4-30 below provides the MSRP method. It shall be the output data from the Get MSRP method.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+MSRP
+The MSRP of the vehicle
+Double
+64 bit
+Memory
+By Value
+Table 4-30: Get MSRP Method Output Data Table 
+
+4.11.3.4 Processing Characteristics
+The process characteristics in the get MSRP are to retrieve the information for the Vehicle class.
+
+4.11.3.4.1 Algorithms
+double getMSRP()
+	return private vehicle data’s MSRP
+
+
+4.11.3.4.2  Error Handling
+The method shall fail gracefully if there is no MSRP for the vehicle.
+
+4.11.3.4.3 Data Conversions
+The Get MSRP Method requires no data to be converted.
+
+4.11.3.5 Utilization of Other Elements
+The private vehicle data in the Calculate Class is required.
+
+4.11.3.6  Limitations
+This method is limited to accessing the vehicle’s MSRP from the vehicle class. 
+
+
+4.11.4 Get Insurance Cost Method
+
+4.11.4.1 Narrative
+The Get Insurance Cost method provides encapsulation between the caller of this method and the insurance class.  
+
+4.11.4.2 Input Data Elements
+The Get Insurance Cost method does not have any input data requirements.
+
+4.11.4.3 Output Data Elements
+Table 4-31 below provides the Insurance Cost method. It is  based off of the year shall be the output data from the Get MSRP method.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Insurance Cost
+Insurance Cost the vehicle based on the profile’s criteria
+Double
+64 bit
+Memory
+By Value
+Table 4-31: Get Insurance Cost Method Output Data Table 
+
+4.11.4.4 Processing Characteristics
+The Get Insurance Cost method in the Calculate class will make a call to the Insurance Class’s methods to calculate the insurance.
+
+4.11.4.4.1 Algorithms
+double getInsuranceCost()
+	Call the Insurance Cost Calculator and have it perform a calculation for a year
+	return the cost per year * the number of years set by the user
+
+4.11.4.4.2  Error Handling
+The Get Insurance Cost method shall gracefully fail if any data is missing and shall not cause the application to crash.
+
+4.11.4.4.3 Data Conversions
+The Get Insurance Cost method does not need to convert any data.
+
+4.11.4.5 Utilization of Other Elements
+The Get Insurance Cost method shall utilize the profile data and vehicle data private members to supply the insurance class as well as the calculate class’s year value.
+
+4.11.4.6  Limitations
+This method is limited to accessing information from the profile and vehicle class. 
+
+4.11.5 Get Fuel Cost Method
+
+4.11.5.1 Narrative
+The Get Fuel Cost method provides encapsulation between the caller of this method and the insurance class.  
+
+4.11.5.2 Input Data Elements
+The Get Fuel Cost method does not have any input data requirements.
+
+4.11.5.3 Output Data Elements
+Table 4-32 below contains the Fuel Cost method. It is based off of the year shall be the output data from the Get MSRP method.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+FuelCost
+Fuel Cost the vehicle based on the profile’s criteria
+Double
+64 bit
+Memory
+By Value
+Table 4-32: Get Fuel Cost Method Output Data Table
+
+
+4.11.5.4 Processing Characteristics
+The Get Fuel Cost method in the Calculate class will make a call to the Fuel Class’s methods to calculate the insurance.
+
+4.11.5.4.1 Algorithms
+
+double getFuelCost()
+	Call the FuelCost Calculator and have it perform a calculation for a year
+	return the cost per year * the number of years set by the user
+
+4.11.5.4.2  Error Handling
+The Get Fuel Cost method shall gracefully fail if any data is missing and shall not cause the application to crash.
+
+4.11.5.4.3 Data Conversions
+The Get Fuel Cost method does not need to convert any data.
+
+4.11.5.5 Utilization of Other Elements
+The Get Fuel Cost method shall utilize the profile data and vehicle data private members to supply the fuel class as well as the calculate class’s year value.
+
+4.11.5.6  Limitations
+This method is limited to retrieving information from the profile and vehicle class. 
+
+4.11.6 Get Maintenance Cost Method
+
+4.11.6.1 Narrative
+The Get Maintenance Cost method provides encapsulation between the caller of this method and the maintenance class.  
+
+4.11.6.2 Input Data Elements
+The Get Maintenance Cost method does not have any input data requirements.
+
+4.11.6.3 Output Data Elements
+Table 4-33 below provides the Maintenance Cost method. It is based off of the year shall be the output data from the Get MSRP method.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Maintenance Cost
+Maintenance Cost the vehicle based on the profile’s criteria
+Double
+64 bit
+Memory
+By Value
+Table 4-33: Get Maintenance Cost Method Output Data Table
+
+4.11.6.4 Processing Characteristics
+The Get Maintenance Cost method in the Calculate class will make a call to the Maintenance Class’s methods to calculate the insurance.
+
+
+4.11.6.4.1 Algorithms
+
+double getMaintenanceCost()
+	Call the Maintenance Cost Calculator and have it perform a calculation for a year
+	return the cost per year * the number of years set by the user
+
+
+4.11.6.4.2  Error Handling
+The Get Maintenance Cost method shall gracefully fail if any data is missing and shall not cause the application to crash.
+
+4.11.6.4.3 Data Conversions
+The Get Maintenance Cost method does not need to convert any data.
+
+4.11.6.5 Utilization of Other Elements
+The Get Maintenance Cost method shall utilize the profile data and vehicle data private members to supply the maintenance class as well as the calculate class’s year value.
+
+4.11.6.6  Limitations
+This method is limited to accessing information from the profile and vehicle classes. 
+
+4.11.7 Get Total Cost of Ownership Method
+
+4.11.7.1 Narrative
+The Get Total Cost Ownership method provides encapsulation between the caller of this method and the maintenance class.  This method aggregates the calls to get the MSRP, get the insurance cost, get the fuel cost, and get the maintenance cost.
+
+4.11.7.2 Input Data Elements
+The Get Total Cost of Ownership method does not have any input data requirements.
+
+
+4.11.7.3 Output Data Elements
+Table 4-34 below provides the Total Cost of Ownership method. It shall be output from this method.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Total Cost of Ownership
+Total cost of ownership of the vehicle using the provided number of ownership years and profile information
+Double
+64 bit
+Memory
+By Value
+Table 4-34: Get Total Cost of Ownership Method Output Data Table
+
+
+4.11.7.4 Processing Characteristics
+The Get Total Cost of Ownership method in the Calculate class will make calls to the get MSRP method, get insurance cost method, get fuel cost method, and get maintenance cost method.  This method does not determine nor care how these costs are performed and assumes that the other methods complete successfully.
+
+4.11.7.4.1 Algorithms
+double getTotalCost of Ownership()
+	Call the Maintenance Cost Calculator and have it perform a calculation for a year
+	Call the Fuel Cost Calculator and have it perform a calculation for a year
+	Call the Insurance Cost Calculator and have it perform a calculation for a year
+	return the number of set years * the maintenance, fuel, and insurance cost + the MSRP
+
+
+4.11.7.4.2  Error Handling
+The Get Total Cost of Ownership method shall gracefully fail if any data is missing and shall not cause the application to crash.
+
+4.11.7.4.3 Data Conversions
+The Get Total Cost of Ownership method does not need to convert any data.
+
+4.11.7.5 Utilization of Other Elements
+The Get Total Cost of Ownership method shall utilize the profile data and vehicle data private members to supply the maintenance class as well as the calculate class’s year value.
+
+4.11.7.6  Limitations
+This method is limited to retrieving calculated information from the calculation library.  
+
+4.12 Display Calculation Class
+The Display Calculation Class contains data that will be display to the user. The methods in this class are as follows: Display MSRP, Display Insurance, Display Fuel, Display Maintenance, Display Total Cost, Change year, Back to Profile, and Back to Vehicle.
+
+4.12.1 Display MSRP Method
+
+4.12.1.1 Narrative
+The Display MSRP Method shall input the MSRP from the Calculate Class and display the value on the page.
+
+4.12.1.2 Input Data Elements
+There are no data elements to be input with the Display MSRP Method.
+
+4.12.1.3 Output Data Elements
+Table 4-35 below contains the MSRP method. It shall output to the user interface.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+MSRP
+The MSRP of the vehicle
+String
+Unlimited
+User Interface
+By Value
+Table 4-35: Display MSRP Method Output Data Table
+
+4.12.1.4 Processing Characteristics
+The Display MSRP Method shall call into the Calculate Library to receive the MSRP.  It shall convert the value coming in as a double to a String so that it may be displayed as text to the user.
+
+4.12.1.4.1 Algorithms
+void displayMSRP()
+	Get the MSRP from the Calculation Class
+	Convert the MSRP value to a text value
+	Set the MSRP text area to the MSRP value
+return()
+
+
+4.12.1.4.2  Error Handling
+If there is an error when displaying the MSRP value, the method shall fail gracefully and not crash the application.
+
+4.12.1.4.3 Data Conversions
+The Display MSRP Method shall convert the value coming from the Calculation class to a String value for display.
+
+4.12.1.5 Utilization of Other Elements
+The Display MSRP Method shall utilize the Calculate class.
+
+4.12.1.6  Limitations
+ Only one MSRP may be displayed at any given time.
+
+4.12.2 Display Insurance Cost Method
+
+4.12.2.1 Narrative
+The Display Insurance Cost Method shall input the insurance cost from the Calculate class and display the value on the page.
+
+4.12.2.2 Input Data Elements
+There are no data elements to be input with the Display Insurance Cost Method.
+
+4.12.2.3 Output Data Elements
+Table 4-36 below contains the Insurance Cost data. It shall output to the user interface.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Insurance Cost
+The Insurance Cost of the Vehicle
+String
+Unlimited
+User Interface
+By Value
+Table 4-36: Display Insurance Cost Method Output Data Table
+
+4.12.2.4 Processing Characteristics
+The Display Insurance Cost Method shall call into the Calculate Library to receive the insurance cost.  It shall convert the value coming in as a double to a String so that it may be displayed as text to the user.
+
+
+4.12.2.4.1 Algorithms
+void displayInsuranceCost()
+	Get the insurance cost from the Calculation Class
+	Convert the insurance cost value to a text value
+	Set the insurance cost text area to the insurance cost value
+return()
+
+4.12.2.4.2  Error Handling
+If there is an error when displaying the insurance cost, the method shall fail gracefully and not crash the application.
+
+4.12.2.4.3 Data Conversions
+The Display Insurance Cost Method shall convert the value coming from the Calculation class to a String value for display.
+
+4.12.1.5 Utilization of Other Elements
+The Display Insurance Cost Method shall utilize the Calculate class.
+
+4.12.2.6  Limitations
+Only one insurance cost may be displayed at any given time.
+
+4.12.3 Display Fuel Cost Method
+
+4.12.3.1 Narrative
+The Display Fuel Cost Method shall input the fuel cost from the Calculate class and display the value on the page.
+
+4.12.3.2 Input Data Elements
+There are no data elements to be input with the Display Fuel Cost Method.
+
+4.12.3.3 Output Data Elements
+Table 4-37 contains the fuel cost data. It shall output to the user interface.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Fuel Cost
+The Fuel Cost of the Vehicle
+String
+Unlimited
+User Interface
+By Value
+Table 4-37: Display Fuel Cost Method Output Data Table
+
+4.12.3.4 Processing Characteristics
+The Display Fuel Cost Method shall call into the Calculate Library to receive the fuel cost.  It shall convert the value coming in as a double to a String so that it may be displayed as text to the user.
+
+4.12.3.4.1 Algorithms
+void displayFuelCost()
+	Get the fuel cost from the Calculation Class
+	Convert the fuel costvalue to a text value
+	Set the fuel cost text area to the fuel cost value
+return()
+
+4.12.3.4.2  Error Handling
+If there is an error when displaying the fuel cost value, the method shall fail gracefully and not crash the application.
+
+4.12.3.4.3 Data Conversions
+The Display Fuel Cost Method shall convert the value coming from the Calculation class to a String value for display.
+
+4.12.3.5 Utilization of Other Elements
+The Display Fuel Cost Method shall utilize the Calculate class.
+
+4.12.3.6  Limitations
+ Only a fuel cost of a single vehicle may be displayed at any given time.
+
+4.12.4 Display Maintenance Cost Method
+
+4.12.4.1 Narrative
+The Display Maintenance Cost Method shall input the maintenance cost from the Calculate class and display the value on the page.
+
+4.12.4.2 Input Data Elements
+There are no data elements to be input with the Display Maintenance Cost Method.
+
+
+4.12.4.3 Output Data Elements
+Table 4-38 below provides the maintenance cost method. it shall output to the user interface.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Maintenance Cost
+The Maintenance Cost of the vehicle with the approrpiate user information
+String
+Unlimited
+User Interface
+By Value
+Table 4-38: Display Maintenance Cost Method Output Data Table
+
+4.12.4.4 Processing Characteristics
+The Display Maintenance Cost Method shall call into the Calculate Library to receive the maintenance cost.  It shall convert the value coming in as a double to a String so that it may be displayed as text to the user.
+
+4.12.4.4.1 Algorithms
+void displayMaintenanceCost()
+	Get the maintenance cost from the Calculation Class
+	Convert the maintenance cost to a text value
+	Set the maintenace cost text area to the maintenance cost
+return()
+
+4.12.4.4.2  Error Handling
+If there is an error when displaying the maintenance cost , the method shall fail gracefully and not crash the application.
+
+4.12.4.4.3 Data Conversions
+The Display Maintenance Cost Method shall convert the value coming from the Calculation class to a String value for display.
+
+4.12.4.5 Utilization of Other Elements
+The Display Maintenance Cost Method shall utilize the Calculate class.
+
+4.12.4.6  Limitations
+ Only one Maintenance Cost may be displayed at any given time.
+
+
+4.12.5 Display Total Cost Method
+
+4.12.5.1 Narrative
+The Display Total Cost Method shall input the maintenance cost from the Calculate class and display the value on the page.
+
+4.12.5.2 Input Data Elements
+There are no data elements to be input with the Display Total Cost Method.
+
+4.12.5.3 Output Data Elements
+Table 4-39 below provides the maintenance cost method. It shall output to the user interface.
+
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Total Cost
+The Total Cost of the vehicle with the appropriate user information
+String
+Unlimited
+User Interface
+By Value
+Table 4-39: Display Total Cost Method Output Data Table
+
+4.12.5.4 Processing Characteristics
+The Display Total Cost Method shall call into the Calculate Library to receive the maintenance cost.  It shall convert the value coming in as a double to a String so that it may be displayed as text to the user.
+
+4.12.5.4.1 Algorithms
+void displayTotalCost()
+	Get the total cost from the Calculation Class
+	Convert the total cost to a text value
+	Set the total cost text area to the total cost
+return()
+
+4.12.5.4.2  Error Handling
+If there is an error when displaying the total cost , the method shall fail gracefully and not crash the application.
+
+4.12.5.4.3 Data Conversions
+The Display Total Cost Method shall convert the value coming from the Calculation class to a String value for display.
+
+4.12.5.5 Utilization of Other Elements
+The Display Total Cost Method shall utilize the Calculate class.
+
+4.12.5.6  Limitations
+Only one Total Cost may be displayed at any given time.
+
+4.12.6 Change Year Method
+
+4.12.6.1 Narrative
+The Change Year Method shall take input from the user of the total number of years of ownership to inform the user what their total cost will be.  Upon change, the Display class shall pass the new year onto the Calculation class and ask to recalculate all of the data.
+
+4.12.6.2 Input Data Elements
+Table 4-40 below provides the Change Year method. It shall accept a year as input from the user interface.
+Identifier
+Description
+Data Type
+Range
+Destination 
+Output Method
+Year
+The number of years of ownership as selected by the user
+Integer
+32 bit
+Calculate class
+By Value
+Table 4-40: Change Year Method Input Data Table
+
+
+4.12.6.3 Output Data Elements
+There are no data outputs from this method.
+
+4.12.6.4 Processing Characteristics
+The Change Year Method shall pass the year value into the Calculation class and then update the user interface with the new values.
+
+4.12.6.4.1 Algorithms
+void changeYear(int year)
+	Pass the year value into the Calculate class
+	Call the display methods for insurance, fuel, maintenance, and total cost of ownership.
+return()
+
+4.12.6.4.2  Error Handling
+If there is an error when changing the year, the method will fail gracefully and not cause the application to crash.
+
+4.12.6.4.3 Data Conversions
+There is no data conversion for the Change Year method.
+
+4.12.6.5 Utilization of Other Elements
+The Change Year method shall utilize the Calculate class for changing the year.  In order to the display the new values, the Change Year method shall call the Display Insurance Cost, Display Fuel Cost, Display Maintenance Cost, and Display 
+
+4.12.6.6  Limitations
+Only one Total Cost may be displayed at any given time.
+
+4.12.7 Back to Profile Method
+
+4.12.7.1 Narrative
+The Back to Profile Method shall allow the user to return back to the Profile Selection screen.
+
+4.12.7.2 Input Data Elements
+There are no input data elements for the Back to Profile Method.
+
+4.12.7.3 Output Data Elements
+There are no output data elements for the Back to Profile Method.
+
+4.12.7.4 Processing Characteristics
+The Back to Profile method shall transfer the user interface back to the Profile Selection user interface.  
+
+4.12.7.4.1 Algorithms
+void backToProfile(View v)
+Dispose of current user interface and transfer to Profile Selection
+return()
+
+4.12.7.4.2  Error Handling
+If the transfer to the other interface errors, the application should gracefully catch the failure and not crash the application.
+
+4.12.7.4.3 Data Conversions
+There is no data conversion for the Back To Profile Method.
+
+4.12.7.5 Utilization of Other Elements
+The Back to Profile Method utilizes the Profile Selection screen to transfer the action to.
+
+4.12.7.6  Limitations
+There are no limitations to the transfer.
+
+4.12.8 Back to Vehicle Method
+
+4.12.8.1 Narrative
+The Back to Vehicle Method shall allow the user to return back to the Vehicle Selection screen.
+
+4.12.8.2 Input Data Elements
+There are no input data elements for the Back to Vehicle Method.
+
+4.12.8.3 Output Data Elements
+There are no output data elements for the Back to Vehicle Method.
+
+4.12.8.4 Processing Characteristics
+The Back to Vehicle method shall transfer the user interface back to the Vehicle Selection user interface.  
+
+4.12.8.4.1 Algorithms
+void backToVehicle(View v)
+Dispose of current user interface and transfer to Vehicle Selection
+return()
+
+4.12.8.4.2  Error Handling
+If the transfer to the other interface errors, the application should gracefully catch the failure and not crash the application.
+
+4.12.8.4.3 Data Conversions
+There is no data conversion for the Back To Vehicle Method.
+
+
+
+4.12.8.5 Utilization of Other Elements
+The Back to Vehicle Method utilizes the Vehicle Selection screen to transfer the action to.
+
+4.12.8.6  Limitations
+There are no limitations to the transfer.
+
+
+5.0 CSCI Data
+The following tables provides the identifiers, descriptions, data types, and Limit/Ranges for all items in both the Profile and Vehicle databases.
+
+Identifier
+Description
+Data Type
+Limit/Range
+profileID
+Unique identifier in the Profile table
+Integer
+2147483647
+Name
+Name of User
+varchar
+500 characters
+Age
+Age of User
+Integer
+2147483647
+Zipcode
+Zipcode of User
+Integer
+2147483647
+Annual Miles
+Annual Miles Driven by User
+Integer
+2147483647
+Table 5-1: Profile Table
+
+Identifier
+Description
+Data Type
+Limit/Range
+vehicleID
+Unique identifier in the Vehicle Table
+Integer
+2147483647
+Year
+Vehicle Manufacturer’s Model Year
+Integer
+2147483647
+Make
+Vehicle Manufacturer’s Name
+varchar
+500
+Model
+Model of Vehicle
+varchar
+500
+Trim
+Trim of Vehicle
+varchar
+500
+MSRP
+MSRP of Vehicle
+float
+64 bit
+Insurance Factor
+Insurance Factor of Vehicle
+varchar
+2
+MPG
+MPG of Vehicle
+float
+64 bit
+Maintenance Factor
+Maintenance Factor of Vehicle
+varchar
+2
+5-2: Vehicle Table
+6.0 CSCI Data Files
+
+6.1 Data File to CSC/CSU Cross-Reference
+
+Database
+Identifier
+Class
+Method
+Profile
+profileID
+Select Profile Class
+Create Profile Method, Get Profile Method
+Profile
+profileID
+Profile Class
+Store Profile Method
+Profile
+Name
+Select Profile Class
+Create Profile Method, Get Profile Method
+Profile
+Name
+Calculate Class
+Load Profile Data Method
+Profile
+Age
+Select Profile Class
+Create Profile Method, Get Profile Method
+Profile
+Age
+Profile Class
+Store Profile Method
+Profile
+Age
+Calculate Class
+Load Profile Data Method
+Profile
+ZipCode
+Select Profile Class
+Create Profile Method, Get Profile Method
+Profile
+ZipCode
+Profile Class
+Store Profile Method
+Profile
+ZipCode
+Calculate Class
+Load Profile Data Method
+Profile
+Annual Miles Driven
+Select Profile Class
+Create Profile Method, Get Profile Method
+Profile
+Annual Miles Driven
+Profile Class
+Store Profile Method
+Profile
+Annual Miles Driven
+Calculate Class
+Load Profile Data Method
+Vehicle
+Year
+Vehicle Class
+Get Years Method, Get Makes Method, Get Models Method, Get Trims Method, Get All Vehicle Information
+Vehicle
+Make
+Vehicle Class
+Get Makes Method, Get Models Method, Get Trims Method, Get All Vehicle Information
+Vehicle
+Model
+Vehicle Class
+Get Models Method, Get Trims, Get All Vehicle Information
+Vehicle
+Trims
+Vehicle Class
+Get Trims, Get All Vehicle Information
+Vehicle 
+MSRP
+Vehicle Class
+Get All Vehicle Information
+Vehicle
+MSRP
+Calculate Class
+Load Vehicle Data Method
+Vehicle
+Insurance Factor
+Vehicle Class
+Get All Vehicle Information
+Vehicle
+Insurance Factor
+Calculate Class
+Load Vehicle Data Method
+Vehicle
+MPG
+Vehicle Class
+Get All Vehicle Information
+Vehicle
+MPG
+Calculate Class
+Load Vehicle Data Method
+Vehicle
+Maintenance Factor
+Vehicle Class
+Get All Vehicle Information
+Vehicle
+Maintenance Factor
+Calculate Class
+Load Vehicle Data Method
+Table 6-1: Cross Reference Table
+
+6.2 Data File Name
+	The two data files shall be named after their class.  Therefore, there shall be a data file named Profile.db that shall hold the profile information and there shall be a data file named Vehicle.db that shall hold the vehicle information.
+
+
+7.0 Requirements Traceability
+ This section contains a table that traces sections from the SRS document to the SDD document. 
+
+SRS Section
+SRS Description
+SDD Section
+SDD Description
+3.2.1
+Profile Module
+4.6
+Profile Class
+3.2.2
+Vehicle Select Module
+4.7
+Vehicle Class
+3.2.5
+Insurance Module
+4.8
+Insurance Class
+3.2.4
+Fuel  Module
+4.9
+Fuel Class
+3.2.6
+Maintenance Module
+4.10
+Maintenance Class
+3.2.3
+Calculation Library
+4.11
+Calculate Class
+3.2.8
+Display system
+4.12
+Display Calculation Class
+ Table 7-1:  Traceability Table
+ 
+
