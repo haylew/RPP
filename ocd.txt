@@ -1,0 +1,210 @@
+
+
+
+
+
+
+
+
+
+Operational Concept Document
+For The
+Real Purchase Price Application
+June 9th 2014
+Prepared for:
+Lauren Rahimi
+Prepared by:
+GEMZ Software Design
+Eamun Rahimi
+Mike Criswell
+Zach Zaleski
+Gabriel Torres
+
+
+
+
+Approvals:
+Title
+Printed Name
+Signature
+Date
+Project Manager
+Zachary Zaleski
+
+
+
+
+Project Leader
+Eamun Rahimi
+
+
+
+
+Project Engineer
+Gabriel Torres
+
+
+
+
+Project Engineer
+Michael Criswell
+
+
+
+
+
+Revision Change Record
+
+
+Table of Contents
+
+
+1. Introduction……………………………………………………………………………………..3
+1.1 Purpose ………………………………………………………………………………………..3
+1.2 Glossary……………………………………………………………………………………….3
+1.2.1 Definitions…………………………………………………………………………………...3
+1.2.2 Acronyms……………………………………………………………………………………3
+1.3 References……………………………………………………………………………………..4
+1.4 Overview………………………………………………………………………………………4
+2. Product Definition………………………………………………………………………………5
+2.1 Problem Statement…………………………………………………………………………….5
+2.2 User Characteristics…………………………………………………………………………...5
+2.3 Solution Strategy……………………………………………………………………………...6
+2.4 Processes to be provided……………………………………………………………………...6
+2.5 Processing Environment………………………………………………………………………7
+2.5.1 Hardware Subsystem………………………………………………………………………..7
+2.5.2 Software Subsystem………………………………………………………………………...7
+2.5.3 Workplace Subsystem……………………………………………………………..………..8
+2.6 Product Features……………………………………………………………………………….8
+2.6.1 Prototype Version…………………………………………………………………...............8
+2.6.2 Modest Version……………………………………………………………………………...8
+2.6.3 Enhance Version…………………………………………………………………………….8
+2.7 Acceptance Criteria…………………………………………...……………………………….9
+
+
+1.  Introduction
+
+1.1 Purpose
+The purpose of the Operational Concept Document (OCD) for Real Purchase Price (RPP) is to describe to the stakeholders on how the system will function in the presentation. The functions of the system are included in the operational concept as well as the interactions of the system users. The stakeholders include the customer, the users, the project manager, and the developers. 
+	
+The OCD will provide clear and concise documentation to the stakeholders, especially for reference and guidance for all members, to ensure that the correct system is being developed and the system is being developed correctly. One of the main function of the OCD will be to have a clear understanding of how stakeholders will interact with the system and how they will interact with each other in regards to the system.
+
+1.2  Glossary
+
+1.2.1  Definitions
+Android - A mobile operating system created by Google.
+Cloud - Term used to refer to a model of network computing where a program or application runs on a connected server or servers rather than on a local computing device such as a PC, tablet or smartphone
+WiFi - A local area wireless technology that allows an electronic device to exchange data or connect to the internet using 2.4 GHz UHF and 5 GHz SHF radio waves
+
+1.2.2  Acronyms
+DBMS - Database Management System
+MSRP - Manufacturer's Suggested Retail Price
+RPP - Real Purchase Price
+GEMZ - Gabriel Eamun Michael Zachary
+SQL - Structured Query Language
+CPU - Central Processing Unit
+
+
+
+1.3  References
+Roger S. Pressman (2010).  Software Engineering:  A Practitioner’s Approach 7th Edition
+
+1.4  Overview
+The following section of this document provides an introduction to the Real Purchase Price application including its features and design strategies. Additionally some enhancement features have been discussed for future releases. 
+
+The Problem Statement, Section 2.1 discusses the background of the Real Purchase Price application including the problem that this application was designed to correct.
+
+In Section 2.2, the User Characteristics describes not only the end users of this application, but the administrators and developers that will continue to maintain and upgrade the application.  
+
+Section 2.3 the Solution Strategy discusses the three types of design strategies.  Each strategy has been researched as it applies to the Real Purchase Price application. This section provides the outcome of this research by listing both advantages and disadvantages and identifying the strategy chosen for design.
+
+The Processes to be Provided section, 2.5 discusses the individual processes that the Real Purchase Price application completes. Each process is discussed highlighting its requirements and how what piece it provides to the application.
+
+In section 2.6, Processing Environments discusses the environment in which the software will be developed.  The three subsystems of this environment are hardware, software, and workplace.  The hardware subsystem is the set of physical machines needed to create the Real Purchase Price, from the computers to write the code to the device to test the application  The software subsystem is the operating system and suite of software tools necessary to develop and maintain the Real Purchase Price application.  The workplace subsystem is the location where the team is developing the software and documents.
+
+
+
+Section 2.7 is the Product Features portion of this document.  This section is divided into three sections; Prototype Version, Modest Version, and Enhanced Version. The prototype version section discusses the functions of the application that are going to be displayed during the presentation of the software.  The Modest version discusses all the features of the application once it is completely designed and built.  Finally in the Enhanced Version portion we are presenting ideas that will make this application better and ideas that could not be implemented due to the time constraints of this project.
+
+The final section of this document is 2.8 Acceptance Criteria.  This section lists the functions and processes the prototype application must complete in order to be considered a functioning application.
+
+2.  Product Definition
+
+2.1  Problem Statement
+When GEMZ Software Design came together, the team wanted to design an application that could be useful and practical.  After discussing many ideas, GEMZ Software Design determined that an application that could provide total cost of ownership information to potential car buyers was the direction to proceed.  After some research on existing applications GEMZ Software Design has found a way to provide a better application. The problem that faces potential car buyers is that there is no easy way of calculating the total cost of this major purchase.  Additionally there is no way of comparing multiple vehicles side by side to determine not only the best value but the impact on your total budget.  There are many factors that people cannot easily calculate that determine if a car is in your budget.  
+
+The Real Purchase Price (RPP) application by GEMZ Software Design is the answer to this problem. The Real Purchase Price application provides the total cost of ownership for a vehicle.  The Manufacturer's Suggested Retail Price (MSRP) is the number that the dealers advertise.  There are other costs that determine the total cost of ownership, such as insurance, interest on a loan, scheduled maintenance, and fuel costs. Not only does RPP provide this information it allows the user to create a profile to store their pertinent information, such as address, estimated miles driven, and age used to calculate total cost of ownership.  This stored information then allows the user to compare multiple vehicles without having to enter redundant information.  Additionally having a profile allows the user to save recent searches for the most effective side by side comparison. 
+
+
+
+2.2  User Characteristics
+This application is designed for the average consumer to research and prepare themselves for the major milestone of purchasing a vehicle. Administrators will also use the application to give their feedback in relative to customer complaints, services, and surveys. The maintenance team will use the application to ensure that it is always running correctly and to update information.  
+
+2.3  Solution Strategy
+Three solution strategies will be considered for this project: build the entire application from code, purchase the entire system commercially off the shelf, and a hybrid build being a combination of the two. Building the entire application from code would entail creating all the user interface, algorithms, calculations, and database from scratch. The advantages are that the application will perform custom calculations to estimate cost of ownership, the database will be custom made to store the information that the application will be gathering, and developers will be extremely familiar with the program. The disadvantages are that this approach is extremely time consuming, and there are existing resources already built that can be utilized for this application. This is not a feasible approach for this project due to the following reasons: there is a limited time to build, it’s very difficult, and additional training would be required.
+   	 
+Purchasing the entire system commercially off the shelf would involve obtaining all the pieces of the application from a third party and assembling it. Some of the advantages to this approach is that it is quick, easy, and doesn’t require additional training. The disadvantages are that the software may not have the functionality intended, it would require time to seek reliable resources, and possibly cost more money involving a third party. This is not feasible for this application because the algorithms need to be custom to perform cost of ownership calculations, a lot of the application can be coded by GEMZ Software Design, and additional costs may be incurred.
+   	 
+The final strategy is a hybrid build, the best of both approaches to maximize the advantages and minimize the disadvantages. It consists of a combination of manual coding and commercial off the shelf coding. Existing services, such as cloud database management and existing libraries in the object oriented languages are used. The biggest advantage is that the product is custom made to fit the customers needs. Additionally, it is also highly scalable to fit the amount of users and reduce upfront costs. By using existing code that has been tested and verified is a great time saving plan. Some disadvantages are that developers need to become familiar with existing software language libraries to become aware of any existing code is available to use. This design strategy is the most feasible and cost effective approach to building the software for this project.
+
+
+2.4  Processes to be Provided
+The Real Purchase Price application includes many specific processes, the first of which is the capability of creating and maintaining user specific profiles. The user profile will store the following information:
+Age
+Geographic location
+Average miles driven
+Loan rates/terms
+Calculations of recently searched vehicles
+
+The next process that the application provides is collecting various data that will be used in calculations.  This data is as follows:
+MSRP of the selected vehicle
+Insurance estimation based on user profile information
+Average fuel cost based on location information provided in the user profile
+Average fuel usage based on manufacturer’s specifications
+
+The final process that the application provides is taking all the gathered information and calculating the following information:
+Total cost of the interest if financing is being used
+Total cost of fuel usage
+Total estimated cost of scheduled maintenance
+Total cost of ownership adding all the collected data
+
+2.5  Processing Environment
+The processing environment for the application will be both through the team’s individual homes as well as collaboratively in their classroom and in libraries and coffee shops.  
+
+2.5.1  Hardware Subsystem
+The hardware that will be required to build the application will be an x86_x64 CPU based computer per person.  Mobile devices as well as software emulation will be used to test the application.  In order to connect the mobile devices for testing, a USB cable will be required per connection.
+
+
+
+2.5.2  Software Subsystem
+The software subsystem is comprised of two environments: one to build the mobile application, and one to build the mobile services.  In order to build the mobile application, the operating system of the team must be Microsoft Windows, Linux, or Apple OSX.  An Integrated Development Environment (IDE) is required to create the mobile application.  While not required, a software emulator of the mobile device is preferred per team member for developing, testing, and evaluation.  A different IDE may be necessary to develop the mobile services, depending on the languages used to create both the mobile application and the mobile services.
+
+2.5.3  Workplace Subsystem
+The workplace subsystem will be comprised of many environments.  The primary environment being the home of each team member.  Additional environments will be in the classroom as well as in public places that can provide an internet connection.  The home of each team member will have significant constraints for those with children in the home that must be taken care of.  This will push the time that the work will be done to later in the evenings and on the weekends.  Output of work may also be constrained in the home if there are additional distractions such as roommates and family members. 
+
+2.6  Product Features
+
+2.6.1  Prototype Version
+The prototype version of the application provides an editable user profile. A limited selection of vehicles are available to calculate. Calculations will include total cost of the vehicle, total fuel cost by geographical areas, total insurance cost, and total scheduled maintenance cost. There is a feature prompting the user how long they plan to own the vehicle more accurately estimating the Real Purchase Price. Finally the application provides the ability to store recent searches for comparison purposes. 
+
+2.6.2  Modest Version
+Fully functioning this application will have the capabilities of calculating total cost of ownership by collecting and calculating estimated insurance cost, estimated maintenance cost, fuel usage cost, and combine that with the MSRP of the vehicle of any U.S. production vehicle in all geographical areas of the United States. 
+
+
+2.6.3  Enhance Version
+Given more time and resources the future releases of this application could develop a feature that will also calculate a resale and depreciation estimate calculating how much the vehicle will be worth in the future based on the user defined profile. The enhance version will have updated gas prices from the zip code in which the customer resides as opposed to geographical averages. This will give the user a more accurate total price of the fuel being used. 
+
+An additional feature that is being researched for development is the sign in feature through social media. Having this feature will give GEMZ  Software Design user information quickly to give the customer a faster more unique experience.  
+
+2.7  Acceptance Criteria
+To be acceptable this application must allow users to create a specific profile that stores all pertinent information. Additionally this user profile must be able to be updated.
+
+With the user profile stored the application must accurately collect the following information for reference:
+
+Manufacturer’s vehicle specifications
+Fuel Economy
+Insurance estimations
+Average fuel cost by geographic location
+Average maintenance costs
+
+Finally the application must accurately take the user’s profile information and the data collected and output a calculated estimate of the total cost of ownership for the selected vehicle. Additionally this information should be stored in the users profile for future reference.
